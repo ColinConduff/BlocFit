@@ -1,0 +1,867 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10E9518A49704425C3DD0B4B /* libPods-BlocFit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E6A8CE880CA5E2F858C82 /* libPods-BlocFit.a */; };
+		C317CA8B1DA86A13002B10DD /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */; };
+		C342E13B1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */; };
+		C35612FC1DCD14E7003CFC2C /* MainViewController+Multipeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35612FB1DCD14E7003CFC2C /* MainViewController+Multipeer.swift */; };
+		C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */; };
+		C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590801DD2905C00D0C36C /* BFUnitConverter.swift */; };
+		C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */; };
+		C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */; };
+		C36D653E1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C36D653C1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld */; };
+		C36D65401D9EF3C300F2E3B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36D653F1D9EF3C300F2E3B1 /* Assets.xcassets */; };
+		C36D65431D9EF3C300F2E3B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36D65411D9EF3C300F2E3B1 /* LaunchScreen.storyboard */; };
+		C36D654E1D9EF3C300F2E3B1 /* BlocFitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D654D1D9EF3C300F2E3B1 /* BlocFitTests.swift */; };
+		C36D65591D9EF3C300F2E3B1 /* BlocFitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65581D9EF3C300F2E3B1 /* BlocFitUITests.swift */; };
+		C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */; };
+		C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */; };
+		C3772CF61DA09531006622CC /* RunPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */; };
+		C3772CF71DA09531006622CC /* BlocMember+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CEF1DA09531006622CC /* BlocMember+CoreDataClass.swift */; };
+		C3772CF81DA09531006622CC /* BlocMember+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CF01DA09531006622CC /* BlocMember+CoreDataProperties.swift */; };
+		C3772CF91DA09531006622CC /* Owner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CF11DA09531006622CC /* Owner+CoreDataClass.swift */; };
+		C3772CFA1DA09531006622CC /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CF21DA09531006622CC /* Owner+CoreDataProperties.swift */; };
+		C3772CFB1DA09531006622CC /* Run+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CF31DA09531006622CC /* Run+CoreDataClass.swift */; };
+		C3772CFC1DA09531006622CC /* Run+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CF41DA09531006622CC /* Run+CoreDataProperties.swift */; };
+		C38391A71DD51F8B00DDC5F8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38391A61DD51F8B00DDC5F8 /* GameKit.framework */; };
+		C3863D7C1DD52CFC004AE077 /* MainViewController+GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3863D7B1DD52CFC004AE077 /* MainViewController+GameKit.swift */; };
+		C38E09971DD3D5EA00D17569 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E09961DD3D5EA00D17569 /* HealthKit.framework */; };
+		C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38E09981DD3D6E300D17569 /* HealthKitManager.swift */; };
+		C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */; };
+		C3A234951D9F5C1200E49DE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234931D9F5C1200E49DE2 /* MapViewController.swift */; };
+		C3A234981D9F62AC00E49DE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A234971D9F62AC00E49DE2 /* Main.storyboard */; };
+		C3A2349C1DA027A500E49DE2 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */; };
+		C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349D1DA02AE200E49DE2 /* SettingsTableViewController.swift */; };
+		C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */; };
+		C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */; };
+		C3A234A41DA02B5E00E49DE2 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */; };
+		C3A234A61DA03A6D00E49DE2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */; };
+		C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */; };
+		C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */; };
+		C3A234AE1DA04F1F00E49DE2 /* AppProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */; };
+		C3A234B01DA0588E00E49DE2 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */; };
+		C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */; };
+		C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CB975D1DCE5F5F00F2457E /* MPConstant.swift */; };
+		C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C36D654A1D9EF3C300F2E3B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36D652A1D9EF3C300F2E3B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C36D65311D9EF3C300F2E3B1;
+			remoteInfo = BlocFit;
+		};
+		C36D65551D9EF3C300F2E3B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36D652A1D9EF3C300F2E3B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C36D65311D9EF3C300F2E3B1;
+			remoteInfo = BlocFit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		351E6A8CE880CA5E2F858C82 /* libPods-BlocFit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlocFit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewCell.swift; sourceTree = "<group>"; };
+		C35612FB1DCD14E7003CFC2C /* MainViewController+Multipeer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+Multipeer.swift"; sourceTree = "<group>"; };
+		C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFFormatter.swift; sourceTree = "<group>"; };
+		C36590801DD2905C00D0C36C /* BFUnitConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUnitConverter.swift; sourceTree = "<group>"; };
+		C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUserDefaults.swift; sourceTree = "<group>"; };
+		C36D65321D9EF3C300F2E3B1 /* BlocFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C36D653D1D9EF3C300F2E3B1 /* BlocFit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlocFit.xcdatamodel; sourceTree = "<group>"; };
+		C36D653F1D9EF3C300F2E3B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C36D65421D9EF3C300F2E3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C36D65441D9EF3C300F2E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36D65491D9EF3C300F2E3B1 /* BlocFitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocFitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36D654D1D9EF3C300F2E3B1 /* BlocFitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocFitTests.swift; sourceTree = "<group>"; };
+		C36D654F1D9EF3C300F2E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36D65541D9EF3C300F2E3B1 /* BlocFitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocFitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36D65581D9EF3C300F2E3B1 /* BlocFitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocFitUITests.swift; sourceTree = "<group>"; };
+		C36D655A1D9EF3C300F2E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
+		C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3772CEF1DA09531006622CC /* BlocMember+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlocMember+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3772CF01DA09531006622CC /* BlocMember+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlocMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3772CF11DA09531006622CC /* Owner+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3772CF21DA09531006622CC /* Owner+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3772CF31DA09531006622CC /* Run+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3772CF41DA09531006622CC /* Run+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C38391A61DD51F8B00DDC5F8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		C3863D7B1DD52CFC004AE077 /* MainViewController+GameKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+GameKit.swift"; sourceTree = "<group>"; };
+		C38E09951DD3D5EA00D17569 /* BlocFit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlocFit.entitlements; sourceTree = "<group>"; };
+		C38E09961DD3D5EA00D17569 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		C38E09981DD3D6E300D17569 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		C3A234931D9F5C1200E49DE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C3A234971D9F62AC00E49DE2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
+		C3A2349D1DA02AE200E49DE2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
+		C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewController.swift; sourceTree = "<group>"; };
+		C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
+		C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
+		C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppProtocols.swift; sourceTree = "<group>"; };
+		C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
+		C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewController.swift; sourceTree = "<group>"; };
+		C3CB975D1DCE5F5F00F2457E /* MPConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPConstant.swift; sourceTree = "<group>"; };
+		C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		E3C10EDC3DA8C3EEFBC4AF98 /* Pods-BlocFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlocFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlocFit/Pods-BlocFit.release.xcconfig"; sourceTree = "<group>"; };
+		FCC375E9D9C791D68A460FC7 /* Pods-BlocFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlocFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlocFit/Pods-BlocFit.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C36D652F1D9EF3C300F2E3B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C38391A71DD51F8B00DDC5F8 /* GameKit.framework in Frameworks */,
+				10E9518A49704425C3DD0B4B /* libPods-BlocFit.a in Frameworks */,
+				C38E09971DD3D5EA00D17569 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36D65461D9EF3C300F2E3B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36D65511D9EF3C300F2E3B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B8F1C5547231EE0699BC8B1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C38391A61DD51F8B00DDC5F8 /* GameKit.framework */,
+				C38E09961DD3D5EA00D17569 /* HealthKit.framework */,
+				351E6A8CE880CA5E2F858C82 /* libPods-BlocFit.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C342E1391DD7883A004E3A7B /* Current Bloc */ = {
+			isa = PBXGroup;
+			children = (
+				C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */,
+				C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */,
+			);
+			name = "Current Bloc";
+			sourceTree = "<group>";
+		};
+		C36D65291D9EF3C300F2E3B1 = {
+			isa = PBXGroup;
+			children = (
+				C36D65341D9EF3C300F2E3B1 /* BlocFit */,
+				C36D654C1D9EF3C300F2E3B1 /* BlocFitTests */,
+				C36D65571D9EF3C300F2E3B1 /* BlocFitUITests */,
+				C36D65331D9EF3C300F2E3B1 /* Products */,
+				ECC95824FE39FF140D69E5E8 /* Pods */,
+				B8F1C5547231EE0699BC8B1A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C36D65331D9EF3C300F2E3B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C36D65321D9EF3C300F2E3B1 /* BlocFit.app */,
+				C36D65491D9EF3C300F2E3B1 /* BlocFitTests.xctest */,
+				C36D65541D9EF3C300F2E3B1 /* BlocFitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C36D65341D9EF3C300F2E3B1 /* BlocFit */ = {
+			isa = PBXGroup;
+			children = (
+				C38E09951DD3D5EA00D17569 /* BlocFit.entitlements */,
+				C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */,
+				C3A234971D9F62AC00E49DE2 /* Main.storyboard */,
+				C3A234A81DA04DD900E49DE2 /* Auxiliary Components */,
+				C3FBB94C1DE75C9F007B74AA /* Main Components */,
+				C372FAF71DA6E9C600F9E428 /* Supporting Files */,
+				C3772CEC1DA0950C006622CC /* CoreData */,
+				C36D653F1D9EF3C300F2E3B1 /* Assets.xcassets */,
+				C36D65441D9EF3C300F2E3B1 /* Info.plist */,
+				C36D65411D9EF3C300F2E3B1 /* LaunchScreen.storyboard */,
+			);
+			path = BlocFit;
+			sourceTree = "<group>";
+		};
+		C36D654C1D9EF3C300F2E3B1 /* BlocFitTests */ = {
+			isa = PBXGroup;
+			children = (
+				C36D654D1D9EF3C300F2E3B1 /* BlocFitTests.swift */,
+				C36D654F1D9EF3C300F2E3B1 /* Info.plist */,
+			);
+			path = BlocFitTests;
+			sourceTree = "<group>";
+		};
+		C36D65571D9EF3C300F2E3B1 /* BlocFitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C36D65581D9EF3C300F2E3B1 /* BlocFitUITests.swift */,
+				C36D655A1D9EF3C300F2E3B1 /* Info.plist */,
+			);
+			path = BlocFitUITests;
+			sourceTree = "<group>";
+		};
+		C372FAF71DA6E9C600F9E428 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */,
+				C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */,
+				C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */,
+				C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */,
+				C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */,
+				C36590801DD2905C00D0C36C /* BFUnitConverter.swift */,
+				C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */,
+				C38E09981DD3D6E300D17569 /* HealthKitManager.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C3772CEC1DA0950C006622CC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C3772CFE1DA09556006622CC /* ManagedObjects */,
+				C3772CFD1DA09544006622CC /* Properties */,
+				C36D653C1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		C3772CFD1DA09544006622CC /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				C3772CF21DA09531006622CC /* Owner+CoreDataProperties.swift */,
+				C3772CF01DA09531006622CC /* BlocMember+CoreDataProperties.swift */,
+				C3772CF41DA09531006622CC /* Run+CoreDataProperties.swift */,
+				C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */,
+			);
+			name = Properties;
+			sourceTree = "<group>";
+		};
+		C3772CFE1DA09556006622CC /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				C3772CF11DA09531006622CC /* Owner+CoreDataClass.swift */,
+				C3772CEF1DA09531006622CC /* BlocMember+CoreDataClass.swift */,
+				C3772CF31DA09531006622CC /* Run+CoreDataClass.swift */,
+				C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */,
+			);
+			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		C398834E1DD9151D005385A3 /* Run History */ = {
+			isa = PBXGroup;
+			children = (
+				C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */,
+				C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */,
+			);
+			name = "Run History";
+			sourceTree = "<group>";
+		};
+		C3A234A81DA04DD900E49DE2 /* Auxiliary Components */ = {
+			isa = PBXGroup;
+			children = (
+				C3A2349D1DA02AE200E49DE2 /* SettingsTableViewController.swift */,
+				C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */,
+				C398834E1DD9151D005385A3 /* Run History */,
+				C3FE12051DD8F53800E6BE3F /* Friend Table */,
+				C342E1391DD7883A004E3A7B /* Current Bloc */,
+			);
+			name = "Auxiliary Components";
+			sourceTree = "<group>";
+		};
+		C3CB975C1DCE5F3A00F2457E /* Multipeer */ = {
+			isa = PBXGroup;
+			children = (
+				C35612FB1DCD14E7003CFC2C /* MainViewController+Multipeer.swift */,
+				C3CB975D1DCE5F5F00F2457E /* MPConstant.swift */,
+			);
+			name = Multipeer;
+			sourceTree = "<group>";
+		};
+		C3FBB94C1DE75C9F007B74AA /* Main Components */ = {
+			isa = PBXGroup;
+			children = (
+				C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */,
+				C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */,
+				C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */,
+				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
+				C3CB975C1DCE5F3A00F2457E /* Multipeer */,
+				C3863D7B1DD52CFC004AE077 /* MainViewController+GameKit.swift */,
+				C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */,
+			);
+			name = "Main Components";
+			sourceTree = "<group>";
+		};
+		C3FE12051DD8F53800E6BE3F /* Friend Table */ = {
+			isa = PBXGroup;
+			children = (
+				C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */,
+				C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */,
+			);
+			name = "Friend Table";
+			sourceTree = "<group>";
+		};
+		ECC95824FE39FF140D69E5E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCC375E9D9C791D68A460FC7 /* Pods-BlocFit.debug.xcconfig */,
+				E3C10EDC3DA8C3EEFBC4AF98 /* Pods-BlocFit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C36D65311D9EF3C300F2E3B1 /* BlocFit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36D655D1D9EF3C300F2E3B1 /* Build configuration list for PBXNativeTarget "BlocFit" */;
+			buildPhases = (
+				8037C4DBEA83986FC25C10E9 /* [CP] Check Pods Manifest.lock */,
+				C36D652E1D9EF3C300F2E3B1 /* Sources */,
+				C36D652F1D9EF3C300F2E3B1 /* Frameworks */,
+				C36D65301D9EF3C300F2E3B1 /* Resources */,
+				3DE175777EE83A9534D8B25D /* [CP] Embed Pods Frameworks */,
+				DBC6206C09F2EF1485100CF4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlocFit;
+			productName = BlocFit;
+			productReference = C36D65321D9EF3C300F2E3B1 /* BlocFit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C36D65481D9EF3C300F2E3B1 /* BlocFitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36D65601D9EF3C300F2E3B1 /* Build configuration list for PBXNativeTarget "BlocFitTests" */;
+			buildPhases = (
+				C36D65451D9EF3C300F2E3B1 /* Sources */,
+				C36D65461D9EF3C300F2E3B1 /* Frameworks */,
+				C36D65471D9EF3C300F2E3B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C36D654B1D9EF3C300F2E3B1 /* PBXTargetDependency */,
+			);
+			name = BlocFitTests;
+			productName = BlocFitTests;
+			productReference = C36D65491D9EF3C300F2E3B1 /* BlocFitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C36D65531D9EF3C300F2E3B1 /* BlocFitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36D65631D9EF3C300F2E3B1 /* Build configuration list for PBXNativeTarget "BlocFitUITests" */;
+			buildPhases = (
+				C36D65501D9EF3C300F2E3B1 /* Sources */,
+				C36D65511D9EF3C300F2E3B1 /* Frameworks */,
+				C36D65521D9EF3C300F2E3B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C36D65561D9EF3C300F2E3B1 /* PBXTargetDependency */,
+			);
+			name = BlocFitUITests;
+			productName = BlocFitUITests;
+			productReference = C36D65541D9EF3C300F2E3B1 /* BlocFitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C36D652A1D9EF3C300F2E3B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Colin Conduff";
+				TargetAttributes = {
+					C36D65311D9EF3C300F2E3B1 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = FK4UDE3RSD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					C36D65481D9EF3C300F2E3B1 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = FK4UDE3RSD;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C36D65311D9EF3C300F2E3B1;
+					};
+					C36D65531D9EF3C300F2E3B1 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = FK4UDE3RSD;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C36D65311D9EF3C300F2E3B1;
+					};
+				};
+			};
+			buildConfigurationList = C36D652D1D9EF3C300F2E3B1 /* Build configuration list for PBXProject "BlocFit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C36D65291D9EF3C300F2E3B1;
+			productRefGroup = C36D65331D9EF3C300F2E3B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C36D65311D9EF3C300F2E3B1 /* BlocFit */,
+				C36D65481D9EF3C300F2E3B1 /* BlocFitTests */,
+				C36D65531D9EF3C300F2E3B1 /* BlocFitUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C36D65301D9EF3C300F2E3B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A234981D9F62AC00E49DE2 /* Main.storyboard in Resources */,
+				C36D65431D9EF3C300F2E3B1 /* LaunchScreen.storyboard in Resources */,
+				C36D65401D9EF3C300F2E3B1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36D65471D9EF3C300F2E3B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36D65521D9EF3C300F2E3B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3DE175777EE83A9534D8B25D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlocFit/Pods-BlocFit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8037C4DBEA83986FC25C10E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBC6206C09F2EF1485100CF4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlocFit/Pods-BlocFit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C36D652E1D9EF3C300F2E3B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A234B01DA0588E00E49DE2 /* SegueIdentifier.swift in Sources */,
+				C36D653E1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld in Sources */,
+				C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewController.swift in Sources */,
+				C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */,
+				C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */,
+				C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */,
+				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,
+				C3772CF71DA09531006622CC /* BlocMember+CoreDataClass.swift in Sources */,
+				C3A234AE1DA04F1F00E49DE2 /* AppProtocols.swift in Sources */,
+				C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */,
+				C3772CFB1DA09531006622CC /* Run+CoreDataClass.swift in Sources */,
+				C3A2349C1DA027A500E49DE2 /* SideMenuTableViewController.swift in Sources */,
+				C3A234951D9F5C1200E49DE2 /* MapViewController.swift in Sources */,
+				C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */,
+				C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */,
+				C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */,
+				C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */,
+				C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */,
+				C317CA8B1DA86A13002B10DD /* BaseTableViewController.swift in Sources */,
+				C35612FC1DCD14E7003CFC2C /* MainViewController+Multipeer.swift in Sources */,
+				C3772CF61DA09531006622CC /* RunPoint+CoreDataProperties.swift in Sources */,
+				C3772CFC1DA09531006622CC /* Run+CoreDataProperties.swift in Sources */,
+				C3772CFA1DA09531006622CC /* Owner+CoreDataProperties.swift in Sources */,
+				C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */,
+				C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */,
+				C3772CF91DA09531006622CC /* Owner+CoreDataClass.swift in Sources */,
+				C3A234A41DA02B5E00E49DE2 /* FriendTableViewController.swift in Sources */,
+				C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */,
+				C3863D7C1DD52CFC004AE077 /* MainViewController+GameKit.swift in Sources */,
+				C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */,
+				C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */,
+				C3A234A61DA03A6D00E49DE2 /* MainViewController.swift in Sources */,
+				C3772CF81DA09531006622CC /* BlocMember+CoreDataProperties.swift in Sources */,
+				C342E13B1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36D65451D9EF3C300F2E3B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36D654E1D9EF3C300F2E3B1 /* BlocFitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36D65501D9EF3C300F2E3B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36D65591D9EF3C300F2E3B1 /* BlocFitUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C36D654B1D9EF3C300F2E3B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C36D65311D9EF3C300F2E3B1 /* BlocFit */;
+			targetProxy = C36D654A1D9EF3C300F2E3B1 /* PBXContainerItemProxy */;
+		};
+		C36D65561D9EF3C300F2E3B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C36D65311D9EF3C300F2E3B1 /* BlocFit */;
+			targetProxy = C36D65551D9EF3C300F2E3B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C36D65411D9EF3C300F2E3B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C36D65421D9EF3C300F2E3B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C36D655B1D9EF3C300F2E3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C36D655C1D9EF3C300F2E3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C36D655E1D9EF3C300F2E3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCC375E9D9C791D68A460FC7 /* Pods-BlocFit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BlocFit/BlocFit.entitlements;
+				DEVELOPMENT_TEAM = FK4UDE3RSD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = BlocFit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.BlocFit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C36D655F1D9EF3C300F2E3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3C10EDC3DA8C3EEFBC4AF98 /* Pods-BlocFit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BlocFit/BlocFit.entitlements;
+				DEVELOPMENT_TEAM = FK4UDE3RSD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = BlocFit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.BlocFit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C36D65611D9EF3C300F2E3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FK4UDE3RSD;
+				INFOPLIST_FILE = BlocFitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.BlocFitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlocFit.app/BlocFit";
+			};
+			name = Debug;
+		};
+		C36D65621D9EF3C300F2E3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FK4UDE3RSD;
+				INFOPLIST_FILE = BlocFitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.BlocFitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlocFit.app/BlocFit";
+			};
+			name = Release;
+		};
+		C36D65641D9EF3C300F2E3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = FK4UDE3RSD;
+				INFOPLIST_FILE = BlocFitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.BlocFitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BlocFit;
+			};
+			name = Debug;
+		};
+		C36D65651D9EF3C300F2E3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = FK4UDE3RSD;
+				INFOPLIST_FILE = BlocFitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.BlocFitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BlocFit;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C36D652D1D9EF3C300F2E3B1 /* Build configuration list for PBXProject "BlocFit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36D655B1D9EF3C300F2E3B1 /* Debug */,
+				C36D655C1D9EF3C300F2E3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C36D655D1D9EF3C300F2E3B1 /* Build configuration list for PBXNativeTarget "BlocFit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36D655E1D9EF3C300F2E3B1 /* Debug */,
+				C36D655F1D9EF3C300F2E3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C36D65601D9EF3C300F2E3B1 /* Build configuration list for PBXNativeTarget "BlocFitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36D65611D9EF3C300F2E3B1 /* Debug */,
+				C36D65621D9EF3C300F2E3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C36D65631D9EF3C300F2E3B1 /* Build configuration list for PBXNativeTarget "BlocFitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36D65641D9EF3C300F2E3B1 /* Debug */,
+				C36D65651D9EF3C300F2E3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C36D653C1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C36D653D1D9EF3C300F2E3B1 /* BlocFit.xcdatamodel */,
+			);
+			currentVersion = C36D653D1D9EF3C300F2E3B1 /* BlocFit.xcdatamodel */;
+			path = BlocFit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C36D652A1D9EF3C300F2E3B1 /* Project object */;
+}
