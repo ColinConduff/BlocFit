@@ -9,13 +9,13 @@ BlocFit is available for free on the [App Store](https://itunes.apple.com/ca/app
 
 ## Setup
 
-1. Follow the Google Maps SDK installation guide
-  a. [Guide](https://developers.google.com/maps/documentation/ios-sdk/start)
-  b. Add API key in AppDelegate.swift file
-  `GMSServices.provideAPIKey("<API Key>")`
-2. Follow the Facebook SDK installation guide
-  a. [Guide](https://developers.facebook.com/docs/ios/getting-started/)
-3. Open `BlocFit.xcworkspace` in Xcode
+1. Follow the Google Maps SDK installation guide  
+  a. [Guide](https://developers.google.com/maps/documentation/ios-sdk/start)  
+  b. Add API key in AppDelegate.swift file  
+  `GMSServices.provideAPIKey("<API Key>")`  
+2. Follow the Facebook SDK installation guide  
+  a. [Guide](https://developers.facebook.com/docs/ios/getting-started/)  
+3. Open `BlocFit.xcworkspace` in Xcode  
 
 ## License
 
