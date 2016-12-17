@@ -9,13 +9,34 @@ BlocFit is available for free on the [App Store](https://itunes.apple.com/ca/app
 
 ## Setup
 
-1. Follow the Google Maps SDK installation guide  
-  a. [Guide](https://developers.google.com/maps/documentation/ios-sdk/start)  
-  b. Add API key in AppDelegate.swift file  
-  `GMSServices.provideAPIKey("<API Key>")`  
-2. Follow the Facebook SDK installation guide  
-  a. [Guide](https://developers.facebook.com/docs/ios/getting-started/)  
-3. Open `BlocFit.xcworkspace` in Xcode  
+1.  Clone this repository  
+  a.  `git clone https://github.com/ColinConduff/BlocFit.git`  
+2.  Google Maps API Key  
+  a.  Obtain an API key for Google Maps  
+  b.  `cp .env.example .env`  
+  c.  add Google Maps API Key to .env file  
+3.  Facebook App ID  
+  a.  Obtain an App ID for Facebook  
+  b.  Create a file named fb.xcconfig containing the Facebook App ID.  
+      `echo "FACEBOOK_APP_ID = <Insert-APP-ID>" > fb.xcconfig`  
+4.  Install App Dependencies
+  a.  `gem install bundler`
+  b.  `bundle install`
+  c.  `pod install`
+
+The following prompt may appear (may be ignored if .env is provided):   
+`What is the key for googleMapsAPIKey`  
+
+5.  Open `BlocFit.xcworkspace` in Xcode   
+
+## Troubleshooting
+
+Follow the Google Maps SDK installation guide  
+[Guide](https://developers.google.com/maps/documentation/ios-sdk/start)  
+  
+Follow the Facebook SDK installation guide  
+[Guide](https://developers.facebook.com/docs/ios/getting-started/)  
+
 
 ## License
 

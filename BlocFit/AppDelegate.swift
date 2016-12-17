@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Keys
 import GoogleMaps
 import FBSDKCoreKit
 
@@ -17,13 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     let locationManager = CLLocationManager()
 
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
-        -> Bool {
-            
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Provide google maps with api key
-        GMSServices.provideAPIKey("<API Key>")
+        let gmsKey = BlocfitKeys().googleMapsAPIKey()!
+        GMSServices.provideAPIKey(gmsKey)
             
         // Set up location services
         locationManager.delegate = self
