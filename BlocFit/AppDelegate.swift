@@ -16,14 +16,14 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+    
+    func setupGoogleMapsAPI() {
         // Provide google maps with api key
         let gmsKey = BlocfitKeys().googleMapsAPIKey()!
         GMSServices.provideAPIKey(gmsKey)
-        
+    }
+    
+    func setupUserData() {
         // Create a new owner when the app is first installed
         // Also create initial privacy setting values in user defaults
         do {
@@ -35,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch let error {
             print(error)
         }
+    }
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        setupGoogleMapsAPI()
+        setupUserData()
         
         FBSDKApplicationDelegate.sharedInstance()
             .application(
