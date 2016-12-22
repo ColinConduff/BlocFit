@@ -17,40 +17,29 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var newFriendsSettingLabel: UILabel!
     @IBOutlet weak var shareFirstNameLabel: UILabel!
     
-    var isImperialUnits: Bool?
-    var willDefaultToTrusted: Bool?
-    var willShareFirstName: Bool?
+    var viewModel: SettingsViewModelProtocol! {
+        didSet {
+            self.viewModel.unitsDidChange = { [unowned self] viewModel in
+                self.unitsLabel?.text = viewModel.units
+            }
+            self.viewModel.defaultTrustedDidChange = { [unowned self] viewModel in
+                self.newFriendsSettingLabel?.text = viewModel.defaultTrusted
+            }
+            self.viewModel.shareFirstNameDidChange = { [unowned self] viewModel in
+                self.shareFirstNameLabel?.text = viewModel.shareFirstName
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = SettingsViewModel()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        if isImperialUnits == nil {
-            isImperialUnits = BFUserDefaults.getUnitsSetting()
-        }
-        if let isImperialUnits = isImperialUnits {
-            unitsLabel?.text = BFUserDefaults.stringFor(unitsSetting: isImperialUnits)
-        }
-        
-        if willDefaultToTrusted == nil {
-            willDefaultToTrusted = BFUserDefaults.getNewFriendDefaultTrustedSetting()
-        }
-        if let willDefaultToTrusted = willDefaultToTrusted {
-            newFriendsSettingLabel?.text = BFUserDefaults.stringFor(
-                friendsWillDefaultToTrusted: willDefaultToTrusted)
-        }
-        
-        if willShareFirstName == nil {
-            willShareFirstName = BFUserDefaults.getShareFirstNameWithTrustedSetting()
-        }
-        if let willShareFirstName = willShareFirstName {
-            shareFirstNameLabel?.text = BFUserDefaults.stringFor(
-                willShareFirstNameWithTrustedFriends: willShareFirstName)
-        }
-        
+        viewModel.resetLabelValues()
         setUpFB()
     }
 
@@ -72,33 +61,17 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.section == Loc.unitConversionCell.sec &&
             indexPath.row == Loc.unitConversionCell.row {
             
-            if isImperialUnits != nil {
-                isImperialUnits = !isImperialUnits!
-            
-                unitsLabel.text = BFUserDefaults.stringFor(unitsSetting: isImperialUnits!)
-                BFUserDefaults.set(isImperial: isImperialUnits!)
-            }
+            viewModel.toggleUnitsSetting()
         
         } else if indexPath.section == Loc.friendsDefaultToTrustedCell.sec &&
             indexPath.row == Loc.friendsDefaultToTrustedCell.row {
                 
-            if willDefaultToTrusted != nil {
-                willDefaultToTrusted = !willDefaultToTrusted!
-                newFriendsSettingLabel?.text = BFUserDefaults.stringFor(
-                    friendsWillDefaultToTrusted: willDefaultToTrusted!)
-                BFUserDefaults.set(friendsWillDefaultToTrusted: willDefaultToTrusted!)
-            }
-                
+            viewModel.toggleTrustedDefaultSetting()
+            
         } else if indexPath.section == Loc.shareNameCell.sec &&
             indexPath.row == Loc.shareNameCell.row {
                 
-            if willShareFirstName != nil {
-                willShareFirstName = !willShareFirstName!
-                shareFirstNameLabel?.text = BFUserDefaults.stringFor(
-                    willShareFirstNameWithTrustedFriends: willShareFirstName!)
-                BFUserDefaults.set(
-                    willShareFirstNameWithTrustedFriends: willShareFirstName!)
-            }
+            viewModel.toggleShareFirstNameSetting()
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -109,11 +82,11 @@ class SettingsTableViewController: UITableViewController {
         loginButton.center = fbLoginView.center
         fbLoginView.addSubview(loginButton)
         
+        // Move to FB View Model
         loginButton.readPermissions = [
             "public_profile"
         ]
         
         FBSDKProfile.enableUpdates(onAccessTokenChange: true)
     }
-
 }
