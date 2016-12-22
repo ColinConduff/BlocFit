@@ -13,10 +13,9 @@ import GoogleMaps
 import FBSDKCoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -24,10 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Provide google maps with api key
         let gmsKey = BlocfitKeys().googleMapsAPIKey()!
         GMSServices.provideAPIKey(gmsKey)
-            
-        // Set up location services
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
         
         // Create a new owner when the app is first installed
         // Also create initial privacy setting values in user defaults
