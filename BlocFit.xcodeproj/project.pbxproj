@@ -16,6 +16,8 @@
 		C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */; };
 		C35E77C91E0BB50700077F9B /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E77C81E0BB50700077F9B /* SettingsModel.swift */; };
 		C35E77CB1E0BB51F00077F9B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E77CA1E0BB51F00077F9B /* SettingsViewModel.swift */; };
+		C360F2861E0C24B000C0F28C /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2851E0C24B000C0F28C /* StatisticsModel.swift */; };
+		C360F2881E0C24C200C0F28C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */; };
 		C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590801DD2905C00D0C36C /* BFUnitConverter.swift */; };
 		C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */; };
 		C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */; };
@@ -85,6 +87,8 @@
 		C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFFormatter.swift; sourceTree = "<group>"; };
 		C35E77C81E0BB50700077F9B /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		C35E77CA1E0BB51F00077F9B /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		C360F2851E0C24B000C0F28C /* StatisticsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
+		C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		C36590801DD2905C00D0C36C /* BFUnitConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUnitConverter.swift; sourceTree = "<group>"; };
 		C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUserDefaults.swift; sourceTree = "<group>"; };
 		C36D65321D9EF3C300F2E3B1 /* BlocFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +198,16 @@
 				C35E77CA1E0BB51F00077F9B /* SettingsViewModel.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		C360F2841E0C240900C0F28C /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */,
+				C360F2851E0C24B000C0F28C /* StatisticsModel.swift */,
+				C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */,
+			);
+			name = Statistics;
 			sourceTree = "<group>";
 		};
 		C36D65291D9EF3C300F2E3B1 = {
@@ -314,7 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				C35E77C71E0BB4F100077F9B /* Settings */,
-				C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */,
+				C360F2841E0C240900C0F28C /* Statistics */,
 				C398834E1DD9151D005385A3 /* Run History */,
 				C3FE12051DD8F53800E6BE3F /* Friend Table */,
 				C342E1391DD7883A004E3A7B /* Current Bloc */,
@@ -688,8 +702,10 @@
 				C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */,
 				C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */,
 				C3772CF91DA09531006622CC /* Owner+CoreDataClass.swift in Sources */,
+				C360F2861E0C24B000C0F28C /* StatisticsModel.swift in Sources */,
 				C35E77C91E0BB50700077F9B /* SettingsModel.swift in Sources */,
 				C3A234A41DA02B5E00E49DE2 /* FriendTableViewController.swift in Sources */,
+				C360F2881E0C24C200C0F28C /* StatisticsViewModel.swift in Sources */,
 				C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */,
 				C3863D7C1DD52CFC004AE077 /* MainViewController+GameKit.swift in Sources */,
 				C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */,

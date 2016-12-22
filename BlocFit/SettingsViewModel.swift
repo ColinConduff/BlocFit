@@ -24,10 +24,6 @@ protocol SettingsViewModelProtocol: class {
     
     func resetLabelValues()
     
-    func showUnits()
-    func showDefaultTrusted()
-    func showShareFirstName()
-    
     func toggleUnitsSetting()
     func toggleTrustedDefaultSetting()
     func toggleShareFirstNameSetting()
@@ -69,14 +65,14 @@ class SettingsViewModel: SettingsViewModelProtocol {
         showShareFirstName()
     }
     
-    func showUnits() {
+    private func showUnits() {
         self.units = BFUserDefaults.stringFor(unitsSetting: settingsModel.isImperialUnits)
     }
-    func showDefaultTrusted() {
+    private func showDefaultTrusted() {
         self.defaultTrusted = BFUserDefaults.stringFor(
             friendsWillDefaultToTrusted: settingsModel.willDefaultToTrusted)
     }
-    func showShareFirstName() {
+    private func showShareFirstName() {
         self.shareFirstName = BFUserDefaults.stringFor(
             willShareFirstNameWithTrustedFriends: settingsModel.willShareFirstName)
     }
