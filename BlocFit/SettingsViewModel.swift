@@ -9,6 +9,9 @@
 import Foundation
 
 protocol SettingsViewModelProtocol: class {
+    
+    var settingsModel: SettingsModel { get }
+    
     var units: String? { get }
     var defaultTrusted: String? { get }
     var shareFirstName: String? { get }
@@ -49,6 +52,17 @@ class SettingsViewModel: SettingsViewModelProtocol {
             willShareFirstName: BFUserDefaults.getShareFirstNameWithTrustedSetting())
     }
     
+    private func createSettingsModel(
+        isImperialUnits: Bool = BFUserDefaults.getUnitsSetting(),
+        willDefaultToTrusted: Bool = BFUserDefaults.getNewFriendDefaultTrustedSetting(),
+        willShareFirstName: Bool = BFUserDefaults.getShareFirstNameWithTrustedSetting()) {
+        
+        self.settingsModel = SettingsModel(
+            isImperialUnits: isImperialUnits,
+            willDefaultToTrusted: willDefaultToTrusted,
+            willShareFirstName: willShareFirstName)
+    }
+    
     func resetLabelValues() {
         showUnits()
         showDefaultTrusted()
@@ -68,22 +82,28 @@ class SettingsViewModel: SettingsViewModelProtocol {
     }
     
     func toggleUnitsSetting() {
-        settingsModel.isImperialUnits = !settingsModel.isImperialUnits
-        self.units = BFUserDefaults.stringFor(unitsSetting: settingsModel.isImperialUnits)
-        BFUserDefaults.set(isImperial: settingsModel.isImperialUnits)
+        let newUnitsSetting = !settingsModel.isImperialUnits
+        self.units = BFUserDefaults.stringFor(unitsSetting: newUnitsSetting)
+        
+        BFUserDefaults.set(isImperial: newUnitsSetting)
+        createSettingsModel(isImperialUnits: newUnitsSetting)
     }
     
     func toggleTrustedDefaultSetting() {
-        settingsModel.willDefaultToTrusted = !settingsModel.willDefaultToTrusted
+        let newTrustedDefaultSetting = !settingsModel.willDefaultToTrusted
         self.defaultTrusted = BFUserDefaults.stringFor(
-            friendsWillDefaultToTrusted: settingsModel.willDefaultToTrusted)
-        BFUserDefaults.set(friendsWillDefaultToTrusted: settingsModel.willDefaultToTrusted)
+            friendsWillDefaultToTrusted: newTrustedDefaultSetting)
+        
+        BFUserDefaults.set(friendsWillDefaultToTrusted: newTrustedDefaultSetting)
+        createSettingsModel(willDefaultToTrusted: newTrustedDefaultSetting)
     }
     
     func toggleShareFirstNameSetting() {
-        settingsModel.willShareFirstName = !settingsModel.willShareFirstName
+        let newShareNameSetting = !settingsModel.willShareFirstName
         self.shareFirstName = BFUserDefaults.stringFor(
-            willShareFirstNameWithTrustedFriends: settingsModel.willShareFirstName)
-        BFUserDefaults.set(willShareFirstNameWithTrustedFriends: settingsModel.willShareFirstName)
+            willShareFirstNameWithTrustedFriends: newShareNameSetting)
+        
+        BFUserDefaults.set(willShareFirstNameWithTrustedFriends: newShareNameSetting)
+        createSettingsModel(willShareFirstName: newShareNameSetting)
     }
 }

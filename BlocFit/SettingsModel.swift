@@ -9,9 +9,9 @@
 import Foundation
 
 struct SettingsModel {
-    var isImperialUnits: Bool
-    var willDefaultToTrusted: Bool
-    var willShareFirstName: Bool
+    let isImperialUnits: Bool
+    let willDefaultToTrusted: Bool
+    let willShareFirstName: Bool
     
     init(isImperialUnits: Bool,
          willDefaultToTrusted: Bool,
