@@ -11,8 +11,8 @@ import CoreData
 
 protocol StatisticsViewModelProtocol: class {
     
-    var averageRunModel: StatisticsRunModel? { get }
-    var bestRunModel: StatisticsRunModel? { get }
+    var averageRunModel: RunStatisticsModel? { get }
+    var bestRunModel: RunStatisticsModel? { get }
     
     var averageRunValues: (score: String, time: String, distance: String, rate: String)? { get }
     var bestRunValues: (score: String, time: String, distance: String, rate: String)? { get }
@@ -27,8 +27,8 @@ protocol StatisticsViewModelProtocol: class {
 
 class StatisticsViewModel: StatisticsViewModelProtocol {
     
-    var averageRunModel: StatisticsRunModel? { didSet { setAverageRunValues() } }
-    var bestRunModel: StatisticsRunModel? { didSet { setBestRunValues() } }
+    var averageRunModel: RunStatisticsModel? { didSet { setAverageRunValues() } }
+    var bestRunModel: RunStatisticsModel? { didSet { setBestRunValues() } }
     
     var averageRunValues: (score: String, time: String, distance: String, rate: String)? {
         didSet { self.averageRunDidChange?(self) }
@@ -72,7 +72,7 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
         return toString + " " + unitLabel
     }
     
-    private func getFormattedRunValues(model: StatisticsRunModel) -> (score: String, time: String, distance: String, rate: String) {
+    private func getFormattedRunValues(model: RunStatisticsModel) -> (score: String, time: String, distance: String, rate: String) {
         
         let distance = BFUnitConverter.distanceFrom(
                 meters: model.meters,
@@ -108,7 +108,7 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
             do {
                 if let bestRun = try context.fetch(request).first {
                 
-                    self.bestRunModel = StatisticsRunModel(score: bestRun.score,
+                    self.bestRunModel = RunStatisticsModel(score: bestRun.score,
                                                            seconds: bestRun.secondsElapsed,
                                                            meters: bestRun.totalDistanceInMeters,
                                                            rate: bestRun.secondsPerMeter)
@@ -159,7 +159,7 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
                 
                 let time = Int16(timeString)
                 
-                self.averageRunModel = StatisticsRunModel(score: score,
+                self.averageRunModel = RunStatisticsModel(score: score,
                                                               seconds: time,
                                                               meters: distance,
                                                               rate: rate)

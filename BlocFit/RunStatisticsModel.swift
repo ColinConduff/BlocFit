@@ -1,5 +1,5 @@
 //
-//  StatisticsModel.swift
+//  RunStatisticsModel.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/22/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StatisticsRunModel {
+struct RunStatisticsModel {
     let score: Int32
     let seconds: Int16
     let meters: Double
