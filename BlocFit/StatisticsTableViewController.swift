@@ -15,18 +15,18 @@ class StatisticsTableViewController: UITableViewController {
     @IBOutlet weak var bestDistanceLabel: UILabel!
     @IBOutlet weak var bestTimeLabel: UILabel!
     
-    @IBOutlet weak var medianScoreLabel: UILabel!
-    @IBOutlet weak var medianRateLabel: UILabel!
-    @IBOutlet weak var medianDistanceLabel: UILabel!
-    @IBOutlet weak var medianTimeLabel: UILabel!
+    @IBOutlet weak var averageScoreLabel: UILabel!
+    @IBOutlet weak var averageRateLabel: UILabel!
+    @IBOutlet weak var averageDistanceLabel: UILabel!
+    @IBOutlet weak var averageTimeLabel: UILabel!
     
     var viewModel: StatisticsViewModelProtocol! {
         didSet {
-            self.viewModel.medianRunDidChange = { [unowned self] viewModel in
-                self.medianScoreLabel?.text = self.viewModel.medianRunValues?.score
-                self.medianRateLabel?.text = self.viewModel.medianRunValues?.rate
-                self.medianDistanceLabel?.text = self.viewModel.medianRunValues?.distance
-                self.medianTimeLabel?.text = self.viewModel.medianRunValues?.time
+            self.viewModel.averageRunDidChange = { [unowned self] viewModel in
+                self.averageScoreLabel?.text = self.viewModel.averageRunValues?.score
+                self.averageRateLabel?.text = self.viewModel.averageRunValues?.rate
+                self.averageDistanceLabel?.text = self.viewModel.averageRunValues?.distance
+                self.averageTimeLabel?.text = self.viewModel.averageRunValues?.time
             }
             self.viewModel.bestRunDidChange = { [unowned self] viewModel in
                 self.bestScoreLabel?.text = self.viewModel.bestRunValues?.score

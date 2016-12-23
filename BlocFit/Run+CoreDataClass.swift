@@ -18,6 +18,9 @@ public class Run: NSManagedObject {
     static let startDateShortFormat = "startDateShortFormat"
     static let startTime = "startTime"
     static let score = "score"
+    static let totalDistanceInMeters = "totalDistanceInMeters"
+    static let secondsElapsed = "secondsElapsed"
+    static let secondsPerMeter = "secondsPerMeter"
     
     /*
      startTime: NSDate?

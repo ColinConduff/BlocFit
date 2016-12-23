@@ -11,13 +11,13 @@ import CoreData
 
 protocol StatisticsViewModelProtocol: class {
     
-    var medianRunModel: StatisticsRunModel? { get }
+    var averageRunModel: StatisticsRunModel? { get }
     var bestRunModel: StatisticsRunModel? { get }
     
-    var medianRunValues: (score: String, time: String, distance: String, rate: String)? { get }
+    var averageRunValues: (score: String, time: String, distance: String, rate: String)? { get }
     var bestRunValues: (score: String, time: String, distance: String, rate: String)? { get }
     
-    var medianRunDidChange: ((StatisticsViewModelProtocol) -> ())? { get set }
+    var averageRunDidChange: ((StatisticsViewModelProtocol) -> ())? { get set }
     var bestRunDidChange: ((StatisticsViewModelProtocol) -> ())? { get set }
     
     init(context: NSManagedObjectContext)
@@ -27,17 +27,17 @@ protocol StatisticsViewModelProtocol: class {
 
 class StatisticsViewModel: StatisticsViewModelProtocol {
     
-    var medianRunModel: StatisticsRunModel? { didSet { setMedianRunValues() } }
+    var averageRunModel: StatisticsRunModel? { didSet { setAverageRunValues() } }
     var bestRunModel: StatisticsRunModel? { didSet { setBestRunValues() } }
     
-    var medianRunValues: (score: String, time: String, distance: String, rate: String)? {
-        didSet { self.medianRunDidChange?(self) }
+    var averageRunValues: (score: String, time: String, distance: String, rate: String)? {
+        didSet { self.averageRunDidChange?(self) }
     }
     var bestRunValues: (score: String, time: String, distance: String, rate: String)? {
         didSet { self.bestRunDidChange?(self) }
     }
     
-    var medianRunDidChange: ((StatisticsViewModelProtocol) -> ())?
+    var averageRunDidChange: ((StatisticsViewModelProtocol) -> ())?
     var bestRunDidChange: ((StatisticsViewModelProtocol) -> ())?
     
     private let isImperialUnits: Bool
@@ -47,12 +47,12 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
         isImperialUnits = BFUserDefaults.getUnitsSetting()
         unitLabels = BFUnitConverter.unitLabels(isImperialUnits: isImperialUnits)
         
+        getAverageRun(context: context)
         getBestRun(context: context)
-        getAllRuns(context: context)
     }
     
     func resetLabelValues() {
-        setMedianRunValues()
+        setAverageRunValues()
         setBestRunValues()
     }
     
@@ -62,9 +62,9 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
         }
     }
     
-    private func setMedianRunValues() {
-        if let medianRunModel = medianRunModel {
-            self.medianRunValues = getFormattedRunValues(model: medianRunModel)
+    private func setAverageRunValues() {
+        if let averageRunModel = averageRunModel {
+            self.averageRunValues = getFormattedRunValues(model: averageRunModel)
         }
     }
     
@@ -119,7 +119,64 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
         }
     }
     
+    private func getAverageRun(context: NSManagedObjectContext) {
+        context.perform {
+            
+            let avgScore = "avgScore"
+            let avgRate = "avgRate"
+            let avgDistance = "avgDistance"
+            let avgTime = "avgTime"
+            
+            let average = "average:"
+            
+            let scoreExpDesc = NSExpressionDescription()
+            scoreExpDesc.name = avgScore
+            scoreExpDesc.expression = NSExpression(forFunction: average, arguments: [NSExpression(forKeyPath: Run.score)])
+            
+            let rateExpDesc = NSExpressionDescription()
+            rateExpDesc.name = avgRate
+            rateExpDesc.expression = NSExpression(forFunction: average, arguments: [NSExpression(forKeyPath: Run.secondsPerMeter)])
+            
+            let distanceExpDesc = NSExpressionDescription()
+            distanceExpDesc.name = avgDistance
+            distanceExpDesc.expression = NSExpression(forFunction: average, arguments: [NSExpression(forKeyPath: Run.totalDistanceInMeters)])
+            
+            let timeExpDesc = NSExpressionDescription()
+            timeExpDesc.name = avgTime
+            timeExpDesc.expression = NSExpression(forFunction: average, arguments: [NSExpression(forKeyPath: Run.secondsElapsed)])
+            
+            let request = NSFetchRequest<NSDictionary>(entityName: Run.entityName)
+            request.propertiesToFetch = [scoreExpDesc, rateExpDesc, distanceExpDesc, timeExpDesc]
+            request.resultType = .dictionaryResultType
+            
+            let results = try! context.fetch(request)
+            
+            if let dict = results.first as? Dictionary<String, NSString>,
+                let score = dict[avgScore]?.intValue,
+                let rate = dict[avgRate]?.doubleValue,
+                let distance = dict[avgDistance]?.doubleValue,
+                let timeString = dict[avgTime]?.intValue {
+                
+                let time = Int16(timeString)
+                
+                self.averageRunModel = StatisticsRunModel(score: score,
+                                                              seconds: time,
+                                                              meters: distance,
+                                                              rate: rate)
+            }
+        }
+    }
+    
+    /*
+     // The following functions can be used to find median run values.
+     
+     // The "median:" function does not work on iOS for NSExpression.
+     
+     // This following approach pulls all of the runs out of the database,
+     // and sorts them repeatedly (very slow, should be avoided).
+     
     private func getAllRuns(context: NSManagedObjectContext) {
+        
         context.perform {
             let request: NSFetchRequest<Run> = Run.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: Run.score, ascending: false)]
@@ -165,4 +222,5 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
             
             return (score: medianScore, seconds: medianSeconds, meters: medianMeters, rate: medianRate)
     }
+ */
 }
