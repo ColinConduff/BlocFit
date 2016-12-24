@@ -22,5 +22,17 @@ class FriendTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    var viewModel: FriendCellViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            
+            usernameLabel?.text = viewModel.username
+            trustedLabel?.text = viewModel.trusted
+            firstnameLabel?.text = viewModel.firstname
+            firstnameLabel?.isHidden = viewModel.hiddenFirstname ?? false
+            scoreLabel?.text = viewModel.score
+        }
+    }
 
 }

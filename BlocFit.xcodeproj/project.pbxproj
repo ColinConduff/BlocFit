@@ -18,6 +18,7 @@
 		C35E77CB1E0BB51F00077F9B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E77CA1E0BB51F00077F9B /* SettingsViewModel.swift */; };
 		C360F2861E0C24B000C0F28C /* RunStatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2851E0C24B000C0F28C /* RunStatisticsModel.swift */; };
 		C360F2881E0C24C200C0F28C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */; };
+		C360F28D1E0E4A6900C0F28C /* FriendCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F28C1E0E4A6900C0F28C /* FriendCellViewModel.swift */; };
 		C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590801DD2905C00D0C36C /* BFUnitConverter.swift */; };
 		C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */; };
 		C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */; };
@@ -89,6 +90,7 @@
 		C35E77CA1E0BB51F00077F9B /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C360F2851E0C24B000C0F28C /* RunStatisticsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunStatisticsModel.swift; sourceTree = "<group>"; };
 		C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		C360F28C1E0E4A6900C0F28C /* FriendCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCellViewModel.swift; sourceTree = "<group>"; };
 		C36590801DD2905C00D0C36C /* BFUnitConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUnitConverter.swift; sourceTree = "<group>"; };
 		C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUserDefaults.swift; sourceTree = "<group>"; };
 		C36D65321D9EF3C300F2E3B1 /* BlocFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,15 @@
 				C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */,
 			);
 			name = Statistics;
+			sourceTree = "<group>";
+		};
+		C360F28B1E0E4A5100C0F28C /* FriendCell */ = {
+			isa = PBXGroup;
+			children = (
+				C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */,
+				C360F28C1E0E4A6900C0F28C /* FriendCellViewModel.swift */,
+			);
+			name = FriendCell;
 			sourceTree = "<group>";
 		};
 		C36D65291D9EF3C300F2E3B1 = {
@@ -363,7 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */,
-				C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */,
+				C360F28B1E0E4A5100C0F28C /* FriendCell */,
 			);
 			name = "Friend Table";
 			sourceTree = "<group>";
@@ -684,6 +695,7 @@
 				C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */,
 				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,
 				C3772CF71DA09531006622CC /* BlocMember+CoreDataClass.swift in Sources */,
+				C360F28D1E0E4A6900C0F28C /* FriendCellViewModel.swift in Sources */,
 				C3A234AE1DA04F1F00E49DE2 /* AppProtocols.swift in Sources */,
 				C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */,
 				C3772CFB1DA09531006622CC /* Run+CoreDataClass.swift in Sources */,

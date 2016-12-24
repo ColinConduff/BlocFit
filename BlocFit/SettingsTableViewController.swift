@@ -19,13 +19,13 @@ class SettingsTableViewController: UITableViewController {
     
     var viewModel: SettingsViewModelProtocol! {
         didSet {
-            self.viewModel.unitsDidChange = { [unowned self] viewModel in
+            viewModel.unitsDidChange = { [unowned self] viewModel in
                 self.unitsLabel?.text = viewModel.units
             }
-            self.viewModel.defaultTrustedDidChange = { [unowned self] viewModel in
+            viewModel.defaultTrustedDidChange = { [unowned self] viewModel in
                 self.newFriendsSettingLabel?.text = viewModel.defaultTrusted
             }
-            self.viewModel.shareFirstNameDidChange = { [unowned self] viewModel in
+            viewModel.shareFirstNameDidChange = { [unowned self] viewModel in
                 self.shareFirstNameLabel?.text = viewModel.shareFirstName
             }
         }
