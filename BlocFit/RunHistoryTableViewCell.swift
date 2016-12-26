@@ -23,5 +23,17 @@ class RunHistoryTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    var viewModel: RunHistoryCellViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            
+            timeIntervalLabel?.text = viewModel.time
+            scoreLabel?.text = viewModel.score
+            numRunnersLabel?.text = viewModel.numRunners
+            paceLabel?.text = viewModel.pace
+            distanceLabel?.text = viewModel.distance
+        }
+    }
 
 }

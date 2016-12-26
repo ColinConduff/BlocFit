@@ -17,7 +17,7 @@ class FriendTableViewModel: FRCTableViewDataSource {
     }
     
     // MARK: - Table view data source
-    static let reuseIdentifier = "friendTableCell"
+    private static let reuseIdentifier = "friendTableCell"
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +50,7 @@ class FriendTableViewModel: FRCTableViewDataSource {
         }
     }
     
-    func getBlocMembers(context: NSManagedObjectContext) {
+    private func getBlocMembers(context: NSManagedObjectContext) {
         let request = NSFetchRequest<NSManagedObject>(entityName: BlocMember.entityName)
         
         request.sortDescriptors = [NSSortDescriptor(

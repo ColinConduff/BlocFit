@@ -21,6 +21,9 @@
 		C360F28D1E0E4A6900C0F28C /* FriendCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F28C1E0E4A6900C0F28C /* FriendCellViewModel.swift */; };
 		C360F2901E0F071100C0F28C /* FRCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F28F1E0F071100C0F28C /* FRCTableViewDataSource.swift */; };
 		C360F2921E0F077600C0F28C /* FriendTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2911E0F077600C0F28C /* FriendTableViewModel.swift */; };
+		C360F2941E108DB900C0F28C /* RunHistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2931E108DB900C0F28C /* RunHistoryCellViewModel.swift */; };
+		C360F2961E1090FD00C0F28C /* RunHistoryTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2951E1090FD00C0F28C /* RunHistoryTableViewModel.swift */; };
+		C360F29A1E1098F000C0F28C /* CurrentBlocCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2991E1098F000C0F28C /* CurrentBlocCellViewModel.swift */; };
 		C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590801DD2905C00D0C36C /* BFUnitConverter.swift */; };
 		C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */; };
 		C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */; };
@@ -95,6 +98,9 @@
 		C360F28C1E0E4A6900C0F28C /* FriendCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCellViewModel.swift; sourceTree = "<group>"; };
 		C360F28F1E0F071100C0F28C /* FRCTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCTableViewDataSource.swift; sourceTree = "<group>"; };
 		C360F2911E0F077600C0F28C /* FriendTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewModel.swift; sourceTree = "<group>"; };
+		C360F2931E108DB900C0F28C /* RunHistoryCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryCellViewModel.swift; sourceTree = "<group>"; };
+		C360F2951E1090FD00C0F28C /* RunHistoryTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewModel.swift; sourceTree = "<group>"; };
+		C360F2991E1098F000C0F28C /* CurrentBlocCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocCellViewModel.swift; sourceTree = "<group>"; };
 		C36590801DD2905C00D0C36C /* BFUnitConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUnitConverter.swift; sourceTree = "<group>"; };
 		C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUserDefaults.swift; sourceTree = "<group>"; };
 		C36D65321D9EF3C300F2E3B1 /* BlocFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */,
-				C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */,
+				C360F2981E1098CF00C0F28C /* Current Bloc Cell */,
 			);
 			name = "Current Bloc";
 			sourceTree = "<group>";
@@ -232,6 +238,24 @@
 				C360F28F1E0F071100C0F28C /* FRCTableViewDataSource.swift */,
 			);
 			name = "Generic UI";
+			sourceTree = "<group>";
+		};
+		C360F2971E10912B00C0F28C /* Run History Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */,
+				C360F2931E108DB900C0F28C /* RunHistoryCellViewModel.swift */,
+			);
+			name = "Run History Cell";
+			sourceTree = "<group>";
+		};
+		C360F2981E1098CF00C0F28C /* Current Bloc Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */,
+				C360F2991E1098F000C0F28C /* CurrentBlocCellViewModel.swift */,
+			);
+			name = "Current Bloc Cell";
 			sourceTree = "<group>";
 		};
 		C36D65291D9EF3C300F2E3B1 = {
@@ -342,8 +366,9 @@
 		C398834E1DD9151D005385A3 /* Run History */ = {
 			isa = PBXGroup;
 			children = (
+				C360F2951E1090FD00C0F28C /* RunHistoryTableViewModel.swift */,
 				C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */,
-				C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */,
+				C360F2971E10912B00C0F28C /* Run History Cell */,
 			);
 			name = "Run History";
 			sourceTree = "<group>";
@@ -386,9 +411,9 @@
 		C3FE12051DD8F53800E6BE3F /* Friend Table */ = {
 			isa = PBXGroup;
 			children = (
+				C360F2911E0F077600C0F28C /* FriendTableViewModel.swift */,
 				C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */,
 				C360F28B1E0E4A5100C0F28C /* FriendCell */,
-				C360F2911E0F077600C0F28C /* FriendTableViewModel.swift */,
 			);
 			name = "Friend Table";
 			sourceTree = "<group>";
@@ -717,7 +742,9 @@
 				C3A234951D9F5C1200E49DE2 /* MapViewController.swift in Sources */,
 				C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */,
 				C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */,
+				C360F29A1E1098F000C0F28C /* CurrentBlocCellViewModel.swift in Sources */,
 				C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */,
+				C360F2941E108DB900C0F28C /* RunHistoryCellViewModel.swift in Sources */,
 				C360F2921E0F077600C0F28C /* FriendTableViewModel.swift in Sources */,
 				C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */,
 				C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */,
@@ -727,6 +754,7 @@
 				C3772CFC1DA09531006622CC /* Run+CoreDataProperties.swift in Sources */,
 				C3772CFA1DA09531006622CC /* Owner+CoreDataProperties.swift in Sources */,
 				C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */,
+				C360F2961E1090FD00C0F28C /* RunHistoryTableViewModel.swift in Sources */,
 				C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */,
 				C3772CF91DA09531006622CC /* Owner+CoreDataClass.swift in Sources */,
 				C360F2861E0C24B000C0F28C /* RunStatisticsModel.swift in Sources */,
