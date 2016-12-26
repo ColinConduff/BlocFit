@@ -21,5 +21,15 @@ class CurrentBlocTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    var viewModel: CurrentBlocCellViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            
+            usernameLabel?.text = viewModel.username
+            firstnameLabel?.text = viewModel.firstname
+            scoreLabel?.text = viewModel.score
+        }
+    }
 
 }

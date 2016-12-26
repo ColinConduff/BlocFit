@@ -24,6 +24,7 @@
 		C360F2941E108DB900C0F28C /* RunHistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2931E108DB900C0F28C /* RunHistoryCellViewModel.swift */; };
 		C360F2961E1090FD00C0F28C /* RunHistoryTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2951E1090FD00C0F28C /* RunHistoryTableViewModel.swift */; };
 		C360F29A1E1098F000C0F28C /* CurrentBlocCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F2991E1098F000C0F28C /* CurrentBlocCellViewModel.swift */; };
+		C360F29C1E109B6F00C0F28C /* CurrentBlocTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360F29B1E109B6F00C0F28C /* CurrentBlocTableViewModel.swift */; };
 		C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590801DD2905C00D0C36C /* BFUnitConverter.swift */; };
 		C36590831DD2A4C900D0C36C /* BFUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */; };
 		C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */; };
@@ -101,6 +102,7 @@
 		C360F2931E108DB900C0F28C /* RunHistoryCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryCellViewModel.swift; sourceTree = "<group>"; };
 		C360F2951E1090FD00C0F28C /* RunHistoryTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewModel.swift; sourceTree = "<group>"; };
 		C360F2991E1098F000C0F28C /* CurrentBlocCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocCellViewModel.swift; sourceTree = "<group>"; };
+		C360F29B1E109B6F00C0F28C /* CurrentBlocTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewModel.swift; sourceTree = "<group>"; };
 		C36590801DD2905C00D0C36C /* BFUnitConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUnitConverter.swift; sourceTree = "<group>"; };
 		C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFUserDefaults.swift; sourceTree = "<group>"; };
 		C36D65321D9EF3C300F2E3B1 /* BlocFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */,
+				C360F29B1E109B6F00C0F28C /* CurrentBlocTableViewModel.swift */,
 				C360F2981E1098CF00C0F28C /* Current Bloc Cell */,
 			);
 			name = "Current Bloc";
@@ -732,6 +735,7 @@
 				C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */,
 				C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */,
 				C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */,
+				C360F29C1E109B6F00C0F28C /* CurrentBlocTableViewModel.swift in Sources */,
 				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,
 				C3772CF71DA09531006622CC /* BlocMember+CoreDataClass.swift in Sources */,
 				C360F28D1E0E4A6900C0F28C /* FriendCellViewModel.swift in Sources */,

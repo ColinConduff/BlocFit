@@ -8,70 +8,34 @@
 
 import UIKit
 
-class CurrentBlocTableViewController: UITableViewController {
+protocol SyncBlocMembersProtocol: class {
+    func sync(blocMembers: [BlocMember])
+}
+
+class CurrentBlocTableViewController: UITableViewController, SyncBlocMembersProtocol {
     
+    var currentBlocTableViewModel: UITableViewDataSource?
+    
+    // passed in from mainVC through segue
+    // synchronized with datasource
+    // sent back to mainVC through unwind segue
     var blocMembers = [BlocMember]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        currentBlocTableViewModel = CurrentBlocTableViewModel(tableView: tableView, blocMembers: &blocMembers, syncDelegate: self)
+        tableView.dataSource = currentBlocTableViewModel
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // SyncBlocMembersProtocol
     
-    override func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int)
-        -> Int {
-        return blocMembers.count
-    }
-    
-    override func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
-        let cellIdentifier = "currentBlocTableViewCell"
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellIdentifier, for: indexPath) as? CurrentBlocTableViewCell
-        
-        let blocMember = blocMembers[indexPath.row]
-            
-        cell?.usernameLabel?.text = blocMember.username
-        
-        if let firstname = blocMember.firstname {
-            cell?.firstnameLabel?.text = firstname
-        } else {
-            cell?.firstnameLabel?.text = ""
-        }
-        cell?.scoreLabel?.text = String(blocMember.totalScore)
-            
-        return cell!
-    }
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(
-        _ tableView: UITableView,
-        canEditRowAt indexPath: IndexPath)
-        -> Bool {
-        return true
-    }
-    
-    // Override to support editing the table view.
-    override func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCellEditingStyle,
-        forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            blocMembers.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+    func sync(blocMembers: [BlocMember]) {
+        self.blocMembers = blocMembers
     }
 }
