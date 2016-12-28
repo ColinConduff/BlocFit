@@ -9,27 +9,24 @@
 import UIKit
 
 class TopMenuViewController: UIViewController {
+    
+    var topMenuDelegate: TopMenuDelegate! // set by mainVC
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     @IBAction func openSideMenu(_ sender: UIButton) {
-        if let mainViewController = parent as? MainViewController {
-            mainViewController.toggleSideMenu()
-        }
+        topMenuDelegate.toggleSideMenu()
     }
     @IBAction func didClickBlocMemberButton(_ sender: UIButton) {
-        if let mainViewController = parent as? MainViewController {
-            mainViewController.performSegue(
-                withIdentifier: SegueIdentifier.currentBlocTableSegue,
-                sender: mainViewController)
-        }
+        topMenuDelegate.segueToCurrentBlocTable()
     }
     @IBAction func didClickMultipeerButton(_ sender: UIButton) {
-        if let mainViewController = parent as? MainViewController {
-            mainViewController.presentMCBrowserAndStartMCAssistant()
-        }
+        topMenuDelegate.presentMCBrowserAndStartMCAssistant()
     }
 }

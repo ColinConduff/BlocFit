@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 extension MainViewController {
     
+    // TopMenuProtocol method
     // Called from TopMenuViewController when user clicks multipeer button
     func presentMCBrowserAndStartMCAssistant() {
         disableAdvertiserAndBrowser()

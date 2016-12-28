@@ -16,7 +16,13 @@ protocol SegueCoordinationDelegate: class {
     func transition(withSegueIdentifier identifier: String)
 }
 
-class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate {
+protocol TopMenuDelegate: class {
+    func toggleSideMenu()
+    func segueToCurrentBlocTable()
+    func presentMCBrowserAndStartMCAssistant()
+}
+
+class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate {
     
     weak var mapDashboardDelegate: MapDashboardDelegate?
     weak var mapViewController: MapViewController?
@@ -145,15 +151,6 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         }
     }
     
-    // called by topMenuViewController
-    func toggleSideMenu() {
-        if menuView.isHidden {
-            showSideMenu()
-        } else {
-            hideSideMenu()
-        }
-    }
-    
     var actionButtonImageIsStartButton = true
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         
@@ -173,9 +170,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     }
     
     // MARK: - Navigation
-    override func prepare(
-        for segue: UIStoryboardSegue,
-        sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
             if let dashboardViewController = segue.destination as? DashboardViewController {
@@ -205,6 +200,10 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             if let sideMenuTableViewController = segue.destination as? SideMenuTableViewController {
                 sideMenuTableViewController.seguePerformer = self
                 sideMenuDelegate = sideMenuTableViewController
+            }
+        } else if segue.identifier == SegueIdentifier.topMenuEmbedSegue {
+            if let topMenuViewController = segue.destination as? TopMenuViewController {
+                topMenuViewController.topMenuDelegate = self
             }
         }
     }
@@ -293,16 +292,29 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     // SegueCoordinationDelegate method
     func transition(withSegueIdentifier identifier: String) {
         if identifier == SegueIdentifier.gameCenterSegue {
-            self.showLeaderboard()
-            
+            showLeaderboard()
         } else {
-            self.performSegue(withIdentifier: identifier, sender: self)
+            performSegue(withIdentifier: identifier, sender: self)
+        }
+    }
+    
+    // TopMenuProtocol methods 
+    
+    func segueToCurrentBlocTable() {
+        performSegue(withIdentifier: SegueIdentifier.currentBlocTableSegue, sender: self)
+    }
+    
+    func toggleSideMenu() {
+        if menuView.isHidden {
+            showSideMenu()
+        } else {
+            hideSideMenu()
         }
     }
 }

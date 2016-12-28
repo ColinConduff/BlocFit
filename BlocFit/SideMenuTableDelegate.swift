@@ -10,7 +10,7 @@ import UIKit
 
 class SideMenuTableDelegate: NSObject, UITableViewDelegate {
     
-    var seguePerformer: SegueCoordinationDelegate
+    unowned var seguePerformer: SegueCoordinationDelegate
     
     init(segueCoordinator: SegueCoordinationDelegate) {
         self.seguePerformer = segueCoordinator
