@@ -24,7 +24,7 @@ protocol TopMenuDelegate: class {
 
 class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate {
     
-    weak var mapDashboardDelegate: MapDashboardDelegate?
+    weak var dashboardUpdateDelegate: DashboardUpdateDelegate?
     weak var mapViewController: MapViewController?
     weak var sideMenuDelegate: SideMenuDelegate?
     
@@ -40,7 +40,10 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         didSet {
             // Notify map and dashboard of change
             mapViewController?.updateCurrentRunWith(blocMembers: blocMembers)
-            mapDashboardDelegate?.setCountLabel(blocMembersCount: blocMembers.count)
+            dashboardUpdateDelegate?.updateViewModel(blocMembersCount: blocMembers.count,
+                                                     totalSeconds: nil,
+                                                     meters: nil,
+                                                     score: nil)
         }
     }
     
@@ -174,13 +177,13 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
             if let dashboardViewController = segue.destination as? DashboardViewController {
-                mapDashboardDelegate = dashboardViewController
-                mapViewController?.mapDashboardDelegate = mapDashboardDelegate
+                dashboardUpdateDelegate = dashboardViewController
+                mapViewController?.dashboardUpdateDelegate = dashboardUpdateDelegate
             }
             
         } else if segue.identifier ==  SegueIdentifier.mapEmbedSegue {
             mapViewController = segue.destination as? MapViewController
-            mapViewController!.mapDashboardDelegate = mapDashboardDelegate
+            mapViewController!.dashboardUpdateDelegate = dashboardUpdateDelegate
             mapViewController!.mainVCDataDelegate = self
             mapViewController!.scoreReporterDelegate = self
             

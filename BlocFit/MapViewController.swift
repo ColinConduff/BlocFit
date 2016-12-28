@@ -16,7 +16,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var mapView: GMSMapView?
     let locationManager = CLLocationManager()
     
-    weak var mapDashboardDelegate: MapDashboardDelegate?
+    weak var dashboardUpdateDelegate: DashboardUpdateDelegate?
     weak var mainVCDataDelegate: RequestMainDataDelegate?
     weak var scoreReporterDelegate: ScoreReporterDelegate?
     
@@ -34,6 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func loadView() {
         let camera = GMSCameraPosition.camera(withLatitude: 37.35, longitude: -122.0, zoom: 8.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        
         let authStatus = CLLocationManager.authorizationStatus()
         mapView!.isMyLocationEnabled = (authStatus == .authorizedAlways)
         view = mapView
@@ -81,7 +82,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateTimer() {
         seconds += 1
-        mapDashboardDelegate?.setTimeLabel(totalSeconds: Double(seconds))
+        dashboardUpdateDelegate?.updateViewModel(blocMembersCount: nil,
+                                                 totalSeconds: Double(seconds),
+                                                 meters: nil,
+                                                 score: nil)
     }
     
     func locationManager(
@@ -165,11 +169,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateDashboard(run: Run) {
-        mapDashboardDelegate?.setRateLabel(
-            seconds: Double(run.secondsElapsed),
-            distance: run.totalDistanceInMeters)
-        mapDashboardDelegate?.setDistanceLabel(newDistance: run.totalDistanceInMeters)
-        mapDashboardDelegate?.setScoreLabel(newScore: Int(run.score))
+        dashboardUpdateDelegate?.updateViewModel(blocMembersCount: nil,
+                                                 totalSeconds: Double(run.secondsElapsed),
+                                                 meters: run.totalDistanceInMeters,
+                                                 score: Int(run.score))
     }
     
     func startTrackingData() {
@@ -214,9 +217,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         updateRun(blocMembers: blocMembers)
     }
     
-    func updateRun(
-        currentLocation: CLLocation? = nil,
-        blocMembers: [BlocMember]? = nil) {
+    func updateRun(currentLocation: CLLocation? = nil, blocMembers: [BlocMember]? = nil) {
         
         do {
             if let run = run {
