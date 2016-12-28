@@ -48,14 +48,14 @@ class SideMenuTableViewModel: SideMenuTableViewModelProtocol {
         fetchFBProfile()
     }
     
-    func fetchOwner(context: NSManagedObjectContext) {
+    private func fetchOwner(context: NSManagedObjectContext) {
         if owner == nil,
             case let owner?? = try? Owner.get(context: context) {
             self.owner = owner
         }
     }
     
-    func setOwnerLabels() {
+    private func setOwnerLabels() {
         if let owner = owner,
             let ownerUsername = owner.username {
             username = ownerUsername
@@ -63,7 +63,7 @@ class SideMenuTableViewModel: SideMenuTableViewModelProtocol {
         }
     }
     
-    func fetchFBProfile() {
+    private func fetchFBProfile() {
         if FBSDKAccessToken.current() != nil {
             if let profile = FBSDKProfile.current() {
                 fbName = profile.firstName
