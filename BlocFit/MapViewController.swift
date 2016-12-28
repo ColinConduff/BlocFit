@@ -16,7 +16,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var mapView: GMSMapView?
     let locationManager = CLLocationManager()
     
-    weak var dashboardUpdateDelegate: DashboardUpdateDelegate?
+    weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
     weak var mainVCDataDelegate: RequestMainDataDelegate?
     weak var scoreReporterDelegate: ScoreReporterDelegate?
     
@@ -82,10 +82,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateTimer() {
         seconds += 1
-        dashboardUpdateDelegate?.updateViewModel(blocMembersCount: nil,
-                                                 totalSeconds: Double(seconds),
-                                                 meters: nil,
-                                                 score: nil)
+        dashboardUpdateDelegate?.update(totalSeconds: Double(seconds))
     }
     
     func locationManager(
@@ -169,10 +166,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateDashboard(run: Run) {
-        dashboardUpdateDelegate?.updateViewModel(blocMembersCount: nil,
-                                                 totalSeconds: Double(run.secondsElapsed),
-                                                 meters: run.totalDistanceInMeters,
-                                                 score: Int(run.score))
+        dashboardUpdateDelegate.update(totalSeconds: Double(run.secondsElapsed))
+        dashboardUpdateDelegate.update(score: Int(run.score))
+        dashboardUpdateDelegate.update(meters: run.totalDistanceInMeters,
+                                       secondsPerMeter: run.secondsPerMeter)
     }
     
     func startTrackingData() {

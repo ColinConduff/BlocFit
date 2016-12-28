@@ -39,7 +39,6 @@ class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
     }
     
     var tableDelegate: UITableViewDelegate!
-    var seguePerformer: SegueCoordinationDelegate! // passed in from mainVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +46,6 @@ class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         viewModel = SideMenuTableViewModel(context: context)
         
-        tableDelegate = SideMenuTableDelegate(segueCoordinator: seguePerformer)
         tableView.delegate = tableDelegate
         
         fbCoverImageView.profileID = "/me" // should be set by view model?

@@ -24,7 +24,7 @@ protocol TopMenuDelegate: class {
 
 class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate {
     
-    weak var dashboardUpdateDelegate: DashboardUpdateDelegate?
+    weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
     weak var mapViewController: MapViewController?
     weak var sideMenuDelegate: SideMenuDelegate?
     
@@ -40,10 +40,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         didSet {
             // Notify map and dashboard of change
             mapViewController?.updateCurrentRunWith(blocMembers: blocMembers)
-            dashboardUpdateDelegate?.updateViewModel(blocMembersCount: blocMembers.count,
-                                                     totalSeconds: nil,
-                                                     meters: nil,
-                                                     score: nil)
+            dashboardUpdateDelegate?.update(blocMembersCount: blocMembers.count)
         }
     }
     
@@ -177,7 +174,9 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
             if let dashboardViewController = segue.destination as? DashboardViewController {
-                dashboardUpdateDelegate = dashboardViewController
+                let dashboardViewModel = DashboardViewModel()
+                dashboardViewController.viewModel = dashboardViewModel
+                dashboardUpdateDelegate = dashboardViewModel
                 mapViewController?.dashboardUpdateDelegate = dashboardUpdateDelegate
             }
             
@@ -201,7 +200,9 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         } else if segue.identifier == SegueIdentifier.sideMenuTableEmbedSegue {
             if let sideMenuTableViewController = segue.destination as? SideMenuTableViewController {
-                sideMenuTableViewController.seguePerformer = self
+                
+                sideMenuTableViewController.tableDelegate = SideMenuTableDelegate(segueCoordinator: self)
+                //sideMenuTableViewController.seguePerformer = self
                 sideMenuDelegate = sideMenuTableViewController
             }
         } else if segue.identifier == SegueIdentifier.topMenuEmbedSegue {

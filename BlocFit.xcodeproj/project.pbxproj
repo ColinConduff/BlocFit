@@ -11,6 +11,8 @@
 		279C901DEA0E7193DD899B89 /* Pods_BlocFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27170EE60BD764617E226C4 /* Pods_BlocFitTests.framework */; };
 		33571BE0384807C226B42231 /* Pods_BlocFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CCD319B38C9A44D018DA647 /* Pods_BlocFitUITests.framework */; };
 		C317CA8B1DA86A13002B10DD /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */; };
+		C32828791E147ABE00C62B07 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32828781E147ABE00C62B07 /* DashboardModel.swift */; };
+		C328287B1E147AC800C62B07 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328287A1E147AC800C62B07 /* DashboardViewModel.swift */; };
 		C342E13B1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */; };
 		C35612FC1DCD14E7003CFC2C /* MainViewController+Multipeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35612FB1DCD14E7003CFC2C /* MainViewController+Multipeer.swift */; };
 		C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */; };
@@ -91,6 +93,8 @@
 		9497B194DD890FD2417D1D7A /* Pods_BlocFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlocFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27170EE60BD764617E226C4 /* Pods_BlocFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlocFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		C32828781E147ABE00C62B07 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		C328287A1E147AC800C62B07 /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewCell.swift; sourceTree = "<group>"; };
 		C35612FB1DCD14E7003CFC2C /* MainViewController+Multipeer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+Multipeer.swift"; sourceTree = "<group>"; };
 		C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFFormatter.swift; sourceTree = "<group>"; };
@@ -197,6 +201,16 @@
 				1CCD319B38C9A44D018DA647 /* Pods_BlocFitUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C32828771E147AAA00C62B07 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */,
+				C32828781E147ABE00C62B07 /* DashboardModel.swift */,
+				C328287A1E147AC800C62B07 /* DashboardViewModel.swift */,
+			);
+			name = Dashboard;
 			sourceTree = "<group>";
 		};
 		C342E1391DD7883A004E3A7B /* Current Bloc */ = {
@@ -415,8 +429,8 @@
 			isa = PBXGroup;
 			children = (
 				C36EA97D1E1322F500486F99 /* Side Menu */,
+				C32828771E147AAA00C62B07 /* Dashboard */,
 				C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */,
-				C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */,
 				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
 				C3CB975C1DCE5F3A00F2457E /* Multipeer */,
 				C3863D7B1DD52CFC004AE077 /* MainViewController+GameKit.swift */,
@@ -749,6 +763,7 @@
 				C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */,
 				C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */,
 				C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */,
+				C328287B1E147AC800C62B07 /* DashboardViewModel.swift in Sources */,
 				C360F29C1E109B6F00C0F28C /* CurrentBlocTableViewModel.swift in Sources */,
 				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,
 				C3772CF71DA09531006622CC /* BlocMember+CoreDataClass.swift in Sources */,
@@ -783,6 +798,7 @@
 				C360F2881E0C24C200C0F28C /* StatisticsViewModel.swift in Sources */,
 				C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */,
 				C360F2901E0F071100C0F28C /* FRCTableViewDataSource.swift in Sources */,
+				C32828791E147ABE00C62B07 /* DashboardModel.swift in Sources */,
 				C3863D7C1DD52CFC004AE077 /* MainViewController+GameKit.swift in Sources */,
 				C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */,
 				C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */,
