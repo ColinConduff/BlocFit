@@ -10,6 +10,77 @@ import UIKit
 import CoreData
 import FBSDKLoginKit
 
+class SideMenuTableDelegate: NSObject, UITableViewDelegate {
+    
+    var seguePerformer: SegueCoordinationDelegate
+    
+    init(segueCoordinator: SegueCoordinationDelegate) {
+        self.seguePerformer = segueCoordinator
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == Cell.profile.sec &&
+            indexPath.row == Cell.profile.row {
+            return 80
+        } else {
+            return 40
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let segueIdentifier = segueIdentifier(section: indexPath.section,
+                                                 row: indexPath.row) {
+            seguePerformer.transition(withSegueIdentifier: segueIdentifier)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // Section and row numbers corresponding to static table cells
+    private struct Cell {
+        static let profile = (sec: 0, row: 0) 
+        static let friends = (sec: 1, row: 0)
+        static let gameCenter = (sec: 1, row: 1)
+        static let runHistory = (sec: 2, row: 0)
+        static let statistics = (sec: 2, row: 1)
+        static let settings = (sec: 3, row: 0)
+    }
+    
+    // Return the segueIdentifier corresponding to the selected static table cell
+    private func segueIdentifier(section: Int, row: Int) -> String? {
+        var segueIdentifier: String?
+        
+        if section == Cell.friends.sec ||
+            section == Cell.gameCenter.sec {
+            
+            if row == Cell.friends.row {
+                segueIdentifier = SegueIdentifier.friendTableSegue
+                
+            } else if row == Cell.gameCenter.row {
+                segueIdentifier = SegueIdentifier.gameCenterSegue
+            }
+            
+        } else if section == Cell.runHistory.sec ||
+            section == Cell.statistics.sec {
+            
+            if row == Cell.runHistory.row {
+                segueIdentifier = SegueIdentifier.runHistoryTableSegue
+                
+            } else if row == Cell.statistics.row {
+                segueIdentifier = SegueIdentifier.statisticsTableSegue
+            }
+            
+        } else if section == Cell.settings.sec &&
+            row == Cell.settings.row {
+            
+            segueIdentifier = SegueIdentifier.settingsTableSegue
+        }
+        
+        return segueIdentifier
+    }
+}
+
 class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
     
     @IBOutlet weak var fbCoverImageView: FBSDKProfilePictureView!
@@ -20,33 +91,50 @@ class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var owner: Owner?
-    var fbName: String? {
+    var viewModel: SideMenuTableViewModelProtocol! {
         didSet {
-            if let fbName = fbName {
-                showFBData(fbName: fbName)
+            viewModel.fbNameDidChange = { [unowned self] viewModel in
+                if let fbName = viewModel.fbName {
+                    self.showFBData(fbName: fbName)
+                } else {
+                    self.hideFBData()
+                }
+            }
+            viewModel.usernameDidChange = { [unowned self] viewModel in
+                self.usernameLabel?.text = viewModel.username
+            }
+            viewModel.scoreDidChange = { [unowned self] viewModel in
+                self.scoreLabel?.text = viewModel.score
             }
         }
     }
-    var context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    
+    var tableDelegate: UITableViewDelegate!
+    var seguePerformer: SegueCoordinationDelegate! // passed in from mainVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FBSDKProfile.enableUpdates(onAccessTokenChange: true) // also set in settings
-        fbCoverImageView.profileID = "/me"
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        viewModel = SideMenuTableViewModel(context: context)
+        
+        tableDelegate = SideMenuTableDelegate(segueCoordinator: seguePerformer)
+        tableView.delegate = tableDelegate
+        
+        fbCoverImageView.profileID = "/me" // should be set by view model?
+        hideFBData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        fetchFBProfile()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        viewModel = SideMenuTableViewModel(context: context)
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        setUserCell()
+        viewModel.resetLabelValues()
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,96 +142,31 @@ class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Navigation
-    private struct Cell {
-        static let friends = (sec: 1, row: 0)
-        static let gameCenter = (sec: 1, row: 1)
-        static let runHistory = (sec: 2, row: 0)
-        static let statistics = (sec: 2, row: 1)
-        static let settings = (sec: 3, row: 0)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//        // create navigation protocol/delegate to handle this
+//        if let mainViewController = parent as? MainViewController,
+//            let segueIdentifier = viewModel?.segueIdentifier(section: indexPath.section,
+//                                                             row: indexPath.row) {
+//            
+//            if segueIdentifier == SegueIdentifier.gameCenterSegue {
+//                mainViewController.showLeaderboard()
+//                
+//            } else {
+//                mainViewController.performSegue(withIdentifier: segueIdentifier,
+//                                                sender: mainViewController)
+//            }
+//        }
+//        
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
     
-    override func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
-        
-        var segueIdentifier: String?
-        
-        if indexPath.section == Cell.friends.sec ||
-            indexPath.section == Cell.gameCenter.sec {
-            
-            if indexPath.row == Cell.friends.row {
-                segueIdentifier = SegueIdentifier.friendTableSegue
-                
-            } else if indexPath.row == Cell.gameCenter.row {
-                segueIdentifier = SegueIdentifier.gameCenterSegue
-            }
-            
-        } else if indexPath.section == Cell.runHistory.sec ||
-            indexPath.section == Cell.statistics.sec {
-            
-            if indexPath.row == Cell.runHistory.row {
-                segueIdentifier = SegueIdentifier.runHistoryTableSegue
-                
-            } else if indexPath.row == Cell.statistics.row {
-                segueIdentifier = SegueIdentifier.statisticsTableSegue
-            }
-            
-        } else if indexPath.section == Cell.settings.sec &&
-            indexPath.row == Cell.settings.row {
-            
-            segueIdentifier = SegueIdentifier.settingsTableSegue
-        }
-        
-        if let mainViewController = parent as? MainViewController,
-            let segueIdentifier = segueIdentifier {
-            
-            if segueIdentifier == SegueIdentifier.gameCenterSegue {
-                mainViewController.showLeaderboard()
-                
-            } else {
-                mainViewController.performSegue(
-                    withIdentifier: segueIdentifier,
-                    sender: mainViewController)
-            }
-        }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func setUserCell() {
-        if let owner = owner {
-            setLabels(owner: owner)
-            
-        } else if let context = context,
-            case let owner?? = try? Owner.get(context: context) {
-            setLabels(owner: owner)
-        }
-    }
-    
-    func setLabels(owner: Owner) {
-        if let ownerUsername = owner.username {
-            usernameLabel?.text = ownerUsername
-            scoreLabel?.text = String(owner.totalScore)
-        }
-    }
-    
+    // delegate method called from mainVC
     func setScrollable(isScrollable: Bool) {
         self.tableView.isScrollEnabled = isScrollable
     }
     
-    func fetchFBProfile() {
-        if FBSDKAccessToken.current() != nil {
-            if let profile = FBSDKProfile.current() {
-                fbName = profile.firstName
-            }
-        } else {
-            hideFBData()
-        }
-    }
-    
     func hideFBData() {
-        fbName = nil
         leftLabelForFBName.isHidden = true
         fbNameLabel?.text = ""
         fbNameLabel.isHidden = true

@@ -12,7 +12,11 @@ import CoreLocation
 import MultipeerConnectivity
 import GameKit
 
-class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate {
+protocol SegueCoordinationDelegate: class {
+    func transition(withSegueIdentifier identifier: String)
+}
+
+class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate {
     
     weak var mapDashboardDelegate: MapDashboardDelegate?
     weak var mapViewController: MapViewController?
@@ -199,6 +203,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         } else if segue.identifier == SegueIdentifier.sideMenuTableEmbedSegue {
             if let sideMenuTableViewController = segue.destination as? SideMenuTableViewController {
+                sideMenuTableViewController.seguePerformer = self
                 sideMenuDelegate = sideMenuTableViewController
             }
         }
@@ -289,5 +294,15 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // SegueCoordinationDelegate method
+    func transition(withSegueIdentifier identifier: String) {
+        if identifier == SegueIdentifier.gameCenterSegue {
+            self.showLeaderboard()
+            
+        } else {
+            self.performSegue(withIdentifier: identifier, sender: self)
+        }
     }
 }

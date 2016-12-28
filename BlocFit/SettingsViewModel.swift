@@ -31,7 +31,7 @@ protocol SettingsViewModelProtocol: class {
 
 class SettingsViewModel: SettingsViewModelProtocol {
     
-    var settingsModel: SettingsModel
+    internal var settingsModel: SettingsModel
     
     var units: String? { didSet { self.unitsDidChange?(self) } }
     var defaultTrusted: String? { didSet { self.defaultTrustedDidChange?(self) } }

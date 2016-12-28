@@ -33,7 +33,7 @@ class CurrentBlocTableViewController: UITableViewController, SyncBlocMembersProt
         super.didReceiveMemoryWarning()
     }
     
-    // SyncBlocMembersProtocol
+    // SyncBlocMembersProtocol method
     
     func sync(blocMembers: [BlocMember]) {
         self.blocMembers = blocMembers

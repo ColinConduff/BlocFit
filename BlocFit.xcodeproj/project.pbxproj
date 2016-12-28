@@ -33,6 +33,7 @@
 		C36D65431D9EF3C300F2E3B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36D65411D9EF3C300F2E3B1 /* LaunchScreen.storyboard */; };
 		C36D654E1D9EF3C300F2E3B1 /* BlocFitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D654D1D9EF3C300F2E3B1 /* BlocFitTests.swift */; };
 		C36D65591D9EF3C300F2E3B1 /* BlocFitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D65581D9EF3C300F2E3B1 /* BlocFitUITests.swift */; };
+		C36EA97F1E13232000486F99 /* SideMenuTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA97E1E13232000486F99 /* SideMenuTableViewModel.swift */; };
 		C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */; };
 		C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */; };
 		C3772CF61DA09531006622CC /* RunPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */; };
@@ -117,6 +118,7 @@
 		C36D65541D9EF3C300F2E3B1 /* BlocFitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocFitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36D65581D9EF3C300F2E3B1 /* BlocFitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocFitUITests.swift; sourceTree = "<group>"; };
 		C36D655A1D9EF3C300F2E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36EA97E1E13232000486F99 /* SideMenuTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewModel.swift; sourceTree = "<group>"; };
 		C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
 		C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -319,6 +321,15 @@
 			path = BlocFitUITests;
 			sourceTree = "<group>";
 		};
+		C36EA97D1E1322F500486F99 /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */,
+				C36EA97E1E13232000486F99 /* SideMenuTableViewModel.swift */,
+			);
+			name = "Side Menu";
+			sourceTree = "<group>";
+		};
 		C372FAF71DA6E9C600F9E428 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,7 +411,7 @@
 		C3FBB94C1DE75C9F007B74AA /* Main Components */ = {
 			isa = PBXGroup;
 			children = (
-				C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */,
+				C36EA97D1E1322F500486F99 /* Side Menu */,
 				C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */,
 				C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */,
 				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
@@ -752,6 +763,7 @@
 				C360F2921E0F077600C0F28C /* FriendTableViewModel.swift in Sources */,
 				C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */,
 				C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */,
+				C36EA97F1E13232000486F99 /* SideMenuTableViewModel.swift in Sources */,
 				C317CA8B1DA86A13002B10DD /* BaseTableViewController.swift in Sources */,
 				C35612FC1DCD14E7003CFC2C /* MainViewController+Multipeer.swift in Sources */,
 				C3772CF61DA09531006622CC /* RunPoint+CoreDataProperties.swift in Sources */,
