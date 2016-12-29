@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import FBSDKLoginKit
 
-class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
+class SideMenuTableViewController: UITableViewController {
     
     @IBOutlet weak var fbCoverImageView: FBSDKProfilePictureView!
     
@@ -52,6 +52,12 @@ class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
         hideFBData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.isScrollEnabled = UIDevice.current.orientation == .landscapeLeft ||
+            UIDevice.current.orientation == .landscapeRight
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         viewModel.resetLabelValues()
@@ -62,9 +68,13 @@ class SideMenuTableViewController: UITableViewController, SideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // delegate method called from mainVC
-    func setScrollable(isScrollable: Bool) {
-        self.tableView.isScrollEnabled = isScrollable
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { coordinatorContext in
+            self.tableView.isScrollEnabled = UIDevice.current.orientation == .landscapeLeft ||
+                                             UIDevice.current.orientation == .landscapeRight
+        }
     }
     
     func hideFBData() {

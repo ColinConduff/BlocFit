@@ -26,7 +26,6 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
     weak var mapViewController: MapViewController?
-    weak var sideMenuDelegate: SideMenuDelegate?
     
     @IBOutlet weak var menuView: UIView! // change to side menu
     @IBOutlet weak var menuWidthConstraint: NSLayoutConstraint! // change to side menu
@@ -73,12 +72,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         authenticatePlayer()
-        
-        sideMenuDelegate?.setScrollable(
-            isScrollable: UIDevice.current.orientation == .landscapeLeft ||
-                UIDevice.current.orientation == .landscapeRight)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,19 +85,12 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillTransition(
-        to size: CGSize,
-        with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: afterRotation)
-    }
-    
-    func afterRotation(_ coordinatorContext: UIViewControllerTransitionCoordinatorContext) {
-        tapHideSideMenu()
-        
-        sideMenuDelegate?.setScrollable(
-            isScrollable: UIDevice.current.orientation == .landscapeLeft ||
-                          UIDevice.current.orientation == .landscapeRight)
+        coordinator.animate(alongsideTransition: nil) { coordinatorContext in
+            self.tapHideSideMenu()
+        }
     }
     
     // Side Menu Functions //
@@ -201,7 +188,6 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             if let sideMenuTableViewController = segue.destination as? SideMenuTableViewController {
                 
                 sideMenuTableViewController.tableDelegate = SideMenuTableDelegate(segueCoordinator: self)
-                sideMenuDelegate = sideMenuTableViewController
             }
         } else if segue.identifier == SegueIdentifier.topMenuEmbedSegue {
             if let topMenuViewController = segue.destination as? TopMenuViewController {

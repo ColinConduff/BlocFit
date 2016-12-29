@@ -9,14 +9,6 @@
 import Foundation
 import MultipeerConnectivity
 
-protocol MapDashboardDelegate: class {
-    func setCountLabel(blocMembersCount: Int)
-    func setTimeLabel(totalSeconds: Double)
-    func setDistanceLabel(newDistance: Double)
-    func setRateLabel(seconds: Double, distance: Double)
-    func setScoreLabel(newScore: Int)
-}
-
 protocol LoadRunDelegate: class {
     func tellMapToLoadRun(run: Run)
 }
@@ -28,8 +20,4 @@ protocol RequestMainDataDelegate: class {
 protocol ScoreReporterDelegate: class {
     func submitScore(run: Run)
     func submitScore(owner: Owner)
-}
-
-protocol SideMenuDelegate: class {
-    func setScrollable(isScrollable: Bool)
 }
