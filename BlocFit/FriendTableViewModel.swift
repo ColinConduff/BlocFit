@@ -33,7 +33,7 @@ class FriendTableViewModel: FRCTableViewDataSource {
         return cell!
     }
     
-    override func didSelectRow(indexPath: IndexPath) {
+    func didSelectRow(indexPath: IndexPath) {
         if let blocMember = fetchedResultsController?.object(at: indexPath) as? BlocMember {
             try? blocMember.update(trusted: !blocMember.trusted)
         }

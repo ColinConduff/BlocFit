@@ -8,34 +8,19 @@
 
 import UIKit
 
-protocol SyncBlocMembersProtocol: class {
-    func sync(blocMembers: [BlocMember])
-}
-
-class CurrentBlocTableViewController: UITableViewController, SyncBlocMembersProtocol {
+class CurrentBlocTableViewController: UITableViewController {
     
-    var currentBlocTableViewModel: UITableViewDataSource?
-    
-    // passed in from mainVC through segue
-    // synchronized with datasource
-    // sent back to mainVC through unwind segue
-    var blocMembers = [BlocMember]()
+    var currentBlocTableDataSource: CurrentBlocTableDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        currentBlocTableViewModel = CurrentBlocTableViewModel(tableView: tableView, blocMembers: &blocMembers, syncDelegate: self)
-        tableView.dataSource = currentBlocTableViewModel
+        currentBlocTableDataSource.tableView = tableView
+        tableView.dataSource = currentBlocTableDataSource
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // SyncBlocMembersProtocol method
-    
-    func sync(blocMembers: [BlocMember]) {
-        self.blocMembers = blocMembers
     }
 }

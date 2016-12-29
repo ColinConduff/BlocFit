@@ -1,5 +1,5 @@
 //
-//  CurrentBlocTableViewModel.swift
+//  CurrentBlocTableDataSource.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/25/16.
@@ -9,22 +9,13 @@
 import UIKit
 import CoreData
 
-class CurrentBlocTableViewModel: NSObject, UITableViewDataSource {
+class CurrentBlocTableDataSource: NSObject, UITableViewDataSource {
     
-    var blocMembers: [BlocMember] {
-        didSet {
-            syncDelegate?.sync(blocMembers: blocMembers)
-        }
-    }
-    private unowned var tableView: UITableView
-    weak var syncDelegate: SyncBlocMembersProtocol?
+    var blocMembers: [BlocMember]
+    weak var tableView: UITableView!
     
-    // inout blocMembers because the array is passed back to mainVC
-    //      inorder to sync when user deletes blocMembers
-    init(tableView: UITableView, blocMembers: inout [BlocMember], syncDelegate: SyncBlocMembersProtocol) {
-        self.tableView = tableView
+    init(blocMembers: [BlocMember]) {
         self.blocMembers = blocMembers
-        self.syncDelegate = syncDelegate
     }
     
     // MARK: - Table view data source
@@ -33,7 +24,7 @@ class CurrentBlocTableViewModel: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return blocMembers.count
+        return blocMembers.count
     }
     
     private static let reuseIdentifier = "currentBlocTableViewCell"
@@ -42,7 +33,7 @@ class CurrentBlocTableViewModel: NSObject, UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: CurrentBlocTableViewModel.reuseIdentifier,
+            withIdentifier: CurrentBlocTableDataSource.reuseIdentifier,
             for: indexPath) as? CurrentBlocTableViewCell
         
         let blocMember = blocMembers[indexPath.row]

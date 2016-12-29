@@ -11,7 +11,7 @@ import CoreData
 
 class FriendTableViewController: UITableViewController {
     
-    var friendTableViewModel: FRCTableViewDataSource?
+    var friendTableViewModel: FriendTableViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

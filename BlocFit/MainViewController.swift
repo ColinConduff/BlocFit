@@ -191,18 +191,16 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
                 as? RunHistoryTableViewController {
                 runHistoryTableViewController.loadRunDelegate = self
             }
-            
         } else if segue.identifier == SegueIdentifier.currentBlocTableSegue {
             if let currentBlocTableViewController = segue.destination
                 as? CurrentBlocTableViewController {
-                currentBlocTableViewController.blocMembers = blocMembers
+                
+                currentBlocTableViewController.currentBlocTableDataSource = CurrentBlocTableDataSource(blocMembers: blocMembers)
             }
-        
         } else if segue.identifier == SegueIdentifier.sideMenuTableEmbedSegue {
             if let sideMenuTableViewController = segue.destination as? SideMenuTableViewController {
                 
                 sideMenuTableViewController.tableDelegate = SideMenuTableDelegate(segueCoordinator: self)
-                //sideMenuTableViewController.seguePerformer = self
                 sideMenuDelegate = sideMenuTableViewController
             }
         } else if segue.identifier == SegueIdentifier.topMenuEmbedSegue {
@@ -214,9 +212,10 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     @IBAction func undwindToMainViewController(_ sender: UIStoryboardSegue) {
         if sender.identifier == SegueIdentifier.unwindFromCurrentBlocTable {
-            if let currentBlocTableViewController = sender.source
-                as? CurrentBlocTableViewController {
-                blocMembers = currentBlocTableViewController.blocMembers
+            if let currentBlocTableVC = sender.source
+                as? CurrentBlocTableViewController,
+                let currentBlocTableDataSource = currentBlocTableVC.currentBlocTableDataSource {
+                blocMembers = currentBlocTableDataSource.blocMembers
             }
         }
     }

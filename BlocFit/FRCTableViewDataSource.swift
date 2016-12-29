@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FRCTableViewDataSource: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class FRCTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: Properties
     private unowned var tableView: UITableView
@@ -45,10 +45,8 @@ class FRCTableViewDataSource: NSObject, UITableViewDataSource, NSFetchedResultsC
         }
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        titleForHeaderInSection section: Int)
-        -> String? {
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
             if let sections = fetchedResultsController?.sections, sections.count > 0 {
                 return sections[section].name
             } else {
@@ -56,36 +54,28 @@ class FRCTableViewDataSource: NSObject, UITableViewDataSource, NSFetchedResultsC
             }
     }
     
-    func sectionIndexTitles(
-        for tableView: UITableView)
-        -> [String]? {
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
             return fetchedResultsController?.sectionIndexTitles
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        sectionForSectionIndexTitle title: String,
-        at index: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   sectionForSectionIndexTitle title: String,
+                   at index: Int) -> Int {
         return fetchedResultsController?.section(forSectionIndexTitle: title, at: index) ?? 0
     }
     
     // must be overridden
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         fatalError("Must Override")
     }
     //
     
     // Override to support conditional editing of the table view.
-    func tableView(
-        _ tableView: UITableView,
-        canEditRowAt indexPath: IndexPath)
-        -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             // Return false if you do not want the specified item to be editable.
             return true
     }
-    
-    // Override and call from inside overriden tableView didSelectRowAt function
-    func didSelectRow(indexPath: IndexPath) { }
     
     // MARK: NSFetchedResultsControllerDelegate
     func controllerWillChangeContent(
@@ -93,11 +83,10 @@ class FRCTableViewDataSource: NSObject, UITableViewDataSource, NSFetchedResultsC
         tableView.beginUpdates()
     }
     
-    func controller(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChange sectionInfo: NSFetchedResultsSectionInfo,
-        atSectionIndex sectionIndex: Int,
-        for type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert: tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
         case .delete: tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
@@ -105,11 +94,10 @@ class FRCTableViewDataSource: NSObject, UITableViewDataSource, NSFetchedResultsC
         }
     }
     
-    func controller(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChange anObject: Any, at indexPath: IndexPath?,
-        for type: NSFetchedResultsChangeType,
-        newIndexPath: IndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
