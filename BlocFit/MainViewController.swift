@@ -22,17 +22,39 @@ protocol TopMenuDelegate: class {
     func presentMCBrowserAndStartMCAssistant()
 }
 
+class DismissSideMenuView: UIView {
+    
+    init(mainVC: MainViewController, sideMenuWidth: CGFloat) {
+        let frame = CGRect(
+            x: sideMenuWidth,
+            y: 0,
+            width: mainVC.view.bounds.width - sideMenuWidth,
+            height: mainVC.view.bounds.height)
+        super.init(frame: frame)
+        mainVC.view.addSubview(self)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: mainVC,
+            action: #selector(MainViewController.tapHideSideMenu))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate {
     
     weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
     weak var mapViewController: MapViewController?
     
-    @IBOutlet weak var menuView: UIView! // change to side menu
-    @IBOutlet weak var menuWidthConstraint: NSLayoutConstraint! // change to side menu
+    @IBOutlet weak var sideMenuContainerView: UIView!
+    @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
     
     // Created when the side menu is openned 
     // Destroyed when the side menu is closed
-    var dismissSubview: UIView?
+    var dismissSideMenuView: DismissSideMenuView?
     
     // Can be edited by CurrentBlocTableViewController
     var blocMembers = [BlocMember]() {
@@ -95,41 +117,22 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // Side Menu Functions //
     func hideSideMenu() {
-        menuWidthConstraint.constant = 20
-        menuView.isHidden = true
+        sideMenuContainerWidthConstraint.constant = 20
+        sideMenuContainerView.isHidden = true
     }
     
     func tapHideSideMenu() {
         hideSideMenu()
         sideMenuAnimation()
-        removeDismissSubview()
+        dismissSideMenuView?.removeFromSuperview()
     }
     
     func showSideMenu() {
         let newWidth = view.bounds.width * 2 / 3
-        menuWidthConstraint.constant = newWidth
-        menuView.isHidden = false
-        addDismissSubview(sideMenuWidth: newWidth)
+        sideMenuContainerWidthConstraint.constant = newWidth
+        sideMenuContainerView.isHidden = false
+        dismissSideMenuView = DismissSideMenuView(mainVC: self, sideMenuWidth: newWidth)
         sideMenuAnimation()
-    }
-    
-    func addDismissSubview(sideMenuWidth: CGFloat) {
-        let frame = CGRect(
-            x: sideMenuWidth,
-            y: 0,
-            width: view.bounds.width - sideMenuWidth,
-            height: view.bounds.height)
-        dismissSubview = UIView(frame: frame)
-        view.addSubview(dismissSubview!)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(self.tapHideSideMenu))
-        dismissSubview?.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    func removeDismissSubview() {
-        dismissSubview?.removeFromSuperview()
     }
     
     func sideMenuAnimation() {
@@ -300,10 +303,6 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     }
     
     func toggleSideMenu() {
-        if menuView.isHidden {
-            showSideMenu()
-        } else {
-            hideSideMenu()
-        }
+        sideMenuContainerView.isHidden ? showSideMenu() : hideSideMenu()
     }
 }
