@@ -22,30 +22,14 @@ protocol TopMenuDelegate: class {
     func presentMCBrowserAndStartMCAssistant()
 }
 
-class DismissSideMenuView: UIView {
-    
-    init(mainVC: MainViewController, sideMenuWidth: CGFloat) {
-        let frame = CGRect(
-            x: sideMenuWidth,
-            y: 0,
-            width: mainVC.view.bounds.width - sideMenuWidth,
-            height: mainVC.view.bounds.height)
-        super.init(frame: frame)
-        mainVC.view.addSubview(self)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: mainVC,
-            action: #selector(MainViewController.tapHideSideMenu))
-        self.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+protocol MultipeerViewHandlerProtocol: class {
+    func addToCurrentBloc(blocMember: BlocMember)
+    func blocMembersContains(blocMember: BlocMember) -> Bool
 }
 
-class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate {
+class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol {
     
+    var multipeerManager: MultipeerManager!
     weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
     weak var mapViewController: MapViewController?
     
@@ -54,9 +38,10 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // Created when the side menu is openned 
     // Destroyed when the side menu is closed
-    var dismissSideMenuView: DismissSideMenuView?
+    weak var dismissSideMenuView: DismissSideMenuView?
     
     // Can be edited by CurrentBlocTableViewController
+    // need a better way to synchronize blocMembers array across multiple classes
     var blocMembers = [BlocMember]() {
         didSet {
             // Notify map and dashboard of change
@@ -64,21 +49,9 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             dashboardUpdateDelegate?.update(blocMembersCount: blocMembers.count)
         }
     }
-    
-    var owner: Owner?
-    var context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-    
-    // Multipeer related
-    var peerID: MCPeerID?
-    var session: MCSession?
-    var mcAssistant: MCAdvertiserAssistant?
-    var mcBrowserVC: MCBrowserViewController?
-    var serviceAdvertiser: MCNearbyServiceAdvertiser?
-    var serviceBrowser: MCNearbyServiceBrowser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         hideSideMenu()
     }
     
@@ -86,10 +59,9 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         
-        owner = getOwner()
-        peerID = MCPeerID(displayName: owner!.username!)
-        session = createSession(peerID: peerID!)
-        createAndStartMCAdvertiserAndMCBrowser()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        multipeerManager = MultipeerManager(context: context)
+        multipeerManager.multipeerViewHandlerDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -116,6 +88,8 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     }
     
     // Side Menu Functions //
+    
+    // should be moved to side menu displayer view model?
     func hideSideMenu() {
         sideMenuContainerWidthConstraint.constant = 20
         sideMenuContainerView.isHidden = true
@@ -157,6 +131,25 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             actionButtonImageIsStartButton = !actionButtonImageIsStartButton
             mapViewController?.didPressActionButton()
         }
+    }
+    
+    // Called if location auth status is not authorized always
+    func alertTheUserThatLocationServicesAreDisabled() {
+        let alert = UIAlertController(
+            title: "Location Services Disabled",
+            message: "Please authorize BlocFit to access your location.",
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Open Settings", style: .default) {
+            _ in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+        }
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
@@ -209,85 +202,19 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         }
     }
     
-    func getOwner() -> Owner? {
-        var owner: Owner?
-        do {
-            owner = try Owner.get(context: context!)
-        } catch let error {
-            print(error)
-        }
-        return owner
-    }
-    
-    func getBlocMember(username: String) -> BlocMember? {
-        var blocMember: BlocMember?
-        do {
-            blocMember = try BlocMember.get(username: username, context: context!)
-        } catch let error {
-            print(error)
-        }
-        return blocMember
-    }
-    
-    func createBlocMember(
-        username: String, totalScore: Int32, firstname: String?) -> BlocMember? {
-
-        var blocMember: BlocMember?
-
-        do {
-            blocMember = try BlocMember.create(
-                username: username,
-                totalScore: totalScore,
-                firstname: firstname,
-                context: context!)
-        } catch let error {
-            print(error)
-        }
-        return blocMember
-    }
-    
-    func createSession(peerID: MCPeerID) -> MCSession {
-        let session = MCSession(
-            peer: peerID,
-            securityIdentity: nil,
-            encryptionPreference: .required)
-        
-        session.delegate = self
-        
-        return session
-    }
-    
     // LoadRunDelegate function
     func tellMapToLoadRun(run: Run) {
         mapViewController?.loadSavedRun(run: run)
     }
     
     // RequestMainDataDelegate method for map to get current bloc members
+    
     func getCurrentBlocMembers() -> [BlocMember] {
         return blocMembers
     }
     
-    // Called if location auth status is not authorized always
-    func alertTheUserThatLocationServicesAreDisabled() {
-        let alert = UIAlertController(
-            title: "Location Services Disabled",
-            message: "Please authorize BlocFit to access your location.",
-            preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Open Settings", style: .default) {
-            _ in
-            if let url = URL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.open(url)
-            }
-        }
-        alert.addAction(action)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
-    }
+    // SegueCoordinationDelegate method (for the side menu)
     
-    // SegueCoordinationDelegate method
     func transition(withSegueIdentifier identifier: String) {
         if identifier == SegueIdentifier.gameCenterSegue {
             showLeaderboard()
@@ -304,5 +231,25 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     func toggleSideMenu() {
         sideMenuContainerView.isHidden ? showSideMenu() : hideSideMenu()
+    }
+    
+    // Called from TopMenuViewController when user clicks multipeer button
+    func presentMCBrowserAndStartMCAssistant() {
+        let mcBrowserVC = multipeerManager.prepareMCBrowser()
+        self.present(mcBrowserVC, animated: true, completion: nil)
+    }
+    
+    // MultipeerViewHandlerDelegate methods
+    
+    func blocMembersContains(blocMember: BlocMember) -> Bool {
+        // should be in view model not view
+        return blocMembers.contains(blocMember)
+    }
+    
+    func addToCurrentBloc(blocMember: BlocMember) {
+        // should not be handled by view
+        DispatchQueue.main.sync {
+            blocMembers.append(blocMember)
+        }
     }
 }

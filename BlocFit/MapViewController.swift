@@ -131,10 +131,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         polyline.map = mapView!
     }
     
-    func locationManager(
-        _ manager: CLLocationManager,
-        didChangeAuthorization status: CLAuthorizationStatus) {
-        
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
         mapView?.isMyLocationEnabled = (status == .authorizedAlways)
     }
     
