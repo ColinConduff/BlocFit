@@ -8,6 +8,11 @@
 
 import GameKit
 
+protocol ScoreReporterDelegate: class {
+    func submitScore(run: Run)
+    func submitScore(owner: Owner)
+}
+
 extension MainViewController: GKGameCenterControllerDelegate, ScoreReporterDelegate {
     
     static let runLeaderboardID = "blocFitRunLeaderboard"

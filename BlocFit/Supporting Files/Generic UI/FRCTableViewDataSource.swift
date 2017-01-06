@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+// Rename BFFetchedResultsController
+
 class FRCTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: Properties

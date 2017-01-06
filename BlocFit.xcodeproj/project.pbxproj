@@ -62,7 +62,6 @@
 		C3A234A61DA03A6D00E49DE2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */; };
 		C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */; };
 		C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */; };
-		C3A234AE1DA04F1F00E49DE2 /* AppProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */; };
 		C3A234B01DA0588E00E49DE2 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */; };
 		C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */; };
 		C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */; };
@@ -151,7 +150,6 @@
 		C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
 		C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppProtocols.swift; sourceTree = "<group>"; };
 		C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewController.swift; sourceTree = "<group>"; };
 		C3DDDF151E047D460024509E /* fb.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = fb.xcconfig; sourceTree = "<group>"; };
@@ -210,7 +208,7 @@
 				C32828781E147ABE00C62B07 /* DashboardModel.swift */,
 				C328287A1E147AC800C62B07 /* DashboardViewModel.swift */,
 			);
-			name = Dashboard;
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		C342E1391DD7883A004E3A7B /* Current Bloc */ = {
@@ -220,7 +218,7 @@
 				C360F29B1E109B6F00C0F28C /* CurrentBlocTableDataSource.swift */,
 				C360F2981E1098CF00C0F28C /* Current Bloc Cell */,
 			);
-			name = "Current Bloc";
+			path = "Current Bloc";
 			sourceTree = "<group>";
 		};
 		C35E77C71E0BB4F100077F9B /* Settings */ = {
@@ -230,7 +228,7 @@
 				C35E77C81E0BB50700077F9B /* SettingsModel.swift */,
 				C35E77CA1E0BB51F00077F9B /* SettingsViewModel.swift */,
 			);
-			name = Settings;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C360F2841E0C240900C0F28C /* Statistics */ = {
@@ -240,7 +238,7 @@
 				C360F2851E0C24B000C0F28C /* RunStatisticsModel.swift */,
 				C360F2871E0C24C200C0F28C /* StatisticsViewModel.swift */,
 			);
-			name = Statistics;
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		C360F28B1E0E4A5100C0F28C /* FriendCell */ = {
@@ -249,7 +247,7 @@
 				C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */,
 				C360F28C1E0E4A6900C0F28C /* FriendCellViewModel.swift */,
 			);
-			name = FriendCell;
+			path = FriendCell;
 			sourceTree = "<group>";
 		};
 		C360F28E1E0F06E600C0F28C /* Generic UI */ = {
@@ -258,7 +256,7 @@
 				C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */,
 				C360F28F1E0F071100C0F28C /* FRCTableViewDataSource.swift */,
 			);
-			name = "Generic UI";
+			path = "Generic UI";
 			sourceTree = "<group>";
 		};
 		C360F2971E10912B00C0F28C /* Run History Cell */ = {
@@ -267,7 +265,7 @@
 				C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */,
 				C360F2931E108DB900C0F28C /* RunHistoryCellViewModel.swift */,
 			);
-			name = "Run History Cell";
+			path = "Run History Cell";
 			sourceTree = "<group>";
 		};
 		C360F2981E1098CF00C0F28C /* Current Bloc Cell */ = {
@@ -276,7 +274,7 @@
 				C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */,
 				C360F2991E1098F000C0F28C /* CurrentBlocCellViewModel.swift */,
 			);
-			name = "Current Bloc Cell";
+			path = "Current Bloc Cell";
 			sourceTree = "<group>";
 		};
 		C36D65291D9EF3C300F2E3B1 = {
@@ -306,15 +304,15 @@
 			isa = PBXGroup;
 			children = (
 				C38E09951DD3D5EA00D17569 /* BlocFit.entitlements */,
-				C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */,
+				C36D653F1D9EF3C300F2E3B1 /* Assets.xcassets */,
+				C36D65441D9EF3C300F2E3B1 /* Info.plist */,
+				C36D65411D9EF3C300F2E3B1 /* LaunchScreen.storyboard */,
 				C3A234971D9F62AC00E49DE2 /* Main.storyboard */,
+				C36D65351D9EF3C300F2E3B1 /* AppDelegate.swift */,
 				C3A234A81DA04DD900E49DE2 /* Auxiliary Components */,
 				C3FBB94C1DE75C9F007B74AA /* Main Components */,
 				C372FAF71DA6E9C600F9E428 /* Supporting Files */,
 				C3772CEC1DA0950C006622CC /* CoreData */,
-				C36D653F1D9EF3C300F2E3B1 /* Assets.xcassets */,
-				C36D65441D9EF3C300F2E3B1 /* Info.plist */,
-				C36D65411D9EF3C300F2E3B1 /* LaunchScreen.storyboard */,
 			);
 			path = BlocFit;
 			sourceTree = "<group>";
@@ -345,22 +343,17 @@
 				C36EA9801E13585900486F99 /* SideMenuTableDelegate.swift */,
 				C39221201E15B75700DFAACC /* DismissSideMenuView.swift */,
 			);
-			name = "Side Menu";
+			path = "Side Menu";
 			sourceTree = "<group>";
 		};
 		C372FAF71DA6E9C600F9E428 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				C360F28E1E0F06E600C0F28C /* Generic UI */,
-				C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */,
-				C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */,
+				C37F314D1E2037DC0000B2FE /* Supporting Models */,
 				C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */,
-				C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */,
-				C36590801DD2905C00D0C36C /* BFUnitConverter.swift */,
-				C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */,
-				C38E09981DD3D6E300D17569 /* HealthKitManager.swift */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		C3772CEC1DA0950C006622CC /* CoreData */ = {
@@ -370,7 +363,7 @@
 				C3772CFD1DA09544006622CC /* Properties */,
 				C36D653C1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld */,
 			);
-			name = CoreData;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		C3772CFD1DA09544006622CC /* Properties */ = {
@@ -381,7 +374,7 @@
 				C3772CF41DA09531006622CC /* Run+CoreDataProperties.swift */,
 				C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */,
 			);
-			name = Properties;
+			path = Properties;
 			sourceTree = "<group>";
 		};
 		C3772CFE1DA09556006622CC /* ManagedObjects */ = {
@@ -392,7 +385,27 @@
 				C3772CF31DA09531006622CC /* Run+CoreDataClass.swift */,
 				C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */,
 			);
-			name = ManagedObjects;
+			path = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		C37F314C1E2037C20000B2FE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C38E09981DD3D6E300D17569 /* HealthKitManager.swift */,
+				C35612FB1DCD14E7003CFC2C /* MultipeerManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C37F314D1E2037DC0000B2FE /* Supporting Models */ = {
+			isa = PBXGroup;
+			children = (
+				C36590821DD2A4C900D0C36C /* BFUserDefaults.swift */,
+				C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */,
+				C36590801DD2905C00D0C36C /* BFUnitConverter.swift */,
+				C35C5C351DD3A8EC005435B4 /* BFFormatter.swift */,
+			);
+			path = "Supporting Models";
 			sourceTree = "<group>";
 		};
 		C398834E1DD9151D005385A3 /* Run History */ = {
@@ -402,7 +415,7 @@
 				C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */,
 				C360F2971E10912B00C0F28C /* Run History Cell */,
 			);
-			name = "Run History";
+			path = "Run History";
 			sourceTree = "<group>";
 		};
 		C3A234A81DA04DD900E49DE2 /* Auxiliary Components */ = {
@@ -414,15 +427,7 @@
 				C3FE12051DD8F53800E6BE3F /* Friend Table */,
 				C342E1391DD7883A004E3A7B /* Current Bloc */,
 			);
-			name = "Auxiliary Components";
-			sourceTree = "<group>";
-		};
-		C3CB975C1DCE5F3A00F2457E /* Multipeer */ = {
-			isa = PBXGroup;
-			children = (
-				C35612FB1DCD14E7003CFC2C /* MultipeerManager.swift */,
-			);
-			name = Multipeer;
+			path = "Auxiliary Components";
 			sourceTree = "<group>";
 		};
 		C3FBB94C1DE75C9F007B74AA /* Main Components */ = {
@@ -432,11 +437,11 @@
 				C32828771E147AAA00C62B07 /* Dashboard */,
 				C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */,
 				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
-				C3CB975C1DCE5F3A00F2457E /* Multipeer */,
+				C37F314C1E2037C20000B2FE /* Managers */,
 				C3863D7B1DD52CFC004AE077 /* MainViewController+GameKit.swift */,
 				C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */,
 			);
-			name = "Main Components";
+			path = "Main Components";
 			sourceTree = "<group>";
 		};
 		C3FE12051DD8F53800E6BE3F /* Friend Table */ = {
@@ -446,7 +451,7 @@
 				C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */,
 				C360F28B1E0E4A5100C0F28C /* FriendCell */,
 			);
-			name = "Friend Table";
+			path = "Friend Table";
 			sourceTree = "<group>";
 		};
 		ECC95824FE39FF140D69E5E8 /* Pods */ = {
@@ -767,7 +772,6 @@
 				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,
 				C3772CF71DA09531006622CC /* BlocMember+CoreDataClass.swift in Sources */,
 				C360F28D1E0E4A6900C0F28C /* FriendCellViewModel.swift in Sources */,
-				C3A234AE1DA04F1F00E49DE2 /* AppProtocols.swift in Sources */,
 				C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */,
 				C3772CFB1DA09531006622CC /* Run+CoreDataClass.swift in Sources */,
 				C3A2349C1DA027A500E49DE2 /* SideMenuTableViewController.swift in Sources */,

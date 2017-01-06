@@ -27,6 +27,14 @@ protocol MultipeerViewHandlerProtocol: class {
     func blocMembersContains(blocMember: BlocMember) -> Bool
 }
 
+protocol LoadRunDelegate: class {
+    func tellMapToLoadRun(run: Run)
+}
+
+protocol RequestMainDataDelegate: class {
+    func getCurrentBlocMembers() -> [BlocMember]
+}
+
 class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol {
     
     var multipeerManager: MultipeerManager!
