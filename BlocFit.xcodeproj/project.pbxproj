@@ -65,7 +65,6 @@
 		C3A234AE1DA04F1F00E49DE2 /* AppProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */; };
 		C3A234B01DA0588E00E49DE2 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */; };
 		C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */; };
-		C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CB975D1DCE5F5F00F2457E /* MPConstant.swift */; };
 		C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -155,7 +154,6 @@
 		C3A234AD1DA04F1F00E49DE2 /* AppProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppProtocols.swift; sourceTree = "<group>"; };
 		C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewController.swift; sourceTree = "<group>"; };
-		C3CB975D1DCE5F5F00F2457E /* MPConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPConstant.swift; sourceTree = "<group>"; };
 		C3DDDF151E047D460024509E /* fb.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = fb.xcconfig; sourceTree = "<group>"; };
 		C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		E3C10EDC3DA8C3EEFBC4AF98 /* Pods-BlocFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlocFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlocFit/Pods-BlocFit.release.xcconfig"; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				C35612FB1DCD14E7003CFC2C /* MultipeerManager.swift */,
-				C3CB975D1DCE5F5F00F2457E /* MPConstant.swift */,
 			);
 			name = Multipeer;
 			sourceTree = "<group>";
@@ -765,7 +762,6 @@
 				C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewController.swift in Sources */,
 				C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */,
 				C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */,
-				C3CB975E1DCE5F5F00F2457E /* MPConstant.swift in Sources */,
 				C328287B1E147AC800C62B07 /* DashboardViewModel.swift in Sources */,
 				C360F29C1E109B6F00C0F28C /* CurrentBlocTableDataSource.swift in Sources */,
 				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,

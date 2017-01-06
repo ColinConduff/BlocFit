@@ -37,13 +37,33 @@ class MultipeerManager: NSObject, MultipeerManagerProtocol {
     
     var multipeerModel: MultipeerModel
     
+    static let serviceType = "blocfit-service"
+    
     let context: NSManagedObjectContext
     let peerID: MCPeerID
     var session: MCSession
     
-    var mcAssistant: MCAdvertiserAssistant?
+    var mcAssistant: MCAdvertiserAssistant? {
+        didSet {
+            if mcAssistant == nil {
+                mcBrowserVC = nil
+            } else {
+                serviceAdvertiser = nil
+                serviceBrowser = nil
+            }
+        }
+    }
     var mcBrowserVC: MCBrowserViewController?
-    var serviceAdvertiser: MCNearbyServiceAdvertiser?
+    var serviceAdvertiser: MCNearbyServiceAdvertiser? {
+        didSet {
+            if serviceAdvertiser == nil {
+                serviceBrowser = nil
+            } else {
+                mcAssistant = nil
+                mcBrowserVC = nil
+            }
+        }
+    }
     var serviceBrowser: MCNearbyServiceBrowser?
     
     required init(context: NSManagedObjectContext) {
@@ -100,11 +120,11 @@ class MultipeerManager: NSObject, MultipeerManagerProtocol {
     func prepareMCBrowser() -> MCBrowserViewController {
         disableAdvertiserAndBrowser()
         
-        mcBrowserVC = MCBrowserViewController(serviceType: MPConstant.serviceType,
+        mcBrowserVC = MCBrowserViewController(serviceType: MultipeerManager.serviceType,
                                               session: session)
         mcBrowserVC!.delegate = self
         
-        mcAssistant = MCAdvertiserAssistant(serviceType: MPConstant.serviceType,
+        mcAssistant = MCAdvertiserAssistant(serviceType: MultipeerManager.serviceType,
                                             discoveryInfo: nil,
                                             session: session)
         mcAssistant!.delegate = self
@@ -122,9 +142,9 @@ class MultipeerManager: NSObject, MultipeerManagerProtocol {
     fileprivate func createAndStartMCAdvertiserAndMCBrowser() {
         serviceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID,
                                                       discoveryInfo: nil,
-                                                      serviceType: MPConstant.serviceType)
+                                                      serviceType: MultipeerManager.serviceType)
         serviceBrowser = MCNearbyServiceBrowser(peer: peerID,
-                                                serviceType: MPConstant.serviceType)
+                                                serviceType: MultipeerManager.serviceType)
         
         serviceAdvertiser!.delegate = self
         serviceBrowser!.delegate = self
@@ -225,8 +245,8 @@ class MultipeerManager: NSObject, MultipeerManagerProtocol {
 
 extension MultipeerManager: MCBrowserViewControllerDelegate, MCAdvertiserAssistantDelegate {
     func restartBrowserAdvertiser() {
-        createAndStartMCAdvertiserAndMCBrowser()
         disableAssistantAndBrowserVC()
+        createAndStartMCAdvertiserAndMCBrowser()
     }
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
@@ -255,9 +275,8 @@ extension MultipeerManager: MCNearbyServiceAdvertiserDelegate {
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         
         let peerUsername = peerID.displayName
-        let shouldAcceptInvite = shouldConnect(
-            peerUsername: peerUsername,
-            shouldNotHaveAlreadyConnected: false)
+        let shouldAcceptInvite = shouldConnect(peerUsername: peerUsername,
+                                               shouldNotHaveAlreadyConnected: false)
         
         invitationHandler(shouldAcceptInvite, self.session)
     }
@@ -296,34 +315,29 @@ extension MultipeerManager: MCSessionDelegate {
             let totalScore = json?["totalScore"] as? Int32,
             let firstname = json?["firstname"] as? String? {
             
-            handleBlocMemberData(
-                username: username,
-                totalScore: totalScore,
-                firstname: firstname)
+            handleBlocMemberData(username: username,
+                                 totalScore: totalScore,
+                                 firstname: firstname)
         
-        } else if let message = NSString(
-            data: data,
-            encoding: String.Encoding.utf8.rawValue) as? String {
+        } else if let message = NSString(data: data,
+                                         encoding: String.Encoding.utf8.rawValue) as? String {
             print("Received message: \(message)")
         }
     }
     
-    func session(
-        _ session: MCSession,
-        didReceive stream: InputStream,
-        withName streamName: String,
-        fromPeer peerID: MCPeerID) { }
+    func session(_ session: MCSession,
+                 didReceive stream: InputStream,
+                 withName streamName: String,
+                 fromPeer peerID: MCPeerID) { }
     
-    func session(
-        _ session: MCSession,
-        didFinishReceivingResourceWithName resourceName: String,
-        fromPeer peerID: MCPeerID,
-        at localURL: URL,
-        withError error: Error?) { }
+    func session(_ session: MCSession,
+                 didFinishReceivingResourceWithName resourceName: String,
+                 fromPeer peerID: MCPeerID,
+                 at localURL: URL,
+                 withError error: Error?) { }
     
-    func session(
-        _ session: MCSession,
-        didStartReceivingResourceWithName resourceName: String,
-        fromPeer peerID: MCPeerID,
-        with progress: Progress) { }
+    func session(_ session: MCSession,
+                 didStartReceivingResourceWithName resourceName: String,
+                 fromPeer peerID: MCPeerID,
+                 with progress: Progress) { }
 }
