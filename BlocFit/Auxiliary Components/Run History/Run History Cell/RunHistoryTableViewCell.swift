@@ -24,15 +24,15 @@ class RunHistoryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var viewModel: RunHistoryCellViewModel? {
+    var Controller: RunHistoryCellController? {
         didSet {
-            guard let viewModel = viewModel else { return }
+            guard let controller = Controller else { return }
             
-            timeIntervalLabel?.text = viewModel.time
-            scoreLabel?.text = viewModel.score
-            numRunnersLabel?.text = viewModel.numRunners
-            paceLabel?.text = viewModel.pace
-            distanceLabel?.text = viewModel.distance
+            timeIntervalLabel?.text = controller.time
+            scoreLabel?.text = controller.score
+            numRunnersLabel?.text = controller.numRunners
+            paceLabel?.text = controller.pace
+            distanceLabel?.text = controller.distance
         }
     }
 

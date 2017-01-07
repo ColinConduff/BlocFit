@@ -22,13 +22,13 @@ class CurrentBlocTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var viewModel: CurrentBlocCellViewModel? {
+    var Controller: CurrentBlocCellController? {
         didSet {
-            guard let viewModel = viewModel else { return }
+            guard let controller = Controller else { return }
             
-            usernameLabel?.text = viewModel.username
-            firstnameLabel?.text = viewModel.firstname
-            scoreLabel?.text = viewModel.score
+            usernameLabel?.text = controller.username
+            firstnameLabel?.text = controller.firstname
+            scoreLabel?.text = controller.score
         }
     }
 

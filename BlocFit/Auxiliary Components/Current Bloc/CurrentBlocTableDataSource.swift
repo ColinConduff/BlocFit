@@ -37,7 +37,7 @@ class CurrentBlocTableDataSource: NSObject, UITableViewDataSource {
             for: indexPath) as? CurrentBlocTableViewCell
         
         let blocMember = blocMembers[indexPath.row]
-        cell?.viewModel = CurrentBlocCellViewModel(blocMember: blocMember)
+        cell?.Controller = CurrentBlocCellController(blocMember: blocMember)
         
         return cell!
     }

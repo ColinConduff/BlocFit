@@ -1,5 +1,5 @@
 //
-//  SettingsViewModel.swift
+//  SettingsController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/22/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SettingsViewModelProtocol: class {
+protocol SettingsControllerProtocol: class {
     
     var settingsModel: SettingsModel { get }
     
@@ -16,9 +16,9 @@ protocol SettingsViewModelProtocol: class {
     var defaultTrusted: String? { get }
     var shareFirstName: String? { get }
     
-    var unitsDidChange: ((SettingsViewModelProtocol) -> ())? { get set }
-    var defaultTrustedDidChange: ((SettingsViewModelProtocol) -> ())? { get set }
-    var shareFirstNameDidChange: ((SettingsViewModelProtocol) -> ())? { get set }
+    var unitsDidChange: ((SettingsControllerProtocol) -> ())? { get set }
+    var defaultTrustedDidChange: ((SettingsControllerProtocol) -> ())? { get set }
+    var shareFirstNameDidChange: ((SettingsControllerProtocol) -> ())? { get set }
     
     init()
     
@@ -29,7 +29,7 @@ protocol SettingsViewModelProtocol: class {
     func toggleShareFirstNameSetting()
 }
 
-class SettingsViewModel: SettingsViewModelProtocol {
+class SettingsController: SettingsControllerProtocol {
     
     internal var settingsModel: SettingsModel
     
@@ -37,9 +37,9 @@ class SettingsViewModel: SettingsViewModelProtocol {
     var defaultTrusted: String? { didSet { self.defaultTrustedDidChange?(self) } }
     var shareFirstName: String? { didSet { self.shareFirstNameDidChange?(self) } }
     
-    var unitsDidChange: ((SettingsViewModelProtocol) -> ())?
-    var defaultTrustedDidChange: ((SettingsViewModelProtocol) -> ())?
-    var shareFirstNameDidChange: ((SettingsViewModelProtocol) -> ())?
+    var unitsDidChange: ((SettingsControllerProtocol) -> ())?
+    var defaultTrustedDidChange: ((SettingsControllerProtocol) -> ())?
+    var shareFirstNameDidChange: ((SettingsControllerProtocol) -> ())?
     
     required init() {
         self.settingsModel = SettingsModel(

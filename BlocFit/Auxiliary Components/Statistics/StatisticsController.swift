@@ -1,5 +1,5 @@
 //
-//  StatisticsViewModel.swift
+//  StatisticsController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/22/16.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-protocol StatisticsViewModelProtocol: class {
+protocol StatisticsControllerProtocol: class {
     
     var averageRunModel: RunStatisticsModel? { get }
     var bestRunModel: RunStatisticsModel? { get }
@@ -17,15 +17,15 @@ protocol StatisticsViewModelProtocol: class {
     var averageRunValues: (score: String, time: String, distance: String, rate: String)? { get }
     var bestRunValues: (score: String, time: String, distance: String, rate: String)? { get }
     
-    var averageRunDidChange: ((StatisticsViewModelProtocol) -> ())? { get set }
-    var bestRunDidChange: ((StatisticsViewModelProtocol) -> ())? { get set }
+    var averageRunDidChange: ((StatisticsControllerProtocol) -> ())? { get set }
+    var bestRunDidChange: ((StatisticsControllerProtocol) -> ())? { get set }
     
     init(context: NSManagedObjectContext)
     
     func resetLabelValues()
 }
 
-class StatisticsViewModel: StatisticsViewModelProtocol {
+class StatisticsController: StatisticsControllerProtocol {
     
     var averageRunModel: RunStatisticsModel? { didSet { setAverageRunValues() } }
     var bestRunModel: RunStatisticsModel? { didSet { setBestRunValues() } }
@@ -37,8 +37,8 @@ class StatisticsViewModel: StatisticsViewModelProtocol {
         didSet { self.bestRunDidChange?(self) }
     }
     
-    var averageRunDidChange: ((StatisticsViewModelProtocol) -> ())?
-    var bestRunDidChange: ((StatisticsViewModelProtocol) -> ())?
+    var averageRunDidChange: ((StatisticsControllerProtocol) -> ())?
+    var bestRunDidChange: ((StatisticsControllerProtocol) -> ())?
     
     private let isImperialUnits: Bool
     private let unitLabels: (distance: String, rate: String)

@@ -11,7 +11,7 @@ import CoreData
 
 class FriendTableViewController: UITableViewController {
     
-    var friendTableViewModel: FriendTableViewModel?
+    var friendTableController: FriendTableController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,8 @@ class FriendTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        friendTableViewModel = FriendTableViewModel(tableView: tableView, context: context)
-        tableView.dataSource = friendTableViewModel
+        friendTableController = FriendTableController(tableView: tableView, context: context)
+        tableView.dataSource = friendTableController
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,6 +31,6 @@ class FriendTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        friendTableViewModel?.didSelectRow(indexPath: indexPath)
+        friendTableController?.didSelectRow(indexPath: indexPath)
     }
 }

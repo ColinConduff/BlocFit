@@ -1,5 +1,5 @@
 //
-//  DashboardViewModel.swift
+//  DashboardController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/28/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DashboardViewModelProtocol: class {
+protocol DashboardControllerProtocol: class {
     
     var dashboardModel: DashboardModel { get }
     
@@ -20,10 +20,10 @@ protocol DashboardViewModelProtocol: class {
     var distanceUnit: String? { get }
     var rateUnit: String? { get }
     
-    var totalRunnersCountDidChange: ((DashboardViewModelProtocol) -> ())? { get set }
-    var timeDidChange: ((DashboardViewModelProtocol) -> ())? { get set }
-    var distanceRateUnitsDidChange: ((DashboardViewModelProtocol) -> ())? { get set }
-    var scoreDidChange: ((DashboardViewModelProtocol) -> ())? { get set }
+    var totalRunnersCountDidChange: ((DashboardControllerProtocol) -> ())? { get set }
+    var timeDidChange: ((DashboardControllerProtocol) -> ())? { get set }
+    var distanceRateUnitsDidChange: ((DashboardControllerProtocol) -> ())? { get set }
+    var scoreDidChange: ((DashboardControllerProtocol) -> ())? { get set }
     
     init()
     
@@ -35,7 +35,7 @@ protocol DashboardViewModelProtocol: class {
     func unitsMayHaveChanged()
 }
 
-class DashboardViewModel: DashboardViewModelProtocol {
+class DashboardController: DashboardControllerProtocol {
     
     var dashboardModel: DashboardModel
     
@@ -47,10 +47,10 @@ class DashboardViewModel: DashboardViewModelProtocol {
     var distanceUnit: String? { didSet { self.distanceRateUnitsDidChange?(self) } }
     var rateUnit: String? { didSet { self.distanceRateUnitsDidChange?(self) } }
     
-    var totalRunnersCountDidChange: ((DashboardViewModelProtocol) -> ())?
-    var timeDidChange: ((DashboardViewModelProtocol) -> ())?
-    var scoreDidChange: ((DashboardViewModelProtocol) -> ())?
-    var distanceRateUnitsDidChange: ((DashboardViewModelProtocol) -> ())?
+    var totalRunnersCountDidChange: ((DashboardControllerProtocol) -> ())?
+    var timeDidChange: ((DashboardControllerProtocol) -> ())?
+    var scoreDidChange: ((DashboardControllerProtocol) -> ())?
+    var distanceRateUnitsDidChange: ((DashboardControllerProtocol) -> ())?
     
     required init() {
         dashboardModel = DashboardModel(secondsPerMeter: 0,

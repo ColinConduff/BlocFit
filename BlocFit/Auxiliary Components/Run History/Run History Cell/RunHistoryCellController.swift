@@ -1,5 +1,5 @@
 //
-//  RunHistoryCellViewModel.swift
+//  RunHistoryCellController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/25/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RunHistoryCellViewModelProtocol: class {
+protocol RunHistoryCellControllerProtocol: class {
     
     var time: String? { get }
     var score: String? { get }
@@ -19,7 +19,7 @@ protocol RunHistoryCellViewModelProtocol: class {
     init(run: Run, usingImperialUnits: Bool)
 }
 
-class RunHistoryCellViewModel: RunHistoryCellViewModelProtocol {
+class RunHistoryCellController: RunHistoryCellControllerProtocol {
     
     var time: String?
     var score: String?

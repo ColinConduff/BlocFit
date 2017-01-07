@@ -42,7 +42,7 @@ protocol GameViewPresenterDelegate: class {
 class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
     
     weak var multipeerManagerDelegate: MultipeerManagerDelegate!
-    weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
+    weak var dashboardUpdateDelegate: DashboardControllerProtocol!
     weak var mapViewController: MapViewController?
     weak var gameKitManagerDelegate: GameKitManagerDelegate!
     
@@ -172,9 +172,9 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
             if let dashboardViewController = segue.destination as? DashboardViewController {
-                let dashboardViewModel = DashboardViewModel()
-                dashboardViewController.viewModel = dashboardViewModel
-                dashboardUpdateDelegate = dashboardViewModel
+                let dashboardController = DashboardController()
+                dashboardViewController.controller = dashboardController
+                dashboardUpdateDelegate = dashboardController
                 mapViewController?.dashboardUpdateDelegate = dashboardUpdateDelegate
             }
             

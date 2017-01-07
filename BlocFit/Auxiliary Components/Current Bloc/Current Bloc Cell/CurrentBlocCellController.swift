@@ -1,5 +1,5 @@
 //
-//  CurrentBlocCellViewModel.swift
+//  CurrentBlocCellController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/25/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CurrentBlocCellViewModelProtocol: class {
+protocol CurrentBlocCellControllerProtocol: class {
     
     var username: String? { get }
     var firstname: String? { get }
@@ -17,7 +17,7 @@ protocol CurrentBlocCellViewModelProtocol: class {
     init(blocMember: BlocMember)
 }
 
-class CurrentBlocCellViewModel: CurrentBlocCellViewModelProtocol {
+class CurrentBlocCellController: CurrentBlocCellControllerProtocol {
     
     var username: String?
     var firstname: String?

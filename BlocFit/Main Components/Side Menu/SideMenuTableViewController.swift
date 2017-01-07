@@ -20,20 +20,20 @@ class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var viewModel: SideMenuTableViewModelProtocol! {
+    var controller: SideMenuTableControllerProtocol! {
         didSet {
-            viewModel.fbNameDidChange = { [unowned self] viewModel in
-                if let fbName = viewModel.fbName {
+            controller.fbNameDidChange = { [unowned self] Controller in
+                if let fbName = Controller.fbName {
                     self.showFBData(fbName: fbName)
                 } else {
                     self.hideFBData()
                 }
             }
-            viewModel.usernameDidChange = { [unowned self] viewModel in
-                self.usernameLabel?.text = viewModel.username
+            controller.usernameDidChange = { [unowned self] Controller in
+                self.usernameLabel?.text = Controller.username
             }
-            viewModel.scoreDidChange = { [unowned self] viewModel in
-                self.scoreLabel?.text = viewModel.score
+            controller.scoreDidChange = { [unowned self] Controller in
+                self.scoreLabel?.text = Controller.score
             }
         }
     }
@@ -44,7 +44,7 @@ class SideMenuTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        viewModel = SideMenuTableViewModel(context: context)
+        controller = SideMenuTableController(context: context)
         
         tableView.delegate = tableDelegate
         
@@ -60,7 +60,7 @@ class SideMenuTableViewController: UITableViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        viewModel.resetLabelValues()
+        controller.resetLabelValues()
     }
     
     override func didReceiveMemoryWarning() {

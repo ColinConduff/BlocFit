@@ -17,29 +17,29 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var newFriendsSettingLabel: UILabel!
     @IBOutlet weak var shareFirstNameLabel: UILabel!
     
-    var viewModel: SettingsViewModelProtocol! {
+    var Controller: SettingsControllerProtocol! {
         didSet {
-            viewModel.unitsDidChange = { [unowned self] viewModel in
-                self.unitsLabel?.text = viewModel.units
+            Controller.unitsDidChange = { [unowned self] Controller in
+                self.unitsLabel?.text = Controller.units
             }
-            viewModel.defaultTrustedDidChange = { [unowned self] viewModel in
-                self.newFriendsSettingLabel?.text = viewModel.defaultTrusted
+            Controller.defaultTrustedDidChange = { [unowned self] Controller in
+                self.newFriendsSettingLabel?.text = Controller.defaultTrusted
             }
-            viewModel.shareFirstNameDidChange = { [unowned self] viewModel in
-                self.shareFirstNameLabel?.text = viewModel.shareFirstName
+            Controller.shareFirstNameDidChange = { [unowned self] Controller in
+                self.shareFirstNameLabel?.text = Controller.shareFirstName
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = SettingsViewModel()
+        self.Controller = SettingsController()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        viewModel.resetLabelValues()
+        Controller.resetLabelValues()
         setUpFB()
     }
 
@@ -61,17 +61,17 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.section == Loc.unitConversionCell.sec &&
             indexPath.row == Loc.unitConversionCell.row {
             
-            viewModel.toggleUnitsSetting()
+            Controller.toggleUnitsSetting()
         
         } else if indexPath.section == Loc.friendsDefaultToTrustedCell.sec &&
             indexPath.row == Loc.friendsDefaultToTrustedCell.row {
                 
-            viewModel.toggleTrustedDefaultSetting()
+            Controller.toggleTrustedDefaultSetting()
             
         } else if indexPath.section == Loc.shareNameCell.sec &&
             indexPath.row == Loc.shareNameCell.row {
                 
-            viewModel.toggleShareFirstNameSetting()
+            Controller.toggleShareFirstNameSetting()
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

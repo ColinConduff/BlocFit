@@ -1,5 +1,5 @@
 //
-//  FriendCellViewModel.swift
+//  FriendCellController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/24/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FriendCellViewModelProtocol: class {
+protocol FriendCellControllerProtocol: class {
     
     var username: String? { get }
     var trusted: String? { get }
@@ -19,7 +19,7 @@ protocol FriendCellViewModelProtocol: class {
     init(blocMember: BlocMember)
 }
 
-class FriendCellViewModel: FriendCellViewModelProtocol {
+class FriendCellController: FriendCellControllerProtocol {
     
     var username: String?
     var trusted: String?

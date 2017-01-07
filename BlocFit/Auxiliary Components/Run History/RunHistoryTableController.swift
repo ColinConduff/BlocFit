@@ -1,5 +1,5 @@
 //
-//  RunHistoryTableViewModel.swift
+//  RunHistoryTableController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/25/16.
@@ -16,7 +16,7 @@ protocol SelectRowAndLoadRunProtocol: class {
                       navController: UINavigationController)
 }
 
-class RunHistoryTableViewModel: FRCTableViewDataSource, SelectRowAndLoadRunProtocol {
+class RunHistoryTableController: FRCTableViewDataSource, SelectRowAndLoadRunProtocol {
     
     private let imperialUnits: Bool
     
@@ -34,11 +34,11 @@ class RunHistoryTableViewModel: FRCTableViewDataSource, SelectRowAndLoadRunProto
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: RunHistoryTableViewModel.reuseIdentifier,
+                withIdentifier: RunHistoryTableController.reuseIdentifier,
                 for: indexPath) as? RunHistoryTableViewCell
             
             if let run = fetchedResultsController?.object(at: indexPath) as? Run {
-                cell?.viewModel = RunHistoryCellViewModel(run: run, usingImperialUnits: imperialUnits)
+                cell?.Controller = RunHistoryCellController(run: run, usingImperialUnits: imperialUnits)
             }
             
             return cell!

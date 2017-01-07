@@ -16,7 +16,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var mapView: GMSMapView?
     let locationManager = CLLocationManager()
     
-    weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
+    weak var dashboardUpdateDelegate: DashboardControllerProtocol!
     weak var mainVCDataDelegate: RequestMainDataDelegate?
     weak var scoreReporterDelegate: ScoreReporterDelegate?
     

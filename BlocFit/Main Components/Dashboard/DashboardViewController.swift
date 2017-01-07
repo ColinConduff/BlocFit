@@ -19,29 +19,29 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var viewModel: DashboardViewModelProtocol! {
+    var controller: DashboardControllerProtocol! {
         didSet {
-            viewModel.totalRunnersCountDidChange = { [unowned self] viewModel in
-                self.blocMemberCountLabel?.text = viewModel.totalRunnersCount
+            controller.totalRunnersCountDidChange = { [unowned self] Controller in
+                self.blocMemberCountLabel?.text = Controller.totalRunnersCount
             }
-            viewModel.timeDidChange = { [unowned self] viewModel in
-                self.timeLabel.text = viewModel.time
+            controller.timeDidChange = { [unowned self] Controller in
+                self.timeLabel.text = Controller.time
             }
-            viewModel.scoreDidChange = { [unowned self] viewModel in
-                self.scoreLabel.text = viewModel.score
+            controller.scoreDidChange = { [unowned self] Controller in
+                self.scoreLabel.text = Controller.score
             }
-            viewModel.distanceRateUnitsDidChange = { [unowned self] viewModel in
-                self.distanceLabel.text = viewModel.distance
-                self.rateLabel.text = viewModel.rate
-                self.distanceUnitsLabel.text = viewModel.distanceUnit
-                self.rateUnitsLabel.text = viewModel.rateUnit
+            controller.distanceRateUnitsDidChange = { [unowned self] Controller in
+                self.distanceLabel.text = Controller.distance
+                self.rateLabel.text = Controller.rate
+                self.distanceUnitsLabel.text = Controller.distanceUnit
+                self.rateUnitsLabel.text = Controller.rateUnit
             }
         }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        viewModel.unitsMayHaveChanged()
+        controller.unitsMayHaveChanged()
     }
     
     override func didReceiveMemoryWarning() {

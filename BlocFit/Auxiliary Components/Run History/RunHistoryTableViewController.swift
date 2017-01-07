@@ -24,9 +24,9 @@ class RunHistoryTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let runHistoryTableViewModel = RunHistoryTableViewModel(tableView: tableView, context: context)
-        dataSource = runHistoryTableViewModel
-        didSelectDelegate = runHistoryTableViewModel
+        let runHistoryTableController = RunHistoryTableController(tableView: tableView, context: context)
+        dataSource = runHistoryTableController
+        didSelectDelegate = runHistoryTableController
         tableView.dataSource = dataSource
     }
     

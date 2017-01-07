@@ -1,5 +1,5 @@
 //
-//  FriendTableViewModel.swift
+//  FriendTableController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/24/16.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FriendTableViewModel: FRCTableViewDataSource {
+class FriendTableController: FRCTableViewDataSource {
     
     init(tableView: UITableView, context: NSManagedObjectContext) {
         super.init(tableView: tableView)
@@ -23,11 +23,11 @@ class FriendTableViewModel: FRCTableViewDataSource {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: FriendTableViewModel.reuseIdentifier,
+            withIdentifier: FriendTableController.reuseIdentifier,
             for: indexPath) as? FriendTableViewCell
         
         if let blocMember = fetchedResultsController?.object(at: indexPath) as? BlocMember {
-            cell?.viewModel = FriendCellViewModel(blocMember: blocMember)
+            cell?.Controller = FriendCellController(blocMember: blocMember)
         }
         
         return cell!

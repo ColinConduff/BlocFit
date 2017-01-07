@@ -1,5 +1,5 @@
 //
-//  SideMenuTableViewModel.swift
+//  SideMenuTableController.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 12/27/16.
@@ -10,22 +10,22 @@ import Foundation
 import CoreData
 import FBSDKLoginKit
 
-protocol SideMenuTableViewModelProtocol: class {
+protocol SideMenuTableControllerProtocol: class {
     
     var username: String? { get }
     var score: String? { get }
     var fbName: String? { get }
     
-    var fbNameDidChange: ((SideMenuTableViewModelProtocol) -> ())? { get set }
-    var usernameDidChange: ((SideMenuTableViewModelProtocol) -> ())? { get set }
-    var scoreDidChange: ((SideMenuTableViewModelProtocol) -> ())? { get set }
+    var fbNameDidChange: ((SideMenuTableControllerProtocol) -> ())? { get set }
+    var usernameDidChange: ((SideMenuTableControllerProtocol) -> ())? { get set }
+    var scoreDidChange: ((SideMenuTableControllerProtocol) -> ())? { get set }
     
     init(context: NSManagedObjectContext)
     
     func resetLabelValues()
 }
 
-class SideMenuTableViewModel: SideMenuTableViewModelProtocol {
+class SideMenuTableController: SideMenuTableControllerProtocol {
     
     var owner: Owner? { didSet { setOwnerLabels() } }
     
@@ -33,9 +33,9 @@ class SideMenuTableViewModel: SideMenuTableViewModelProtocol {
     var score: String? { didSet { self.scoreDidChange?(self) } }
     var fbName: String? { didSet { self.fbNameDidChange?(self) } }
     
-    var usernameDidChange: ((SideMenuTableViewModelProtocol) -> ())?
-    var scoreDidChange: ((SideMenuTableViewModelProtocol) -> ())?
-    var fbNameDidChange: ((SideMenuTableViewModelProtocol) -> ())?
+    var usernameDidChange: ((SideMenuTableControllerProtocol) -> ())?
+    var scoreDidChange: ((SideMenuTableControllerProtocol) -> ())?
+    var fbNameDidChange: ((SideMenuTableControllerProtocol) -> ())?
     
     required init(context: NSManagedObjectContext) {
         FBSDKProfile.enableUpdates(onAccessTokenChange: true) // also set in settings

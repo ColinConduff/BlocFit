@@ -23,15 +23,15 @@ class FriendTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var viewModel: FriendCellViewModel? {
+    var Controller: FriendCellController? {
         didSet {
-            guard let viewModel = viewModel else { return }
+            guard let controller = Controller else { return }
             
-            usernameLabel?.text = viewModel.username
-            trustedLabel?.text = viewModel.trusted
-            firstnameLabel?.text = viewModel.firstname
-            firstnameLabel?.isHidden = viewModel.hiddenFirstname ?? false
-            scoreLabel?.text = viewModel.score
+            usernameLabel?.text = controller.username
+            trustedLabel?.text = controller.trusted
+            firstnameLabel?.text = controller.firstname
+            firstnameLabel?.isHidden = controller.hiddenFirstname ?? false
+            scoreLabel?.text = controller.score
         }
     }
 
