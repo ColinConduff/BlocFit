@@ -13,45 +13,26 @@ protocol ScoreReporterDelegate: class {
     func submitScore(owner: Owner)
 }
 
-extension MainViewController: GKGameCenterControllerDelegate, ScoreReporterDelegate {
+protocol GameKitManagerDelegate: class {
+    func authenticatePlayer()
+    func showLeaderboard()
+}
+
+class GameKitManager: NSObject, GKGameCenterControllerDelegate, GameKitManagerDelegate, ScoreReporterDelegate {
     
     static let runLeaderboardID = "blocFitRunLeaderboard"
     static let totalScoreLeaderboardID = "blocFitTotalScoreLeaderboard"
     
-    /*
-     Achievements 
-     Distance
-     1 mile: 1609 m
-     5k    : 5000 m
-     10k
-     15k
-     20k
-     half marathon : 21082 m
-     25k
-     30k
-     marathon : 42164 m
-     
-     Pace
-     < 10 min/Mile
-     < 9
-     < 8
-     < 7
-     < 6
-     < 5
-     
-     Time 
-     30 min, 1 hr, 1.5 hr, 2 hr
-     
-     Bloc #
-     2, 4, 6, 8
-    */
+    weak var gameViewPresenterDelegate: GameViewPresenterDelegate!
+    
+    static let sharedInstance = GameKitManager()
     
     func authenticatePlayer() {
         let localPlayer = GKLocalPlayer.localPlayer()
         
         localPlayer.authenticateHandler = { (viewController, error) in
             if let viewController = viewController {
-                self.present(viewController, animated: true, completion: nil)
+                self.gameViewPresenterDelegate.presentGameVC(viewController)
             }
         }
     }
@@ -62,8 +43,9 @@ extension MainViewController: GKGameCenterControllerDelegate, ScoreReporterDeleg
         gameCenterViewController.gameCenterDelegate = self
         gameCenterViewController.viewState = .leaderboards
         gameCenterViewController.leaderboardTimeScope = .allTime
-        gameCenterViewController.leaderboardIdentifier = MainViewController.runLeaderboardID
-        self.present(gameCenterViewController, animated: true, completion: nil)
+        gameCenterViewController.leaderboardIdentifier = GameKitManager.runLeaderboardID
+        
+        gameViewPresenterDelegate.presentGameVC(gameCenterViewController)
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -74,7 +56,7 @@ extension MainViewController: GKGameCenterControllerDelegate, ScoreReporterDeleg
         let localPlayer = GKLocalPlayer.localPlayer()
         
         if localPlayer.isAuthenticated {
-            let gkScore = GKScore(leaderboardIdentifier: MainViewController.runLeaderboardID)
+            let gkScore = GKScore(leaderboardIdentifier: GameKitManager.runLeaderboardID)
             gkScore.value = Int64(run.score)
             
             GKScore.report([gkScore]) { (error) in
@@ -93,7 +75,7 @@ extension MainViewController: GKGameCenterControllerDelegate, ScoreReporterDeleg
         
         if localPlayer.isAuthenticated {
             let gkScore = GKScore(
-                leaderboardIdentifier: MainViewController.totalScoreLeaderboardID,
+                leaderboardIdentifier: GameKitManager.totalScoreLeaderboardID,
                 player: localPlayer)
             gkScore.value = Int64(owner.totalScore)
             

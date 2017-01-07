@@ -23,18 +23,16 @@ struct MultipeerModel {
     }
 }
 
-protocol MultipeerManagerProtocol: class {
+protocol MultipeerManagerDelegate: class {
     var multipeerModel: MultipeerModel { get }
-    
-    init(context: NSManagedObjectContext)
-    
     func prepareMCBrowser() -> MCBrowserViewController
 }
 
-class MultipeerManager: NSObject, MultipeerManagerProtocol {
+class MultipeerManager: NSObject, MultipeerManagerDelegate {
+    
+    static let sharedInstance = MultipeerManager()
     
     var multipeerViewHandlerDelegate: MultipeerViewHandlerProtocol!
-    
     var multipeerModel: MultipeerModel
     
     static let serviceType = "blocfit-service"
@@ -66,7 +64,9 @@ class MultipeerManager: NSObject, MultipeerManagerProtocol {
     }
     var serviceBrowser: MCNearbyServiceBrowser?
     
-    required init(context: NSManagedObjectContext) {
+    override init() {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         self.context = context
         

@@ -35,11 +35,16 @@ protocol RequestMainDataDelegate: class {
     func getCurrentBlocMembers() -> [BlocMember]
 }
 
-class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol {
+protocol GameViewPresenterDelegate: class {
+    func presentGameVC(_ viewController: UIViewController)
+}
+
+class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
     
-    var multipeerManager: MultipeerManager!
+    weak var multipeerManagerDelegate: MultipeerManagerDelegate!
     weak var dashboardUpdateDelegate: DashboardViewModelProtocol!
     weak var mapViewController: MapViewController?
+    weak var gameKitManagerDelegate: GameKitManagerDelegate!
     
     @IBOutlet weak var sideMenuContainerView: UIView!
     @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
@@ -67,14 +72,16 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        multipeerManager = MultipeerManager(context: context)
-        multipeerManager.multipeerViewHandlerDelegate = self
+        GameKitManager.sharedInstance.gameViewPresenterDelegate = self
+        gameKitManagerDelegate = GameKitManager.sharedInstance
+        
+        multipeerManagerDelegate = MultipeerManager.sharedInstance
+        MultipeerManager.sharedInstance.multipeerViewHandlerDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        authenticatePlayer()
+        gameKitManagerDelegate.authenticatePlayer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -175,7 +182,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             mapViewController = segue.destination as? MapViewController
             mapViewController!.dashboardUpdateDelegate = dashboardUpdateDelegate
             mapViewController!.mainVCDataDelegate = self
-            mapViewController!.scoreReporterDelegate = self
+            mapViewController!.scoreReporterDelegate = GameKitManager.sharedInstance
             
         } else if segue.identifier ==  SegueIdentifier.runHistoryTableSegue {
             if let runHistoryTableViewController = segue.destination
@@ -225,7 +232,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     func transition(withSegueIdentifier identifier: String) {
         if identifier == SegueIdentifier.gameCenterSegue {
-            showLeaderboard()
+            gameKitManagerDelegate.showLeaderboard()
         } else {
             performSegue(withIdentifier: identifier, sender: self)
         }
@@ -243,7 +250,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // Called from TopMenuViewController when user clicks multipeer button
     func presentMCBrowserAndStartMCAssistant() {
-        let mcBrowserVC = multipeerManager.prepareMCBrowser()
+        let mcBrowserVC = multipeerManagerDelegate.prepareMCBrowser()
         self.present(mcBrowserVC, animated: true, completion: nil)
     }
     
@@ -259,5 +266,11 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         DispatchQueue.main.sync {
             blocMembers.append(blocMember)
         }
+    }
+    
+    // GameKitManagerDelegate methods
+    
+    func presentGameVC(_ viewController: UIViewController) {
+        present(viewController, animated: true, completion: nil)
     }
 }
