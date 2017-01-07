@@ -11,7 +11,77 @@ import CoreData
 import GoogleMaps
 import HealthKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+protocol MapControllerProtocol: class {
+    
+    var settingsModel: SettingsModel { get }
+    
+    var units: String? { get }
+    var defaultTrusted: String? { get }
+    var shareFirstName: String? { get }
+    
+    var unitsDidChange: ((MapControllerProtocol) -> ())? { get set }
+    var defaultTrustedDidChange: ((MapControllerProtocol) -> ())? { get set }
+    var shareFirstNameDidChange: ((MapControllerProtocol) -> ())? { get set }
+    
+    init()
+    
+    func resetLabelValues()
+    
+    func toggleUnitsSetting()
+    func toggleTrustedDefaultSetting()
+    func toggleShareFirstNameSetting()
+}
+
+class MapController {
+    
+    internal var settingsModel: SettingsModel
+    
+    //var units: String? { didSet { self.unitsDidChange?(self) } }
+    
+    var unitsDidChange: ((MapControllerProtocol) -> ())?
+    
+    required init() {
+        self.settingsModel = SettingsModel(
+            isImperialUnits: BFUserDefaults.getUnitsSetting(),
+            willDefaultToTrusted: BFUserDefaults.getNewFriendDefaultTrustedSetting(),
+            willShareFirstName: BFUserDefaults.getShareFirstNameWithTrustedSetting())
+    }
+    
+    private func createSettingsModel(
+        isImperialUnits: Bool = BFUserDefaults.getUnitsSetting(),
+        willDefaultToTrusted: Bool = BFUserDefaults.getNewFriendDefaultTrustedSetting(),
+        willShareFirstName: Bool = BFUserDefaults.getShareFirstNameWithTrustedSetting()) {
+        
+        self.settingsModel = SettingsModel(
+            isImperialUnits: isImperialUnits,
+            willDefaultToTrusted: willDefaultToTrusted,
+            willShareFirstName: willShareFirstName)
+    }
+    
+//    func resetLabelValues() {
+//        showUnits()
+//    }
+    
+//    private func showUnits() {
+//        self.units = BFUserDefaults.stringFor(unitsSetting: settingsModel.isImperialUnits)
+//    }
+//    
+//    func toggleUnitsSetting() {
+//        let newUnitsSetting = !settingsModel.isImperialUnits
+//        self.units = BFUserDefaults.stringFor(unitsSetting: newUnitsSetting)
+//        
+//        BFUserDefaults.set(isImperial: newUnitsSetting)
+//        createSettingsModel(isImperialUnits: newUnitsSetting)
+//    }
+}
+
+protocol MapViewDelegate: class {
+    func blocMembersDidChange(_ blocMembers: [BlocMember])
+    func didPressActionButton()
+    func loadSavedRun(run: Run)
+}
+
+class MapViewController: UIViewController, CLLocationManagerDelegate, MapViewDelegate {
     
     var mapView: GMSMapView?
     let locationManager = CLLocationManager()
@@ -20,7 +90,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     weak var mainVCDataDelegate: RequestMainDataDelegate?
     weak var scoreReporterDelegate: ScoreReporterDelegate?
     
-    var context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
     var owner: Owner?
     var run: Run?
@@ -85,9 +155,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         dashboardUpdateDelegate?.update(totalSeconds: Double(seconds))
     }
     
-    func locationManager(
-        _ manager: CLLocationManager,
-        didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
         
         for location in locations {
             if location.horizontalAccuracy < 20 {
@@ -103,25 +172,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let lastLatitude = lastLocation.coordinate.latitude
                     let lastLongitude = lastLocation.coordinate.longitude
                     
-                    drawPath(
-                        fromLatitude: lastLatitude,
-                        fromLongitude: lastLongitude,
-                        toLatitude: latitude,
-                        toLongitude: longitude)
+                    drawPath(fromLatitude: lastLatitude,
+                             fromLongitude: lastLongitude,
+                             toLatitude: latitude,
+                             toLongitude: longitude)
                 }
                 
-                let target = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                mapView!.camera = GMSCameraPosition.camera(withTarget: target, zoom: 18.0)
+                updateCameraPosition(latitude: latitude, longitude: longitude)
+                
                 clLocations.append(location)
             }
         }
     }
     
-    func drawPath(
-        fromLatitude: CLLocationDegrees,
-        fromLongitude: CLLocationDegrees,
-        toLatitude: CLLocationDegrees,
-        toLongitude: CLLocationDegrees) {
+    func drawPath(fromLatitude: CLLocationDegrees,
+                  fromLongitude: CLLocationDegrees,
+                  toLatitude: CLLocationDegrees,
+                  toLongitude: CLLocationDegrees) {
         
         let path = GMSMutablePath()
         path.add(CLLocationCoordinate2D(latitude: fromLatitude, longitude: fromLongitude))
@@ -175,12 +242,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         clLocations = [CLLocation]()
         totalDistance = 0.0
         seconds = 0
-        timer = Timer.scheduledTimer(
-            timeInterval: 1,
-            target: self,
-            selector: #selector(self.updateTimer),
-            userInfo: nil,
-            repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                     target: self,
+                                     selector: #selector(self.updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
     func stopTrackingData() {
@@ -189,15 +255,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func saveRunToHealthKit() {
-        if let run = self.run,
+        guard let run = self.run,
             let start = run.startTime as? Date,
-            let end = run.endTime as? Date {
+            let end = run.endTime as? Date else { return }
             
-            HealthKitManager.save(
-                meters: run.totalDistanceInMeters,
-                start: start,
-                end: end)
-        }
+        HealthKitManager.save(meters: run.totalDistanceInMeters,
+                              start: start,
+                              end: end)
     }
     
     func startNewRun(blocMembers: [BlocMember]) {
@@ -206,53 +270,58 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func updateCurrentRunWith(blocMembers: [BlocMember]) {
-        // update the current run if currentBlocMembers changes
-        // called from mainViewController
+    // This is sent from t
+    
+//    func updateCurrentRunWith(blocMembers: [BlocMember]) {
+//        // update the current run if currentBlocMembers changes
+//        // called from mainViewController
+//        updateRun(blocMembers: blocMembers)
+//    }
+    
+    func blocMembersDidChange(_ blocMembers: [BlocMember]) {
         updateRun(blocMembers: blocMembers)
     }
     
-    func updateRun(currentLocation: CLLocation? = nil, blocMembers: [BlocMember]? = nil) {
+    func updateRun(currentLocation: CLLocation? = nil,
+                   blocMembers: [BlocMember]? = nil) {
         
-        do {
-            if let run = run {
-                try run.update(currentLocation: currentLocation, blocMembers: blocMembers)
-                try owner?.updateScore()
-                updateDashboard(run: run)
-            }
-        } catch let error {
-            print(error)
-        }
+        guard let run = run else { return }
+        try? run.update(currentLocation: currentLocation, blocMembers: blocMembers)
+        try? owner?.updateScore()
+        updateDashboard(run: run)
     }
     
     func loadSavedRun(run: Run) {
         
         updateDashboard(run: run)
         
-        if let runPoints = run.runPoints?.array as? [RunPoint] {
-            var lastRunPoint: RunPoint? = nil
+        guard let runPoints = run.runPoints?.array as? [RunPoint] else { return }
             
-            for runPoint in runPoints {
-                if let lastRunPoint = lastRunPoint {
-                    drawPath(
-                        fromLatitude: lastRunPoint.latitude,
-                        fromLongitude: lastRunPoint.longitude,
-                        toLatitude: runPoint.latitude,
-                        toLongitude: runPoint.longitude)
-                }
-                
-                lastRunPoint = runPoint
+        var lastRunPoint: RunPoint? = nil
+        
+        for runPoint in runPoints {
+            if let lastRunPoint = lastRunPoint {
+                drawPath(fromLatitude: lastRunPoint.latitude,
+                         fromLongitude: lastRunPoint.longitude,
+                         toLatitude: runPoint.latitude,
+                         toLongitude: runPoint.longitude)
             }
             
-            if let latitude = lastRunPoint?.latitude,
-                let longitude = lastRunPoint?.longitude {
-                let target = CLLocationCoordinate2D(
-                    latitude: latitude,
-                    longitude: longitude)
-                mapView!.camera = GMSCameraPosition.camera(
-                    withTarget: target,
-                    zoom: 18.0)
-            }
+            lastRunPoint = runPoint
         }
+        
+        if let latitude = lastRunPoint?.latitude,
+            let longitude = lastRunPoint?.longitude {
+            
+            updateCameraPosition(latitude: latitude, longitude: longitude)
+        }
+    }
+    
+    func updateCameraPosition(latitude: Double, longitude: Double) {
+        let target = CLLocationCoordinate2D(
+            latitude: latitude,
+            longitude: longitude)
+        
+        mapView!.camera = GMSCameraPosition.camera(withTarget: target, zoom: 18.0)
     }
 }

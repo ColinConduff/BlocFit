@@ -43,8 +43,12 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     weak var multipeerManagerDelegate: MultipeerManagerDelegate!
     weak var dashboardUpdateDelegate: DashboardControllerProtocol!
-    weak var mapViewController: MapViewController?
+    weak var mapViewDelegate: MapViewDelegate!
     weak var gameKitManagerDelegate: GameKitManagerDelegate!
+    
+    // used to set the dashboard's delegate in the prepare for segue method
+    // need to find a way to do so without keeping this reference
+    weak var mapViewController: MapViewController?
     
     @IBOutlet weak var sideMenuContainerView: UIView!
     @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
@@ -58,8 +62,8 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     var blocMembers = [BlocMember]() {
         didSet {
             // Notify map and dashboard of change
-            mapViewController?.updateCurrentRunWith(blocMembers: blocMembers)
-            dashboardUpdateDelegate?.update(blocMembersCount: blocMembers.count)
+            mapViewDelegate.blocMembersDidChange(blocMembers)
+            dashboardUpdateDelegate.update(blocMembersCount: blocMembers.count)
         }
     }
 
@@ -144,7 +148,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             }
         
             actionButtonImageIsStartButton = !actionButtonImageIsStartButton
-            mapViewController?.didPressActionButton()
+            mapViewDelegate.didPressActionButton()
         }
     }
     
@@ -219,7 +223,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // LoadRunDelegate function
     func tellMapToLoadRun(run: Run) {
-        mapViewController?.loadSavedRun(run: run)
+        mapViewDelegate.loadSavedRun(run: run)
     }
     
     // RequestMainDataDelegate method for map to get current bloc members
@@ -241,7 +245,8 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     // TopMenuProtocol methods 
     
     func segueToCurrentBlocTable() {
-        performSegue(withIdentifier: SegueIdentifier.currentBlocTableSegue, sender: self)
+        performSegue(withIdentifier: SegueIdentifier.currentBlocTableSegue,
+                     sender: self)
     }
     
     func toggleSideMenu() {
