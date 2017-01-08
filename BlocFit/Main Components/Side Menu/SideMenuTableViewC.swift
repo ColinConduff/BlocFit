@@ -1,5 +1,5 @@
 //
-//  SideMenuTableViewController.swift
+//  SideMenuTableViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import FBSDKLoginKit
 
-class SideMenuTableViewController: UITableViewController {
+class SideMenuTableViewC: UITableViewController {
     
     @IBOutlet weak var fbCoverImageView: FBSDKProfilePictureView!
     

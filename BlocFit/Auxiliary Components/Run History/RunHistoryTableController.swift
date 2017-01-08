@@ -16,7 +16,7 @@ protocol SelectRowAndLoadRunProtocol: class {
                       navController: UINavigationController)
 }
 
-class RunHistoryTableController: FRCTableViewDataSource, SelectRowAndLoadRunProtocol {
+class RunHistoryTableController: BFFetchedResultsController, SelectRowAndLoadRunProtocol {
     
     private let imperialUnits: Bool
     

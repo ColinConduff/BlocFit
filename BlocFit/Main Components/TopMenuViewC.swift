@@ -1,5 +1,5 @@
 //
-//  TopMenuViewController.swift
+//  TopMenuViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopMenuViewController: UIViewController {
+class TopMenuViewC: UIViewController {
     
     var topMenuDelegate: TopMenuDelegate! // set by mainVC
     

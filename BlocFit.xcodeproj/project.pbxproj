@@ -10,7 +10,7 @@
 		0B25E5A510E9802BDACB3D83 /* Pods_BlocFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9497B194DD890FD2417D1D7A /* Pods_BlocFit.framework */; };
 		279C901DEA0E7193DD899B89 /* Pods_BlocFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27170EE60BD764617E226C4 /* Pods_BlocFitTests.framework */; };
 		33571BE0384807C226B42231 /* Pods_BlocFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CCD319B38C9A44D018DA647 /* Pods_BlocFitUITests.framework */; };
-		C317CA8B1DA86A13002B10DD /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */; };
+		C317CA8B1DA86A13002B10DD /* BaseTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317CA8A1DA86A13002B10DD /* BaseTableViewC.swift */; };
 		C32828791E147ABE00C62B07 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32828781E147ABE00C62B07 /* DashboardModel.swift */; };
 		C328287B1E147AC800C62B07 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328287A1E147AC800C62B07 /* DashboardController.swift */; };
 		C342E13B1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */; };
@@ -59,18 +59,18 @@
 		C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38E09981DD3D6E300D17569 /* HealthKitManager.swift */; };
 		C39221211E15B75700DFAACC /* DismissSideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39221201E15B75700DFAACC /* DismissSideMenuView.swift */; };
 		C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */; };
-		C3A234951D9F5C1200E49DE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234931D9F5C1200E49DE2 /* MapViewController.swift */; };
+		C3A234951D9F5C1200E49DE2 /* MapViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234931D9F5C1200E49DE2 /* MapViewC.swift */; };
 		C3A234981D9F62AC00E49DE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A234971D9F62AC00E49DE2 /* Main.storyboard */; };
-		C3A2349C1DA027A500E49DE2 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */; };
-		C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349D1DA02AE200E49DE2 /* SettingsTableViewController.swift */; };
-		C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */; };
-		C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */; };
-		C3A234A41DA02B5E00E49DE2 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */; };
-		C3A234A61DA03A6D00E49DE2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */; };
-		C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */; };
-		C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */; };
+		C3A2349C1DA027A500E49DE2 /* SideMenuTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349B1DA027A500E49DE2 /* SideMenuTableViewC.swift */; };
+		C3A2349E1DA02AE200E49DE2 /* SettingsTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349D1DA02AE200E49DE2 /* SettingsTableViewC.swift */; };
+		C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewC.swift */; };
+		C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewC.swift */; };
+		C3A234A41DA02B5E00E49DE2 /* FriendTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A31DA02B5E00E49DE2 /* FriendTableViewC.swift */; };
+		C3A234A61DA03A6D00E49DE2 /* MainViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A51DA03A6D00E49DE2 /* MainViewC.swift */; };
+		C3A234AA1DA04E0600E49DE2 /* TopMenuViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234A91DA04E0600E49DE2 /* TopMenuViewC.swift */; };
+		C3A234AC1DA04E1400E49DE2 /* DashboardViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AB1DA04E1400E49DE2 /* DashboardViewC.swift */; };
 		C3A234B01DA0588E00E49DE2 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */; };
-		C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */; };
+		C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C114291DB022A1006D3157 /* CurrentBlocTableViewC.swift */; };
 		C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +98,7 @@
 		8B1F073A6B25FEC69746762E /* Pods-BlocFitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlocFitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlocFitUITests/Pods-BlocFitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9497B194DD890FD2417D1D7A /* Pods_BlocFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlocFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27170EE60BD764617E226C4 /* Pods_BlocFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlocFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		C317CA8A1DA86A13002B10DD /* BaseTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewC.swift; sourceTree = "<group>"; };
 		C32828781E147ABE00C62B07 /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		C328287A1E147AC800C62B07 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		C342E13A1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CurrentBlocTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -154,18 +154,18 @@
 		C38E09981DD3D6E300D17569 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		C39221201E15B75700DFAACC /* DismissSideMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSideMenuView.swift; sourceTree = "<group>"; };
 		C398834F1DD91534005385A3 /* RunHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		C3A234931D9F5C1200E49DE2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C3A234931D9F5C1200E49DE2 /* MapViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewC.swift; sourceTree = "<group>"; };
 		C3A234971D9F62AC00E49DE2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
-		C3A2349D1DA02AE200E49DE2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
-		C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewController.swift; sourceTree = "<group>"; };
-		C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
-		C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
-		C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DashboardViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C3A2349B1DA027A500E49DE2 /* SideMenuTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewC.swift; sourceTree = "<group>"; };
+		C3A2349D1DA02AE200E49DE2 /* SettingsTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewC.swift; sourceTree = "<group>"; };
+		C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewC.swift; sourceTree = "<group>"; };
+		C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunHistoryTableViewC.swift; sourceTree = "<group>"; };
+		C3A234A31DA02B5E00E49DE2 /* FriendTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewC.swift; sourceTree = "<group>"; };
+		C3A234A51DA03A6D00E49DE2 /* MainViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewC.swift; sourceTree = "<group>"; };
+		C3A234A91DA04E0600E49DE2 /* TopMenuViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewC.swift; sourceTree = "<group>"; };
+		C3A234AB1DA04E1400E49DE2 /* DashboardViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DashboardViewC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C3A234AF1DA0588E00E49DE2 /* SegueIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
-		C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewController.swift; sourceTree = "<group>"; };
+		C3C114291DB022A1006D3157 /* CurrentBlocTableViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentBlocTableViewC.swift; sourceTree = "<group>"; };
 		C3DDDF151E047D460024509E /* fb.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = fb.xcconfig; sourceTree = "<group>"; };
 		C3FE12061DD8F55800E6BE3F /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		E3C10EDC3DA8C3EEFBC4AF98 /* Pods-BlocFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlocFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlocFit/Pods-BlocFit.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		C32828771E147AAA00C62B07 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				C3A234AB1DA04E1400E49DE2 /* DashboardViewController.swift */,
+				C3A234AB1DA04E1400E49DE2 /* DashboardViewC.swift */,
 				C32828781E147ABE00C62B07 /* DashboardModel.swift */,
 				C328287A1E147AC800C62B07 /* DashboardController.swift */,
 			);
@@ -228,7 +228,7 @@
 		C342E1391DD7883A004E3A7B /* Current Bloc */ = {
 			isa = PBXGroup;
 			children = (
-				C3C114291DB022A1006D3157 /* CurrentBlocTableViewController.swift */,
+				C3C114291DB022A1006D3157 /* CurrentBlocTableViewC.swift */,
 				C360F29B1E109B6F00C0F28C /* CurrentBlocTableDataSource.swift */,
 				C360F2981E1098CF00C0F28C /* Current Bloc Cell */,
 			);
@@ -238,7 +238,7 @@
 		C35E77C71E0BB4F100077F9B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C3A2349D1DA02AE200E49DE2 /* SettingsTableViewController.swift */,
+				C3A2349D1DA02AE200E49DE2 /* SettingsTableViewC.swift */,
 				C35E77C81E0BB50700077F9B /* SettingsModel.swift */,
 				C35E77CA1E0BB51F00077F9B /* SettingsController.swift */,
 			);
@@ -248,7 +248,7 @@
 		C360F2841E0C240900C0F28C /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewController.swift */,
+				C3A2349F1DA02AFA00E49DE2 /* StatisticsTableViewC.swift */,
 				C360F2851E0C24B000C0F28C /* RunStatisticsModel.swift */,
 				C360F2871E0C24C200C0F28C /* StatisticsController.swift */,
 			);
@@ -267,7 +267,7 @@
 		C360F28E1E0F06E600C0F28C /* Generic UI */ = {
 			isa = PBXGroup;
 			children = (
-				C317CA8A1DA86A13002B10DD /* BaseTableViewController.swift */,
+				C317CA8A1DA86A13002B10DD /* BaseTableViewC.swift */,
 				C360F28F1E0F071100C0F28C /* FRCTableViewDataSource.swift */,
 			);
 			path = "Generic UI";
@@ -356,7 +356,7 @@
 		C36EA97D1E1322F500486F99 /* Side Menu */ = {
 			isa = PBXGroup;
 			children = (
-				C3A2349B1DA027A500E49DE2 /* SideMenuTableViewController.swift */,
+				C3A2349B1DA027A500E49DE2 /* SideMenuTableViewC.swift */,
 				C36EA97E1E13232000486F99 /* SideMenuTableController.swift */,
 				C36EA9801E13585900486F99 /* SideMenuTableDelegate.swift */,
 				C39221201E15B75700DFAACC /* DismissSideMenuView.swift */,
@@ -368,7 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				C36F38111E22D8A000AA436F /* MapController.swift */,
-				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
+				C3A234931D9F5C1200E49DE2 /* MapViewC.swift */,
 				C36F380D1E22D7E600AA436F /* Path.swift */,
 				C36F380F1E22D86700AA436F /* MapRunModel.swift */,
 			);
@@ -442,7 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				C360F2951E1090FD00C0F28C /* RunHistoryTableController.swift */,
-				C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewController.swift */,
+				C3A234A11DA02B0E00E49DE2 /* RunHistoryTableViewC.swift */,
 				C360F2971E10912B00C0F28C /* Run History Cell */,
 			);
 			path = "Run History";
@@ -465,10 +465,10 @@
 			children = (
 				C36EA97D1E1322F500486F99 /* Side Menu */,
 				C32828771E147AAA00C62B07 /* Dashboard */,
-				C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */,
+				C3A234A91DA04E0600E49DE2 /* TopMenuViewC.swift */,
 				C36F380C1E22D7C200AA436F /* Map */,
 				C37F314C1E2037C20000B2FE /* Managers */,
-				C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */,
+				C3A234A51DA03A6D00E49DE2 /* MainViewC.swift */,
 			);
 			path = "Main Components";
 			sourceTree = "<group>";
@@ -477,7 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				C360F2911E0F077600C0F28C /* FriendTableController.swift */,
-				C3A234A31DA02B5E00E49DE2 /* FriendTableViewController.swift */,
+				C3A234A31DA02B5E00E49DE2 /* FriendTableViewC.swift */,
 				C360F28B1E0E4A5100C0F28C /* FriendCell */,
 			);
 			path = "Friend Table";
@@ -796,9 +796,9 @@
 			files = (
 				C3A234B01DA0588E00E49DE2 /* SegueIdentifier.swift in Sources */,
 				C36D653E1D9EF3C300F2E3B1 /* BlocFit.xcdatamodeld in Sources */,
-				C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewController.swift in Sources */,
-				C3A2349E1DA02AE200E49DE2 /* SettingsTableViewController.swift in Sources */,
-				C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewController.swift in Sources */,
+				C3A234A01DA02AFA00E49DE2 /* StatisticsTableViewC.swift in Sources */,
+				C3A2349E1DA02AE200E49DE2 /* SettingsTableViewC.swift in Sources */,
+				C3A234A21DA02B0E00E49DE2 /* RunHistoryTableViewC.swift in Sources */,
 				C328287B1E147AC800C62B07 /* DashboardController.swift in Sources */,
 				C360F29C1E109B6F00C0F28C /* CurrentBlocTableDataSource.swift in Sources */,
 				C39883501DD91534005385A3 /* RunHistoryTableViewCell.swift in Sources */,
@@ -806,9 +806,9 @@
 				C360F28D1E0E4A6900C0F28C /* FriendCellController.swift in Sources */,
 				C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */,
 				C3772CFB1DA09531006622CC /* Run+CoreDataClass.swift in Sources */,
-				C3A2349C1DA027A500E49DE2 /* SideMenuTableViewController.swift in Sources */,
+				C3A2349C1DA027A500E49DE2 /* SideMenuTableViewC.swift in Sources */,
 				C36F38101E22D86700AA436F /* MapRunModel.swift in Sources */,
-				C3A234951D9F5C1200E49DE2 /* MapViewController.swift in Sources */,
+				C3A234951D9F5C1200E49DE2 /* MapViewC.swift in Sources */,
 				C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */,
 				C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */,
 				C36EA9811E13585900486F99 /* SideMenuTableDelegate.swift in Sources */,
@@ -819,29 +819,29 @@
 				C360F2941E108DB900C0F28C /* RunHistoryCellController.swift in Sources */,
 				C360F2921E0F077600C0F28C /* FriendTableController.swift in Sources */,
 				C3FE12071DD8F55800E6BE3F /* FriendTableViewCell.swift in Sources */,
-				C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewController.swift in Sources */,
+				C3C1142A1DB022A1006D3157 /* CurrentBlocTableViewC.swift in Sources */,
 				C36EA97F1E13232000486F99 /* SideMenuTableController.swift in Sources */,
-				C317CA8B1DA86A13002B10DD /* BaseTableViewController.swift in Sources */,
+				C317CA8B1DA86A13002B10DD /* BaseTableViewC.swift in Sources */,
 				C35612FC1DCD14E7003CFC2C /* MultipeerManager.swift in Sources */,
 				C3772CF61DA09531006622CC /* RunPoint+CoreDataProperties.swift in Sources */,
 				C3772CFC1DA09531006622CC /* Run+CoreDataProperties.swift in Sources */,
 				C3772CFA1DA09531006622CC /* Owner+CoreDataProperties.swift in Sources */,
-				C3A234AC1DA04E1400E49DE2 /* DashboardViewController.swift in Sources */,
+				C3A234AC1DA04E1400E49DE2 /* DashboardViewC.swift in Sources */,
 				C360F2961E1090FD00C0F28C /* RunHistoryTableController.swift in Sources */,
 				C36D65361D9EF3C300F2E3B1 /* AppDelegate.swift in Sources */,
 				C3772CF91DA09531006622CC /* Owner+CoreDataClass.swift in Sources */,
 				C360F2861E0C24B000C0F28C /* RunStatisticsModel.swift in Sources */,
 				C35E77C91E0BB50700077F9B /* SettingsModel.swift in Sources */,
-				C3A234A41DA02B5E00E49DE2 /* FriendTableViewController.swift in Sources */,
+				C3A234A41DA02B5E00E49DE2 /* FriendTableViewC.swift in Sources */,
 				C360F2881E0C24C200C0F28C /* StatisticsController.swift in Sources */,
 				C36F38121E22D8A000AA436F /* MapController.swift in Sources */,
-				C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */,
+				C3A234AA1DA04E0600E49DE2 /* TopMenuViewC.swift in Sources */,
 				C360F2901E0F071100C0F28C /* FRCTableViewDataSource.swift in Sources */,
 				C32828791E147ABE00C62B07 /* DashboardModel.swift in Sources */,
 				C3863D7C1DD52CFC004AE077 /* GameKitManager.swift in Sources */,
 				C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */,
 				C36590811DD2905C00D0C36C /* BFUnitConverter.swift in Sources */,
-				C3A234A61DA03A6D00E49DE2 /* MainViewController.swift in Sources */,
+				C3A234A61DA03A6D00E49DE2 /* MainViewC.swift in Sources */,
 				C3772CF81DA09531006622CC /* BlocMember+CoreDataProperties.swift in Sources */,
 				C342E13B1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift in Sources */,
 				C36F380E1E22D7E600AA436F /* Path.swift in Sources */,

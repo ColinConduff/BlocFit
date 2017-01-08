@@ -11,7 +11,7 @@ import CoreData
 
 // Rename BFFetchedResultsController
 
-class FRCTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class BFFetchedResultsController: NSObject, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: Properties
     private unowned var tableView: UITableView

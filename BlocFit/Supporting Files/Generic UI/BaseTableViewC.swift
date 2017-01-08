@@ -1,5 +1,5 @@
 //
-//  BaseTableViewController.swift
+//  BaseTableViewC.swift
 //  OverloadedWeightLiftingLog
 //
 //  Created by Colin Conduff on 6/15/16.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BaseTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class BaseTableViewC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: Properties
     var fetchedResultsController: NSFetchedResultsController<NSManagedObject>? {
         didSet {

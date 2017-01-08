@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.swift
+//  DashboardViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewC: UIViewController {
     
     @IBOutlet weak var distanceUnitsLabel: UILabel!
     @IBOutlet weak var rateUnitsLabel: UILabel!

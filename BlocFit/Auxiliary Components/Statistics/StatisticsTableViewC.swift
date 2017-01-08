@@ -1,5 +1,5 @@
 //
-//  StatisticsTableViewController.swift
+//  StatisticsTableViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatisticsTableViewController: UITableViewController {
+class StatisticsTableViewC: UITableViewController {
     
     @IBOutlet weak var bestScoreLabel: UILabel!
     @IBOutlet weak var bestRateLabel: UILabel!

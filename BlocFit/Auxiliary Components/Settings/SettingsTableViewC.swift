@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewController.swift
+//  SettingsTableViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewC: UITableViewController {
     
     @IBOutlet weak var unitsLabel: UILabel!
     @IBOutlet weak var fbLoginView: UIView!

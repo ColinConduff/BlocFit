@@ -1,5 +1,5 @@
 //
-//  FriendTableViewController.swift
+//  FriendTableViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FriendTableViewController: UITableViewController {
+class FriendTableViewC: UITableViewController {
     
     var friendTableController: FriendTableController?
     

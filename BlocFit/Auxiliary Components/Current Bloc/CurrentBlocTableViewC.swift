@@ -1,5 +1,5 @@
 //
-//  CurrentBlocTableViewController.swift
+//  CurrentBlocTableViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/13/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentBlocTableViewController: UITableViewController {
+class CurrentBlocTableViewC: UITableViewController {
     
     var currentBlocTableDataSource: CurrentBlocTableDataSource!
     

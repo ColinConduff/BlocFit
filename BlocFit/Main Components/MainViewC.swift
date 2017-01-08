@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MainViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -39,7 +39,7 @@ protocol GameViewPresenterDelegate: class {
     func presentGameVC(_ viewController: UIViewController)
 }
 
-class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
+class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
     
     weak var multipeerManagerDelegate: MultipeerManagerDelegate!
     weak var dashboardUpdateDelegate: DashboardControllerProtocol!
@@ -48,7 +48,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // used to set the dashboard's delegate in the prepare for segue method
     // need to find a way to do so without keeping this reference
-    weak var mapViewController: MapViewController?
+    weak var mapViewC: MapViewC?
     
     @IBOutlet weak var sideMenuContainerView: UIView!
     @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
@@ -57,7 +57,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     // Destroyed when the side menu is closed
     weak var dismissSideMenuView: DismissSideMenuView?
     
-    // Can be edited by CurrentBlocTableViewController
+    // Can be edited by CurrentBlocTableViewC
     // need a better way to synchronize blocMembers array across multiple classes
     var blocMembers = [BlocMember]() {
         didSet {
@@ -152,55 +152,55 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
-            if let dashboardViewController = segue.destination as? DashboardViewController {
-                prepareForDashboard(dashboardViewController)
+            if let dashboardViewC = segue.destination as? DashboardViewC {
+                prepareForDashboard(dashboardViewC)
             }
             
         } else if segue.identifier ==  SegueIdentifier.mapEmbedSegue {
-            mapViewController = segue.destination as? MapViewController
-            prepareForMap(mapViewController!)
+            mapViewC = segue.destination as? MapViewC
+            prepareForMap(mapViewC!)
             
         } else if segue.identifier ==  SegueIdentifier.runHistoryTableSegue {
-            if let runHistoryTableViewController = segue.destination
-                as? RunHistoryTableViewController {
-                runHistoryTableViewController.loadRunDelegate = self
+            if let runHistoryTableViewC = segue.destination
+                as? RunHistoryTableViewC {
+                runHistoryTableViewC.loadRunDelegate = self
             }
         } else if segue.identifier == SegueIdentifier.currentBlocTableSegue {
-            if let currentBlocTableViewController = segue.destination
-                as? CurrentBlocTableViewController {
+            if let currentBlocTableViewC = segue.destination
+                as? CurrentBlocTableViewC {
                 
-                currentBlocTableViewController.currentBlocTableDataSource = CurrentBlocTableDataSource(blocMembers: blocMembers)
+                currentBlocTableViewC.currentBlocTableDataSource = CurrentBlocTableDataSource(blocMembers: blocMembers)
             }
         } else if segue.identifier == SegueIdentifier.sideMenuTableEmbedSegue {
-            if let sideMenuTableViewController = segue.destination as? SideMenuTableViewController {
+            if let sideMenuTableViewC = segue.destination as? SideMenuTableViewC {
                 
-                sideMenuTableViewController.tableDelegate = SideMenuTableDelegate(segueCoordinator: self)
+                sideMenuTableViewC.tableDelegate = SideMenuTableDelegate(segueCoordinator: self)
             }
         } else if segue.identifier == SegueIdentifier.topMenuEmbedSegue {
-            if let topMenuViewController = segue.destination as? TopMenuViewController {
-                topMenuViewController.topMenuDelegate = self
+            if let topMenuViewC = segue.destination as? TopMenuViewC {
+                topMenuViewC.topMenuDelegate = self
             }
         }
     }
     
-    func prepareForDashboard(_ dashboardViewController: DashboardViewController) {
+    func prepareForDashboard(_ dashboardViewC: DashboardViewC) {
         let dashboardController = DashboardController()
-        dashboardViewController.controller = dashboardController
+        dashboardViewC.controller = dashboardController
         dashboardUpdateDelegate = dashboardController
-        mapViewController?.dashboardUpdateDelegate = dashboardUpdateDelegate
+        mapViewC?.dashboardUpdateDelegate = dashboardUpdateDelegate
     }
     
-    func prepareForMap(_ mapViewController: MapViewController) {
+    func prepareForMap(_ mapViewC: MapViewC) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        mapViewController.controller = MapController(requestMainDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
-        mapNotificationDelegate = mapViewController.controller as! MapNotificationDelegate!
-        mapViewController.dashboardUpdateDelegate = dashboardUpdateDelegate
+        mapViewC.controller = MapController(requestMainDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
+        mapNotificationDelegate = mapViewC.controller as! MapNotificationDelegate!
+        mapViewC.dashboardUpdateDelegate = dashboardUpdateDelegate
     }
     
-    @IBAction func undwindToMainViewController(_ sender: UIStoryboardSegue) {
+    @IBAction func undwindToMainViewC(_ sender: UIStoryboardSegue) {
         if sender.identifier == SegueIdentifier.unwindFromCurrentBlocTable {
             if let currentBlocTableVC = sender.source
-                as? CurrentBlocTableViewController,
+                as? CurrentBlocTableViewC,
                 let currentBlocTableDataSource = currentBlocTableVC.currentBlocTableDataSource {
                 blocMembers = currentBlocTableDataSource.blocMembers
             }
@@ -237,7 +237,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         sideMenuContainerView.isHidden ? showSideMenu() : hideSideMenu()
     }
     
-    // Called from TopMenuViewController when user clicks multipeer button
+    // Called from TopMenuViewC when user clicks multipeer button
     func presentMCBrowserAndStartMCAssistant() {
         let mcBrowserVC = multipeerManagerDelegate.prepareMCBrowser()
         self.present(mcBrowserVC, animated: true, completion: nil)

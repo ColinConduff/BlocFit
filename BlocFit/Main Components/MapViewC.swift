@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//  MapViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 9/30/16.
@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController {
+class MapViewC: UIViewController {
     
     // unowned?
     var mapView: GMSMapView?

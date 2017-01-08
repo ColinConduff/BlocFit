@@ -1,5 +1,5 @@
 //
-//  RunHistoryTableViewController.swift
+//  RunHistoryTableViewC.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 10/1/16.
@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class RunHistoryTableViewController: UITableViewController {
+class RunHistoryTableViewC: UITableViewController {
     
-    var dataSource: FRCTableViewDataSource?
+    var dataSource: BFFetchedResultsController?
     weak var loadRunDelegate: LoadRunDelegate?
     var didSelectDelegate: SelectRowAndLoadRunProtocol?
     

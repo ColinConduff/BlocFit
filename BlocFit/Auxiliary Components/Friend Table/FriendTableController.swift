@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FriendTableController: FRCTableViewDataSource {
+class FriendTableController: BFFetchedResultsController {
     
     init(tableView: UITableView, context: NSManagedObjectContext) {
         super.init(tableView: tableView)

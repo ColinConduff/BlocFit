@@ -10,7 +10,7 @@ import UIKit
 
 class DismissSideMenuView: UIView {
     
-    init(mainVC: MainViewController, sideMenuWidth: CGFloat) {
+    init(mainVC: MainViewC, sideMenuWidth: CGFloat) {
         let frame = CGRect(
             x: sideMenuWidth,
             y: 0,
@@ -21,7 +21,7 @@ class DismissSideMenuView: UIView {
         
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: mainVC,
-            action: #selector(MainViewController.tapHideSideMenu))
+            action: #selector(MainViewC.tapHideSideMenu))
         self.addGestureRecognizer(tapGestureRecognizer)
     }
     

@@ -1,5 +1,5 @@
 //
-//  MainViewController+GameKit.swift
+//  GameKitManager.swift
 //  BlocFit
 //
 //  Created by Colin Conduff on 11/10/16.
@@ -38,14 +38,14 @@ class GameKitManager: NSObject, GKGameCenterControllerDelegate, GameKitManagerDe
     }
     
     func showLeaderboard() {
-        let gameCenterViewController = GKGameCenterViewController()
+        let gameCenterViewC = GKGameCenterViewController()
         
-        gameCenterViewController.gameCenterDelegate = self
-        gameCenterViewController.viewState = .leaderboards
-        gameCenterViewController.leaderboardTimeScope = .allTime
-        gameCenterViewController.leaderboardIdentifier = GameKitManager.runLeaderboardID
+        gameCenterViewC.gameCenterDelegate = self
+        gameCenterViewC.viewState = .leaderboards
+        gameCenterViewC.leaderboardTimeScope = .allTime
+        gameCenterViewC.leaderboardIdentifier = GameKitManager.runLeaderboardID
         
-        gameViewPresenterDelegate.presentGameVC(gameCenterViewController)
+        gameViewPresenterDelegate.presentGameVC(gameCenterViewC)
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
