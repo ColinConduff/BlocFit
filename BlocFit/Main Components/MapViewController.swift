@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import CoreData
 import GoogleMaps
-import HealthKit
 
 class MapViewController: UIViewController {
     
     // unowned?
-    var mapView: GMSMapView? // unnecessary?
+    var mapView: GMSMapView?
     
     weak var dashboardUpdateDelegate: DashboardControllerProtocol!
     
@@ -24,9 +22,7 @@ class MapViewController: UIViewController {
                 self.mapView?.isMyLocationEnabled = controller.authStatusIsAuthAlways
             }
             controller.cameraPositionDidChange = { [unowned self] controller in
-                if let cameraPosition = controller.cameraPosition {
-                    self.mapView?.camera = cameraPosition
-                }
+                self.mapView?.camera = controller.cameraPosition
             }
             controller.pathsDidChange = { [unowned self] controller in
                 for path in controller.paths {
@@ -50,32 +46,13 @@ class MapViewController: UIViewController {
     }
     
     override func loadView() {
-        
-        // move to controller
-        // controller may not be created yet
-        let camera = GMSCameraPosition.camera(withLatitude: 37.35, longitude: -122.0, zoom: 8.0)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        
-        let authStatus = CLLocationManager.authorizationStatus()
-        mapView!.isMyLocationEnabled = (authStatus == .authorizedAlways)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: controller.cameraPosition)
+        mapView!.isMyLocationEnabled = controller.authStatusIsAuthAlways
         view = mapView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        HealthKitManager.authorize() // move to controller
-    }
-    
     override func viewDidLayoutSubviews() {
-        controller.setInitialCameraPosition()
+        controller.cameraPositionNeedsUpdate()
     }
     
     override func didReceiveMemoryWarning() {

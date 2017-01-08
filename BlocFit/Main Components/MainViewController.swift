@@ -187,7 +187,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             
             // Move to an assembler/factory class
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            mapViewController!.controller = MapController(mainVCDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
+            mapViewController!.controller = MapController(requestMainDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
             
             mapNotificationDelegate = mapViewController!.controller as! MapNotificationDelegate!
             

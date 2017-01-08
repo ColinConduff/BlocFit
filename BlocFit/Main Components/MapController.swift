@@ -20,7 +20,7 @@ protocol MapControllerProtocol: class {
     
     var mapRunModel: MapRunModel { get }
     var authStatusIsAuthAlways: Bool { get }
-    var cameraPosition: GMSCameraPosition? { get }
+    var cameraPosition: GMSCameraPosition { get }
     var paths: [Path] { get }
     var run: Run? { get }
     var seconds: Int { get }
@@ -31,25 +31,24 @@ protocol MapControllerProtocol: class {
     var pathsDidChange: ((MapControllerProtocol) -> ())? { get set }
     var secondsDidChange: ((MapControllerProtocol) -> ())? { get set }
     
-    init(mainVCDataDelegate: RequestMainDataDelegate, scoreReporterDelegate: ScoreReporterDelegate, context: NSManagedObjectContext)
+    init(requestMainDataDelegate: RequestMainDataDelegate, scoreReporterDelegate: ScoreReporterDelegate, context: NSManagedObjectContext)
     
-    func updateRun(currentLocation: CLLocation)
-    func setInitialCameraPosition() // rename to cameraPositionNeedsUpdate
+    func cameraPositionNeedsUpdate()
 }
 
 class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol, MapNotificationDelegate {
     
     var mapRunModel: MapRunModel { didSet { self.mapRunModelDidChange?(mapRunModel) } }
     var authStatusIsAuthAlways = false { didSet { self.authStatusDidChange?(self) } }
-    var cameraPosition: GMSCameraPosition? { didSet { self.cameraPositionDidChange?(self) } }
+    var cameraPosition: GMSCameraPosition { didSet { self.cameraPositionDidChange?(self) } }
     var paths = [Path]() { didSet { self.pathsDidChange?(self) } }
+    var seconds = 0 { didSet { self.secondsDidChange?(self) } }
     var run: Run? {
         didSet {
             guard let run = run else { return }
             self.setDashboardModel(using: run)
         }
     }
-    var seconds = 0 { didSet { self.secondsDidChange?(self) } }
     
     var mapRunModelDidChange: ((MapRunModel) -> ())?
     var authStatusDidChange: ((MapControllerProtocol) -> ())?
@@ -57,7 +56,7 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
     var pathsDidChange: ((MapControllerProtocol) -> ())?
     var secondsDidChange: ((MapControllerProtocol) -> ())?
     
-    weak var mainVCDataDelegate: RequestMainDataDelegate!
+    weak var requestMainDataDelegate: RequestMainDataDelegate!
     weak var scoreReporterDelegate: ScoreReporterDelegate!
     
     let locationManager = CLLocationManager()
@@ -66,23 +65,31 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
     let owner: Owner
     
     var currentlyRunning = false
-    
-    // used to get last tracked location
-    // use run.runPoints.last instead
-    var clLocations = [CLLocation]()
     var timer = Timer()
     
-    required init(mainVCDataDelegate: RequestMainDataDelegate, scoreReporterDelegate: ScoreReporterDelegate, context: NSManagedObjectContext) {
+    required init(requestMainDataDelegate: RequestMainDataDelegate,
+                  scoreReporterDelegate: ScoreReporterDelegate,
+                  context: NSManagedObjectContext) {
         
-        self.mainVCDataDelegate = mainVCDataDelegate
+        self.requestMainDataDelegate = requestMainDataDelegate
         self.scoreReporterDelegate = scoreReporterDelegate
         self.context = context
         owner = try! Owner.get(context: context)!
         
-        mapRunModel = MapRunModel(secondsElapsed: 0, score: 0, totalDistanceInMeters: 0, secondsPerMeter: 0)
+        mapRunModel = MapRunModel(secondsElapsed: 0,
+                                  score: 0,
+                                  totalDistanceInMeters: 0,
+                                  secondsPerMeter: 0)
+        
+        cameraPosition = GMSCameraPosition.camera(withLatitude: 37.35,
+                                                  longitude: -122.0,
+                                                  zoom: 18.0)
+        
+        authStatusIsAuthAlways = CLLocationManager.authorizationStatus() == .authorizedAlways
         
         super.init()
         initializeLocationManagement()
+        HealthKitManager.authorize()
     }
     
     private func initializeLocationManagement() {
@@ -93,6 +100,8 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
         locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
     }
+    
+    // CLLocationManagerDelegate Methods
     
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
@@ -112,14 +121,15 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
         for location in locations {
             if location.horizontalAccuracy < 20 {
                 
+                let lastRunPoint = run?.runPoints?.lastObject as? RunPoint
+                
                 updateRun(currentLocation: location)
                 
                 let latitude = location.coordinate.latitude
                 let longitude = location.coordinate.longitude
                 
-                if let lastLocation = clLocations.last {
-                    let lastLatitude = lastLocation.coordinate.latitude
-                    let lastLongitude = lastLocation.coordinate.longitude
+                if let lastLatitude = lastRunPoint?.latitude,
+                    let lastLongitude = lastRunPoint?.longitude {
                     
                     let path = Path(fromLat: lastLatitude,
                                     fromLong: lastLongitude,
@@ -129,21 +139,19 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
                 }
                 
                 updateCameraPosition(latitude: latitude, longitude: longitude)
-                
-                clLocations.append(location)
             }
         }
         
         self.paths = paths
     }
     
-    func setInitialCameraPosition() {
+    func cameraPositionNeedsUpdate() {
         if let coordinate = locationManager.location?.coordinate {
             updateCameraPosition(latitude: coordinate.latitude, longitude: coordinate.longitude)
         }
     }
     
-    func updateCameraPosition(latitude: Double, longitude: Double) {
+    private func updateCameraPosition(latitude: Double, longitude: Double) {
         let target = CLLocationCoordinate2D(
             latitude: latitude,
             longitude: longitude)
@@ -151,14 +159,13 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
         cameraPosition = GMSCameraPosition.camera(withTarget: target, zoom: 18.0)
     }
     
+    // MapNotificationDelegate Method
+    
     func loadSavedRun(run: Run) {
         
         self.run = run
-        
         guard let runPoints = run.runPoints?.array as? [RunPoint] else { return }
-        
         var paths = [Path]()
-        
         var lastRunPoint: RunPoint? = nil
         
         for runPoint in runPoints {
@@ -181,67 +188,63 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
         }
     }
     
-    func updateRun(currentLocation: CLLocation) {
+    private func updateRun(currentLocation: CLLocation) {
         guard let run = run else { return }
         try? run.update(currentLocation: currentLocation)
         setDashboardModel(using: run)
     }
     
-    func blocMembersDidChange(_ blocMembers: [BlocMember]) {
-        guard let run = run else { return }
-        try? run.update(blocMembers: blocMembers)
-    }
-    
-    func setDashboardModel(using run: Run) {
+    private func setDashboardModel(using run: Run) {
         mapRunModel = MapRunModel(secondsElapsed: Double(run.secondsElapsed),
                                   score: Int(run.score),
                                   totalDistanceInMeters: run.totalDistanceInMeters,
                                   secondsPerMeter: run.secondsPerMeter)
     }
     
+    // MapNotificationDelegate Method
+    func blocMembersDidChange(_ blocMembers: [BlocMember]) {
+        guard let run = run else { return }
+        try? run.update(blocMembers: blocMembers)
+    }
+    
+    // Logic for responding to action button click //
+    
+    // MapNotificationDelegate Method
     func didPressActionButton() {
         if currentlyRunning {
-            stopTrackingData()
-            
-            if let run = run {
-                saveRunToHealthKit(run)
-                
-                scoreReporterDelegate.submitScore(run: run)
-                scoreReporterDelegate.submitScore(owner: owner)
-            }
-            
+            stopRunning()
         } else {
-            let blocMembers = mainVCDataDelegate.getCurrentBlocMembers()
-            
-            run = try! Run.create(owner: owner, blocMembers: blocMembers, context: context)
-            
-            startTrackingData()
+            startRunning()
         }
         
         currentlyRunning = !currentlyRunning
     }
     
-    func startTrackingData() {
+    private func startRunning() {
+        let blocMembers = requestMainDataDelegate.getCurrentBlocMembers()
+        run = try! Run.create(owner: owner, blocMembers: blocMembers, context: context)
+        startTrackingData()
+    }
+    
+    private func startTrackingData() {
         locationManager.startUpdatingLocation()
-        clLocations = [CLLocation]()
         seconds = 0
-        timer = Timer.scheduledTimer(timeInterval: 1,
-                                     target: self,
-                                     selector: #selector(self.updateSeconds),
-                                     userInfo: nil,
-                                     repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in self.seconds += 1 }
     }
     
-    func updateSeconds() {
-        seconds += 1
-    }
-    
-    func stopTrackingData() {
+    private func stopRunning() {
         locationManager.stopUpdatingLocation()
         timer.invalidate()
+        
+        if let run = run {
+            saveRunToHealthKit(run)
+            
+            scoreReporterDelegate.submitScore(run: run)
+            scoreReporterDelegate.submitScore(owner: owner)
+        }
     }
     
-    func saveRunToHealthKit(_ run: Run) {
+    private func saveRunToHealthKit(_ run: Run) {
         guard let start = run.startTime as? Date,
             let end = run.endTime as? Date else { return }
         
