@@ -108,7 +108,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // Side Menu Functions //
     
-    // should be moved to side menu displayer view model?
+    // should be moved to side menu displayer?
     func hideSideMenu() {
         sideMenuContainerWidthConstraint.constant = 20
         sideMenuContainerView.isHidden = true

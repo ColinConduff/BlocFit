@@ -24,9 +24,9 @@ class RunHistoryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var Controller: RunHistoryCellController? {
+    var controller: RunHistoryCellController? {
         didSet {
-            guard let controller = Controller else { return }
+            guard let controller = controller else { return }
             
             timeIntervalLabel?.text = controller.time
             scoreLabel?.text = controller.score

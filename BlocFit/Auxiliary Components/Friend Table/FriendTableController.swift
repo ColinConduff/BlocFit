@@ -27,7 +27,7 @@ class FriendTableController: FRCTableViewDataSource {
             for: indexPath) as? FriendTableViewCell
         
         if let blocMember = fetchedResultsController?.object(at: indexPath) as? BlocMember {
-            cell?.Controller = FriendCellController(blocMember: blocMember)
+            cell?.controller = FriendCellController(blocMember: blocMember)
         }
         
         return cell!

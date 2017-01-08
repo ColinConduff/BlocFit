@@ -21,20 +21,20 @@ class DashboardViewController: UIViewController {
     
     var controller: DashboardControllerProtocol! {
         didSet {
-            controller.totalRunnersCountDidChange = { [unowned self] Controller in
-                self.blocMemberCountLabel?.text = Controller.totalRunnersCount
+            controller.totalRunnersCountDidChange = { [unowned self] controller in
+                self.blocMemberCountLabel?.text = controller.totalRunnersCount
             }
-            controller.timeDidChange = { [unowned self] Controller in
-                self.timeLabel.text = Controller.time
+            controller.timeDidChange = { [unowned self] controller in
+                self.timeLabel.text = controller.time
             }
-            controller.scoreDidChange = { [unowned self] Controller in
-                self.scoreLabel.text = Controller.score
+            controller.scoreDidChange = { [unowned self] controller in
+                self.scoreLabel.text = controller.score
             }
-            controller.distanceRateUnitsDidChange = { [unowned self] Controller in
-                self.distanceLabel.text = Controller.distance
-                self.rateLabel.text = Controller.rate
-                self.distanceUnitsLabel.text = Controller.distanceUnit
-                self.rateUnitsLabel.text = Controller.rateUnit
+            controller.distanceRateUnitsDidChange = { [unowned self] controller in
+                self.distanceLabel.text = controller.distance
+                self.rateLabel.text = controller.rate
+                self.distanceUnitsLabel.text = controller.distanceUnit
+                self.rateUnitsLabel.text = controller.rateUnit
             }
         }
     }

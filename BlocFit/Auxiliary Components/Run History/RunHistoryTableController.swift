@@ -33,15 +33,15 @@ class RunHistoryTableController: FRCTableViewDataSource, SelectRowAndLoadRunProt
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: RunHistoryTableController.reuseIdentifier,
-                for: indexPath) as? RunHistoryTableViewCell
-            
-            if let run = fetchedResultsController?.object(at: indexPath) as? Run {
-                cell?.Controller = RunHistoryCellController(run: run, usingImperialUnits: imperialUnits)
-            }
-            
-            return cell!
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: RunHistoryTableController.reuseIdentifier,
+            for: indexPath) as? RunHistoryTableViewCell
+        
+        if let run = fetchedResultsController?.object(at: indexPath) as? Run {
+            cell?.controller = RunHistoryCellController(run: run, usingImperialUnits: imperialUnits)
+        }
+        
+        return cell!
     }
     
     func tableView(_ tableView: UITableView,

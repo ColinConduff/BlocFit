@@ -22,9 +22,9 @@ class CurrentBlocTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var Controller: CurrentBlocCellController? {
+    var controller: CurrentBlocCellController? {
         didSet {
-            guard let controller = Controller else { return }
+            guard let controller = controller else { return }
             
             usernameLabel?.text = controller.username
             firstnameLabel?.text = controller.firstname

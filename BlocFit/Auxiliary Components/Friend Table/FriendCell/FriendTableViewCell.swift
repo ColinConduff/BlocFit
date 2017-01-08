@@ -23,9 +23,9 @@ class FriendTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var Controller: FriendCellController? {
+    var controller: FriendCellController? {
         didSet {
-            guard let controller = Controller else { return }
+            guard let controller = controller else { return }
             
             usernameLabel?.text = controller.username
             trustedLabel?.text = controller.trusted

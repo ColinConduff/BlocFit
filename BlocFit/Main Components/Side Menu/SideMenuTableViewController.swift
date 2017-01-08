@@ -22,18 +22,18 @@ class SideMenuTableViewController: UITableViewController {
     
     var controller: SideMenuTableControllerProtocol! {
         didSet {
-            controller.fbNameDidChange = { [unowned self] Controller in
-                if let fbName = Controller.fbName {
+            controller.fbNameDidChange = { [unowned self] controller in
+                if let fbName = controller.fbName {
                     self.showFBData(fbName: fbName)
                 } else {
                     self.hideFBData()
                 }
             }
-            controller.usernameDidChange = { [unowned self] Controller in
-                self.usernameLabel?.text = Controller.username
+            controller.usernameDidChange = { [unowned self] controller in
+                self.usernameLabel?.text = controller.username
             }
-            controller.scoreDidChange = { [unowned self] Controller in
-                self.scoreLabel?.text = Controller.score
+            controller.scoreDidChange = { [unowned self] controller in
+                self.scoreLabel?.text = controller.score
             }
         }
     }
