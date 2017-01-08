@@ -17,29 +17,29 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var newFriendsSettingLabel: UILabel!
     @IBOutlet weak var shareFirstNameLabel: UILabel!
     
-    var Controller: SettingsControllerProtocol! {
+    var controller: SettingsControllerProtocol! {
         didSet {
-            Controller.unitsDidChange = { [unowned self] Controller in
-                self.unitsLabel?.text = Controller.units
+            controller.unitsDidChange = { [unowned self] controller in
+                self.unitsLabel?.text = controller.units
             }
-            Controller.defaultTrustedDidChange = { [unowned self] Controller in
-                self.newFriendsSettingLabel?.text = Controller.defaultTrusted
+            controller.defaultTrustedDidChange = { [unowned self] controller in
+                self.newFriendsSettingLabel?.text = controller.defaultTrusted
             }
-            Controller.shareFirstNameDidChange = { [unowned self] Controller in
-                self.shareFirstNameLabel?.text = Controller.shareFirstName
+            controller.shareFirstNameDidChange = { [unowned self] controller in
+                self.shareFirstNameLabel?.text = controller.shareFirstName
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.Controller = SettingsController()
+        self.controller = SettingsController()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        Controller.resetLabelValues()
+        controller.resetLabelValues()
         setUpFB()
     }
 
@@ -54,24 +54,23 @@ class SettingsTableViewController: UITableViewController {
         static let unitConversionCell = (sec: 3, row: 0)
     }
     
-    override func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == Loc.unitConversionCell.sec &&
             indexPath.row == Loc.unitConversionCell.row {
             
-            Controller.toggleUnitsSetting()
+            controller.toggleUnitsSetting()
         
         } else if indexPath.section == Loc.friendsDefaultToTrustedCell.sec &&
             indexPath.row == Loc.friendsDefaultToTrustedCell.row {
                 
-            Controller.toggleTrustedDefaultSetting()
+            controller.toggleTrustedDefaultSetting()
             
         } else if indexPath.section == Loc.shareNameCell.sec &&
             indexPath.row == Loc.shareNameCell.row {
                 
-            Controller.toggleShareFirstNameSetting()
+            controller.toggleShareFirstNameSetting()
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

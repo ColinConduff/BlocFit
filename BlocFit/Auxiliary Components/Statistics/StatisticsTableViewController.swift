@@ -20,19 +20,19 @@ class StatisticsTableViewController: UITableViewController {
     @IBOutlet weak var averageDistanceLabel: UILabel!
     @IBOutlet weak var averageTimeLabel: UILabel!
     
-    var Controller: StatisticsControllerProtocol! {
+    var controller: StatisticsControllerProtocol! {
         didSet {
-            self.Controller.averageRunDidChange = { [unowned self] Controller in
-                self.averageScoreLabel?.text = self.Controller.averageRunValues?.score
-                self.averageRateLabel?.text = self.Controller.averageRunValues?.rate
-                self.averageDistanceLabel?.text = self.Controller.averageRunValues?.distance
-                self.averageTimeLabel?.text = self.Controller.averageRunValues?.time
+            self.controller.averageRunDidChange = { [unowned self] controller in
+                self.averageScoreLabel?.text = self.controller.averageRunValues?.score
+                self.averageRateLabel?.text = self.controller.averageRunValues?.rate
+                self.averageDistanceLabel?.text = self.controller.averageRunValues?.distance
+                self.averageTimeLabel?.text = self.controller.averageRunValues?.time
             }
-            self.Controller.bestRunDidChange = { [unowned self] Controller in
-                self.bestScoreLabel?.text = self.Controller.bestRunValues?.score
-                self.bestRateLabel?.text = self.Controller.bestRunValues?.rate
-                self.bestDistanceLabel?.text = self.Controller.bestRunValues?.distance
-                self.bestTimeLabel?.text = self.Controller.bestRunValues?.time
+            self.controller.bestRunDidChange = { [unowned self] controller in
+                self.bestScoreLabel?.text = self.controller.bestRunValues?.score
+                self.bestRateLabel?.text = self.controller.bestRunValues?.rate
+                self.bestDistanceLabel?.text = self.controller.bestRunValues?.distance
+                self.bestTimeLabel?.text = self.controller.bestRunValues?.time
             }
         }
     }
@@ -41,12 +41,12 @@ class StatisticsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        self.Controller = StatisticsController(context: context)
+        controller = StatisticsController(context: context)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        Controller.resetLabelValues()
+        controller.resetLabelValues()
     }
     
     override func didReceiveMemoryWarning() {

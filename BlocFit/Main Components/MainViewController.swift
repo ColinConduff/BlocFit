@@ -184,6 +184,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             
         } else if segue.identifier ==  SegueIdentifier.mapEmbedSegue {
             mapViewController = segue.destination as? MapViewController
+            mapViewDelegate = mapViewController
             mapViewController!.dashboardUpdateDelegate = dashboardUpdateDelegate
             mapViewController!.mainVCDataDelegate = self
             mapViewController!.scoreReporterDelegate = GameKitManager.sharedInstance

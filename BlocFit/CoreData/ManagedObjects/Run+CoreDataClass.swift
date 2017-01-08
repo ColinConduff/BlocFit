@@ -142,10 +142,8 @@ public class Run: NSManagedObject {
         }
     }
     
-    func update(
-        currentLocation: CLLocation? = nil,
-        blocMembers: [BlocMember]? = nil)
-        throws {
+    func update(currentLocation: CLLocation? = nil,
+                blocMembers: [BlocMember]? = nil) throws {
         
         if let currentLocation = currentLocation {
             try updateLocations(currentLocation: currentLocation)
@@ -160,6 +158,8 @@ public class Run: NSManagedObject {
             self.updateDistanceRateAndScore()
         }
         
+        try? self.owner?.updateScore()
+            
         try self.managedObjectContext?.save()
     }
     

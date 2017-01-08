@@ -41,6 +41,9 @@
 		C36F38091E217F0400AA436F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C36F38051E217F0400AA436F /* LICENSE */; };
 		C36F380A1E217F0400AA436F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C36F38061E217F0400AA436F /* Podfile */; };
 		C36F380B1E217F0400AA436F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C36F38071E217F0400AA436F /* README.md */; };
+		C36F380E1E22D7E600AA436F /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36F380D1E22D7E600AA436F /* Path.swift */; };
+		C36F38101E22D86700AA436F /* MapRunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36F380F1E22D86700AA436F /* MapRunModel.swift */; };
+		C36F38121E22D8A000AA436F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36F38111E22D8A000AA436F /* MapController.swift */; };
 		C372FAF61DA6E1FD00F9E428 /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */; };
 		C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */; };
 		C3772CF61DA09531006622CC /* RunPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */; };
@@ -132,6 +135,9 @@
 		C36F38051E217F0400AA436F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C36F38061E217F0400AA436F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		C36F38071E217F0400AA436F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C36F380D1E22D7E600AA436F /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		C36F380F1E22D86700AA436F /* MapRunModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRunModel.swift; sourceTree = "<group>"; };
+		C36F38111E22D8A000AA436F /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		C372FAF51DA6E1FD00F9E428 /* RandomNameGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
 		C3772CED1DA09531006622CC /* RunPoint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C3772CEE1DA09531006622CC /* RunPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RunPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -358,6 +364,17 @@
 			path = "Side Menu";
 			sourceTree = "<group>";
 		};
+		C36F380C1E22D7C200AA436F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C36F38111E22D8A000AA436F /* MapController.swift */,
+				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
+				C36F380D1E22D7E600AA436F /* Path.swift */,
+				C36F380F1E22D86700AA436F /* MapRunModel.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		C372FAF71DA6E9C600F9E428 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,7 +466,7 @@
 				C36EA97D1E1322F500486F99 /* Side Menu */,
 				C32828771E147AAA00C62B07 /* Dashboard */,
 				C3A234A91DA04E0600E49DE2 /* TopMenuViewController.swift */,
-				C3A234931D9F5C1200E49DE2 /* MapViewController.swift */,
+				C36F380C1E22D7C200AA436F /* Map */,
 				C37F314C1E2037C20000B2FE /* Managers */,
 				C3A234A51DA03A6D00E49DE2 /* MainViewController.swift */,
 			);
@@ -790,6 +807,7 @@
 				C38E09991DD3D6E300D17569 /* HealthKitManager.swift in Sources */,
 				C3772CFB1DA09531006622CC /* Run+CoreDataClass.swift in Sources */,
 				C3A2349C1DA027A500E49DE2 /* SideMenuTableViewController.swift in Sources */,
+				C36F38101E22D86700AA436F /* MapRunModel.swift in Sources */,
 				C3A234951D9F5C1200E49DE2 /* MapViewController.swift in Sources */,
 				C35C5C361DD3A8EC005435B4 /* BFFormatter.swift in Sources */,
 				C3772CF51DA09531006622CC /* RunPoint+CoreDataClass.swift in Sources */,
@@ -816,6 +834,7 @@
 				C35E77C91E0BB50700077F9B /* SettingsModel.swift in Sources */,
 				C3A234A41DA02B5E00E49DE2 /* FriendTableViewController.swift in Sources */,
 				C360F2881E0C24C200C0F28C /* StatisticsController.swift in Sources */,
+				C36F38121E22D8A000AA436F /* MapController.swift in Sources */,
 				C3A234AA1DA04E0600E49DE2 /* TopMenuViewController.swift in Sources */,
 				C360F2901E0F071100C0F28C /* FRCTableViewDataSource.swift in Sources */,
 				C32828791E147ABE00C62B07 /* DashboardModel.swift in Sources */,
@@ -825,6 +844,7 @@
 				C3A234A61DA03A6D00E49DE2 /* MainViewController.swift in Sources */,
 				C3772CF81DA09531006622CC /* BlocMember+CoreDataProperties.swift in Sources */,
 				C342E13B1DD7885B004E3A7B /* CurrentBlocTableViewCell.swift in Sources */,
+				C36F380E1E22D7E600AA436F /* Path.swift in Sources */,
 				C35E77CB1E0BB51F00077F9B /* SettingsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
