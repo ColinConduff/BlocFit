@@ -136,39 +136,16 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     var actionButtonImageIsStartButton = true
     @IBAction func actionButtonPressed(_ sender: UIButton) {
+        let authorizedToProceed = mapNotificationDelegate.didPressActionButton()
         
-        if CLLocationManager.authorizationStatus() != .authorizedAlways {
-            alertTheUserThatLocationServicesAreDisabled()
-        } else {
-        
+        if authorizedToProceed {
             if actionButtonImageIsStartButton {
                 sender.setImage(#imageLiteral(resourceName: "StopRunButton"), for: .normal)
             } else {
                 sender.setImage(#imageLiteral(resourceName: "StartRunButton"), for: .normal)
             }
-        
             actionButtonImageIsStartButton = !actionButtonImageIsStartButton
-            mapNotificationDelegate.didPressActionButton()
         }
-    }
-    
-    // Called if location auth status is not authorized always
-    func alertTheUserThatLocationServicesAreDisabled() {
-        let alert = UIAlertController(
-            title: "Location Services Disabled",
-            message: "Please authorize BlocFit to access your location.",
-            preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Open Settings", style: .default) {
-            _ in
-            if let url = URL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.open(url)
-            }
-        }
-        alert.addAction(action)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
@@ -176,22 +153,12 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
             if let dashboardViewController = segue.destination as? DashboardViewController {
-                let dashboardController = DashboardController()
-                dashboardViewController.controller = dashboardController
-                dashboardUpdateDelegate = dashboardController
-                mapViewController?.dashboardUpdateDelegate = dashboardUpdateDelegate
+                prepareForDashboard(dashboardViewController)
             }
             
         } else if segue.identifier ==  SegueIdentifier.mapEmbedSegue {
             mapViewController = segue.destination as? MapViewController
-            
-            // Move to an assembler/factory class
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            mapViewController!.controller = MapController(requestMainDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
-            
-            mapNotificationDelegate = mapViewController!.controller as! MapNotificationDelegate!
-            
-            mapViewController!.dashboardUpdateDelegate = dashboardUpdateDelegate
+            prepareForMap(mapViewController!)
             
         } else if segue.identifier ==  SegueIdentifier.runHistoryTableSegue {
             if let runHistoryTableViewController = segue.destination
@@ -216,6 +183,20 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
         }
     }
     
+    func prepareForDashboard(_ dashboardViewController: DashboardViewController) {
+        let dashboardController = DashboardController()
+        dashboardViewController.controller = dashboardController
+        dashboardUpdateDelegate = dashboardController
+        mapViewController?.dashboardUpdateDelegate = dashboardUpdateDelegate
+    }
+    
+    func prepareForMap(_ mapViewController: MapViewController) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        mapViewController.controller = MapController(requestMainDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
+        mapNotificationDelegate = mapViewController.controller as! MapNotificationDelegate!
+        mapViewController.dashboardUpdateDelegate = dashboardUpdateDelegate
+    }
+    
     @IBAction func undwindToMainViewController(_ sender: UIStoryboardSegue) {
         if sender.identifier == SegueIdentifier.unwindFromCurrentBlocTable {
             if let currentBlocTableVC = sender.source
@@ -233,9 +214,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // RequestMainDataDelegate method for map to get current bloc members
     
-    func getCurrentBlocMembers() -> [BlocMember] {
-        return blocMembers
-    }
+    func getCurrentBlocMembers() -> [BlocMember] { return blocMembers }
     
     // SegueCoordinationDelegate method (for the side menu)
     

@@ -20,6 +20,7 @@ class MapViewController: UIViewController {
         didSet {
             controller.authStatusDidChange = { [unowned self] controller in
                 self.mapView?.isMyLocationEnabled = controller.authStatusIsAuthAlways
+                self.alertUserIfLocationServices(areDisabled: !controller.authStatusIsAuthAlways)
             }
             controller.cameraPositionDidChange = { [unowned self] controller in
                 self.mapView?.camera = controller.cameraPosition
@@ -70,5 +71,24 @@ class MapViewController: UIViewController {
         
         let polyline = GMSPolyline(path: path)
         polyline.map = mapView!
+    }
+    
+    // Called if location auth status is not authorized always
+    func alertUserIfLocationServices(areDisabled disabled: Bool) {
+        guard disabled else { return }
+        
+        let alert = UIAlertController(title: "Location Services Disabled",
+                                      message: "Please authorize BlocFit to access your location.",
+                                      preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Open Settings", style: .default) { _ in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+        }
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }

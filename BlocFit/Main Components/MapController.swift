@@ -12,7 +12,7 @@ import HealthKit
 
 protocol MapNotificationDelegate: class {
     func blocMembersDidChange(_ blocMembers: [BlocMember])
-    func didPressActionButton()
+    func didPressActionButton() -> Bool
     func loadSavedRun(run: Run)
 }
 
@@ -152,10 +152,7 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
     }
     
     private func updateCameraPosition(latitude: Double, longitude: Double) {
-        let target = CLLocationCoordinate2D(
-            latitude: latitude,
-            longitude: longitude)
-        
+        let target = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         cameraPosition = GMSCameraPosition.camera(withTarget: target, zoom: 18.0)
     }
     
@@ -210,14 +207,21 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol,
     // Logic for responding to action button click //
     
     // MapNotificationDelegate Method
-    func didPressActionButton() {
-        if currentlyRunning {
-            stopRunning()
+    func didPressActionButton() -> Bool {
+        
+        if authStatusIsAuthAlways {
+            if currentlyRunning {
+                stopRunning()
+            } else {
+                startRunning()
+            }
+            
+            currentlyRunning = !currentlyRunning
         } else {
-            startRunning()
+            authStatusIsAuthAlways = false // trigger didSet
         }
         
-        currentlyRunning = !currentlyRunning
+        return authStatusIsAuthAlways
     }
     
     private func startRunning() {
