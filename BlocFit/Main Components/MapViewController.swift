@@ -11,22 +11,12 @@ import CoreData
 import GoogleMaps
 import HealthKit
 
-protocol MapViewDelegate: class {
-    func blocMembersDidChange(_ blocMembers: [BlocMember])
-    func didPressActionButton()
-    func loadSavedRun(run: Run)
-}
-
-class MapViewController: UIViewController, MapViewDelegate {
+class MapViewController: UIViewController {
     
     // unowned?
     var mapView: GMSMapView? // unnecessary?
     
     weak var dashboardUpdateDelegate: DashboardControllerProtocol!
-    
-    // the following should be passed directly to the map controller
-    weak var mainVCDataDelegate: RequestMainDataDelegate!
-    weak var scoreReporterDelegate: ScoreReporterDelegate!
     
     var controller: MapControllerProtocol! {
         didSet {
@@ -60,6 +50,9 @@ class MapViewController: UIViewController, MapViewDelegate {
     }
     
     override func loadView() {
+        
+        // move to controller
+        // controller may not be created yet
         let camera = GMSCameraPosition.camera(withLatitude: 37.35, longitude: -122.0, zoom: 8.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
@@ -70,9 +63,6 @@ class MapViewController: UIViewController, MapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        controller = MapController(mainVCDataDelegate: mainVCDataDelegate, scoreReporterDelegate: scoreReporterDelegate, context: context)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +71,7 @@ class MapViewController: UIViewController, MapViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        HealthKitManager.authorize()
+        HealthKitManager.authorize() // move to controller
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,20 +93,5 @@ class MapViewController: UIViewController, MapViewDelegate {
         
         let polyline = GMSPolyline(path: path)
         polyline.map = mapView!
-    }
-    
-    // Delegate methods
-    // these should communicate directly with the map controller not UIController
-    
-    func didPressActionButton() {
-        controller.didPressActionButton()
-    }
-    
-    func blocMembersDidChange(_ blocMembers: [BlocMember]) {
-        controller.updateRun(blocMembers: blocMembers)
-    }
-    
-    func loadSavedRun(run: Run) {
-        controller.loadSavedRun(run: run)
     }
 }

@@ -43,7 +43,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     weak var multipeerManagerDelegate: MultipeerManagerDelegate!
     weak var dashboardUpdateDelegate: DashboardControllerProtocol!
-    weak var mapViewDelegate: MapViewDelegate!
+    weak var mapNotificationDelegate: MapNotificationDelegate!
     weak var gameKitManagerDelegate: GameKitManagerDelegate!
     
     // used to set the dashboard's delegate in the prepare for segue method
@@ -62,7 +62,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     var blocMembers = [BlocMember]() {
         didSet {
             // Notify map and dashboard of change
-            mapViewDelegate.blocMembersDidChange(blocMembers)
+            mapNotificationDelegate.blocMembersDidChange(blocMembers)
             dashboardUpdateDelegate.update(blocMembersCount: blocMembers.count)
         }
     }
@@ -148,7 +148,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             }
         
             actionButtonImageIsStartButton = !actionButtonImageIsStartButton
-            mapViewDelegate.didPressActionButton()
+            mapNotificationDelegate.didPressActionButton()
         }
     }
     
@@ -184,10 +184,14 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
             
         } else if segue.identifier ==  SegueIdentifier.mapEmbedSegue {
             mapViewController = segue.destination as? MapViewController
-            mapViewDelegate = mapViewController
+            
+            // Move to an assembler/factory class
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            mapViewController!.controller = MapController(mainVCDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
+            
+            mapNotificationDelegate = mapViewController!.controller as! MapNotificationDelegate!
+            
             mapViewController!.dashboardUpdateDelegate = dashboardUpdateDelegate
-            mapViewController!.mainVCDataDelegate = self
-            mapViewController!.scoreReporterDelegate = GameKitManager.sharedInstance
             
         } else if segue.identifier ==  SegueIdentifier.runHistoryTableSegue {
             if let runHistoryTableViewController = segue.destination
@@ -224,7 +228,7 @@ class MainViewController: UIViewController, LoadRunDelegate, RequestMainDataDele
     
     // LoadRunDelegate function
     func tellMapToLoadRun(run: Run) {
-        mapViewDelegate.loadSavedRun(run: run)
+        mapNotificationDelegate.loadSavedRun(run: run)
     }
     
     // RequestMainDataDelegate method for map to get current bloc members

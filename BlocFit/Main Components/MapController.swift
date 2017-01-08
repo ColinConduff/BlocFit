@@ -10,6 +10,12 @@ import CoreData
 import GoogleMaps
 import HealthKit
 
+protocol MapNotificationDelegate: class {
+    func blocMembersDidChange(_ blocMembers: [BlocMember])
+    func didPressActionButton()
+    func loadSavedRun(run: Run)
+}
+
 protocol MapControllerProtocol: class {
     
     var mapRunModel: MapRunModel { get }
@@ -27,14 +33,11 @@ protocol MapControllerProtocol: class {
     
     init(mainVCDataDelegate: RequestMainDataDelegate, scoreReporterDelegate: ScoreReporterDelegate, context: NSManagedObjectContext)
     
-    func loadSavedRun(run: Run)
     func updateRun(currentLocation: CLLocation)
-    func updateRun(blocMembers: [BlocMember])
     func setInitialCameraPosition() // rename to cameraPositionNeedsUpdate
-    func didPressActionButton()
 }
 
-class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol {
+class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol, MapNotificationDelegate {
     
     var mapRunModel: MapRunModel { didSet { self.mapRunModelDidChange?(mapRunModel) } }
     var authStatusIsAuthAlways = false { didSet { self.authStatusDidChange?(self) } }
@@ -184,7 +187,7 @@ class MapController: NSObject, CLLocationManagerDelegate, MapControllerProtocol 
         setDashboardModel(using: run)
     }
     
-    func updateRun(blocMembers: [BlocMember]) {
+    func blocMembersDidChange(_ blocMembers: [BlocMember]) {
         guard let run = run else { return }
         try? run.update(blocMembers: blocMembers)
     }
