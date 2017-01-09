@@ -8,10 +8,9 @@ It includes integration with Facebook, Google Maps, GameKit, HealthKit, and the 
 The Multipeer Connectivity framework is used to enable peer-to-peer communication between runners.  
 It also uses Core Data and Core Location.  
 
-Feel free to send me feedback at colin.conduff@mst.edu.
-
 BlocFit is available for free on the [App Store](https://itunes.apple.com/ca/app/blocfit/id1175156670).
 
+Feel free to send me feedback at colin.conduff@mst.edu.
 
 ## Setup
 
@@ -28,12 +27,8 @@ BlocFit is available for free on the [App Store](https://itunes.apple.com/ca/app
 4.  Install App Dependencies
   a.  `gem install bundler`
   b.  `bundle install`
-  c.  `pod install`
-
-The following prompt may appear (may be ignored if .env is provided):   
-`What is the key for googleMapsAPIKey`  
-
-5.  Open `BlocFit.xcworkspace` in Xcode   
+  c.  `pod install`  
+5.  Open `BlocFit.xcworkspace` in Xcode     
 
 ## Troubleshooting
 
@@ -43,6 +38,8 @@ Follow the Google Maps SDK installation guide
 Follow the Facebook SDK installation guide  
 [Guide](https://developers.facebook.com/docs/ios/getting-started/)  
 
+The following prompt may appear (may be ignored if .env is provided):   
+`What is the key for googleMapsAPIKey`
 
 ## License
 
