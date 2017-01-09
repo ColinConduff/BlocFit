@@ -12,34 +12,59 @@ import CoreLocation
 import MultipeerConnectivity
 import GameKit
 
+/**
+ Used by the sideMenu to notify the MainViewC that the user would like to segue to an auxiliary view.
+ */
 protocol SegueCoordinationDelegate: class {
     func transition(withSegueIdentifier identifier: String)
 }
 
+/**
+ Used by the topMenu to notify the MainViewC that the user would like to either open the sideMenu or segue to the current bloc table view or the multipeer browser view.
+ */
 protocol TopMenuDelegate: class {
     func toggleSideMenu()
     func segueToCurrentBlocTable()
     func presentMCBrowserAndStartMCAssistant()
 }
 
+/**
+ Used by the MultipeerManager to notify the MainViewC that the user has connected with a nearby peer.
+ */
 protocol MultipeerViewHandlerProtocol: class {
     func addToCurrentBloc(blocMember: BlocMember)
     func blocMembersContains(blocMember: BlocMember) -> Bool
 }
 
+/**
+ Used by the Run History Table to notify the MainViewC that the user would like to display a past run path on the map and its values on the dashboard.
+ */
 protocol LoadRunDelegate: class {
     func tellMapToLoadRun(run: Run)
 }
 
+/**
+ Used by the MapController to request the current bloc members from the MainViewC.
+ */
 protocol RequestMainDataDelegate: class {
     func getCurrentBlocMembers() -> [BlocMember]
 }
 
+/**
+ Used by the GameKitManager to request that the MainViewC present GameKit-related view controller.
+ */
 protocol GameViewPresenterDelegate: class {
     func presentGameVC(_ viewController: UIViewController)
 }
 
+/**
+ The initial view controller for the application.
+ 
+ The MainViewC is responsible for controlling most of the communication and navigation between child view controllers.  It also controls the opening and closing of the side menu view.
+ */
 class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
+    
+    // MARK: - Properties
     
     weak var multipeerManagerDelegate: MultipeerManagerDelegate!
     weak var dashboardUpdateDelegate: DashboardControllerProtocol!
@@ -66,6 +91,8 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
             dashboardUpdateDelegate.update(blocMembersCount: blocMembers.count)
         }
     }
+    
+    // MARK: - View Controller Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,15 +124,18 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Orientation Transition method
+    
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
         coordinator.animate(alongsideTransition: nil) { coordinatorContext in
             self.tapHideSideMenu()
         }
     }
     
-    // Side Menu Functions //
+    // MARK: - Side Menu Methods
     
     // should be moved to a separate controller?
     func hideSideMenu() {
@@ -133,6 +163,8 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         }
     }
     
+    // MARK: - Action Button IBAction Method
+    
     var actionButtonImageIsStartButton = true
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         let authorizedToProceed = mapNotificationDelegate.didPressActionButton()
@@ -148,6 +180,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
@@ -196,26 +229,30 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         mapViewC.dashboardUpdateDelegate = dashboardUpdateDelegate
     }
     
+    // Updates the current blocMembers array if the user removes any 
+    //  using the current bloc table view
     @IBAction func undwindToMainViewC(_ sender: UIStoryboardSegue) {
         if sender.identifier == SegueIdentifier.unwindFromCurrentBlocTable {
-            if let currentBlocTableVC = sender.source
-                as? CurrentBlocTableViewC,
+            if let currentBlocTableVC = sender.source as? CurrentBlocTableViewC,
                 let currentBlocTableDataSource = currentBlocTableVC.currentBlocTableDataSource {
                 blocMembers = currentBlocTableDataSource.blocMembers
             }
         }
     }
     
-    // LoadRunDelegate function
+    // MARK: - LoadRunDelegate method
+    
     func tellMapToLoadRun(run: Run) {
         mapNotificationDelegate.loadSavedRun(run: run)
     }
     
-    // RequestMainDataDelegate method for map to get current bloc members
+    // MARK: - RequestMainDataDelegate method 
+    // used by the map to get current bloc members
     
     func getCurrentBlocMembers() -> [BlocMember] { return blocMembers }
     
-    // SegueCoordinationDelegate method (for the side menu)
+    // MARK: - SegueCoordinationDelegate method 
+    // (for the side menu)
     
     func transition(withSegueIdentifier identifier: String) {
         if identifier == SegueIdentifier.gameCenterSegue {
@@ -225,7 +262,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         }
     }
     
-    // TopMenuProtocol methods 
+    // MARK: - TopMenuProtocol methods
     
     func segueToCurrentBlocTable() {
         performSegue(withIdentifier: SegueIdentifier.currentBlocTableSegue,
@@ -242,7 +279,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         self.present(mcBrowserVC, animated: true, completion: nil)
     }
     
-    // MultipeerViewHandlerDelegate methods
+    // MARK: - MultipeerViewHandlerDelegate methods
     
     func blocMembersContains(blocMember: BlocMember) -> Bool {
         // should be in view model not view
@@ -256,7 +293,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         }
     }
     
-    // GameKitManagerDelegate methods
+    // MARK: - GameKitManagerDelegate methods
     
     func presentGameVC(_ viewController: UIViewController) {
         present(viewController, animated: true, completion: nil)
