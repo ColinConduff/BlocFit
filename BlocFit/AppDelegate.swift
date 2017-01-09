@@ -17,15 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    /**
+     Provide GMSServices with the Google Maps API Key held by cocoapods-keys.
+     
+     The API Key can be set in a .env file or in the command-line.  
+     See the README.md file and cocoapods-keys documentation for more info.
+     */
     func setupGoogleMapsAPI() {
-        // Provide google maps with api key
         let gmsKey = BlocfitKeys().googleMapsAPIKey()!
         GMSServices.provideAPIKey(gmsKey)
     }
     
+    /**
+     Initialize the user's data when the app is first installed.
+     
+     Create a new owner and set when the app is first installed.
+     Set initial privacy settings and store them in user defaults.
+     */
     func setupUserData() {
-        // Create a new owner when the app is first installed
-        // Also create initial privacy setting values in user defaults
         do {
             if try !Owner.wasCreated(context: persistentContainer.viewContext) {
                 let _ = try Owner.create(context: persistentContainer.viewContext)

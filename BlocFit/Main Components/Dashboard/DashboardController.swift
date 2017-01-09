@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ The mapController and mainController notify the dashboard of run-value updates.
+ */
 protocol DashboardControllerProtocol: class {
     
     var dashboardModel: DashboardModel { get }
@@ -35,6 +38,11 @@ protocol DashboardControllerProtocol: class {
     func unitsMayHaveChanged()
 }
 
+/**
+ The dashboardController converts and formats run-related values.
+ 
+ The model stores the unconverted/formatted values, and string properties store the currently converted/formatted values.  Hooks are available for a UIViewController to access the string properties.
+ */
 class DashboardController: DashboardControllerProtocol {
     
     var dashboardModel: DashboardModel
@@ -59,7 +67,7 @@ class DashboardController: DashboardControllerProtocol {
     }
     
     func update(blocMembersCount: Int) {
-        totalRunnersCount = String(describing: blocMembersCount + 1)
+        totalRunnersCount = String(describing: blocMembersCount + 1) // +1 for device owner
     }
     func update(totalSeconds: Double) {
         time = BFFormatter.stringFrom(totalSeconds: totalSeconds)

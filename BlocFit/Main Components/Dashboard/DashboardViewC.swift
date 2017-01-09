@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Handles displaying run-related values to the user.
+ */
 class DashboardViewC: UIViewController {
     
     @IBOutlet weak var distanceUnitsLabel: UILabel!
@@ -19,6 +22,9 @@ class DashboardViewC: UIViewController {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    /**
+     Get the run-related values from the controller and display them to the user.
+ */
     var controller: DashboardControllerProtocol! {
         didSet {
             controller.totalRunnersCountDidChange = { [unowned self] controller in
@@ -41,6 +47,10 @@ class DashboardViewC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        // The user may change the units being used in settings.
+        // The following line notifies the controller that it may need to
+        // update the text labels accordingly.
         controller.unitsMayHaveChanged()
     }
     

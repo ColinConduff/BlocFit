@@ -8,10 +8,14 @@
 
 import Foundation
 
+/**
+ Immutable model for storing the run-values used by the dashboard.
+ */
 struct DashboardModel {
     let secondsPerMeter: Double
     let meters: Double
     let imperialUnits: Bool
+    
     init(secondsPerMeter: Double, meters: Double, imperialUnits: Bool) {
         self.secondsPerMeter = secondsPerMeter
         self.meters = meters

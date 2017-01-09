@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MultipeerManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MultipeerManager" class="dashAnchor"></a>
+    <a title="MultipeerManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MultipeerManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BFFetchedResultsController.html">BFFetchedResultsController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BaseTableViewC.html">BaseTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BlocMember.html">BlocMember</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CurrentBlocCellController.html">CurrentBlocCellController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CurrentBlocTableDataSource.html">CurrentBlocTableDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CurrentBlocTableViewC.html">CurrentBlocTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CurrentBlocTableViewCell.html">CurrentBlocTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DashboardController.html">DashboardController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DashboardViewC.html">DashboardViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DismissSideMenuView.html">DismissSideMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FriendCellController.html">FriendCellController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FriendTableController.html">FriendTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FriendTableViewC.html">FriendTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FriendTableViewCell.html">FriendTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GameKitManager.html">GameKitManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MainViewC.html">MainViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MapController.html">MapController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MapViewC.html">MapViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MultipeerManager.html">MultipeerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Owner.html">Owner</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Run.html">Run</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RunHistoryCellController.html">RunHistoryCellController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RunHistoryTableController.html">RunHistoryTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RunHistoryTableViewC.html">RunHistoryTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RunHistoryTableViewCell.html">RunHistoryTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RunPoint.html">RunPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SettingsController.html">SettingsController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SettingsTableViewC.html">SettingsTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SettingsTableViewC/Loc.html">– Loc</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableController.html">SideMenuTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableDelegate.html">SideMenuTableDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableDelegate/Cell.html">– Cell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SideMenuTableViewC.html">SideMenuTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StatisticsController.html">StatisticsController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StatisticsTableViewC.html">StatisticsTableViewC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TopMenuViewC.html">TopMenuViewC</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CurrentBlocCellControllerProtocol.html">CurrentBlocCellControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DashboardControllerProtocol.html">DashboardControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FriendCellControllerProtocol.html">FriendCellControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GameKitManagerDelegate.html">GameKitManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GameViewPresenterDelegate.html">GameViewPresenterDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/LoadRunDelegate.html">LoadRunDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MapControllerProtocol.html">MapControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MapNotificationDelegate.html">MapNotificationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MultipeerManagerDelegate.html">MultipeerManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MultipeerViewHandlerProtocol.html">MultipeerViewHandlerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RequestMainDataDelegate.html">RequestMainDataDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RunHistoryCellControllerProtocol.html">RunHistoryCellControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ScoreReporterDelegate.html">ScoreReporterDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SegueCoordinationDelegate.html">SegueCoordinationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SelectRowAndLoadRunProtocol.html">SelectRowAndLoadRunProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SettingsControllerProtocol.html">SettingsControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SideMenuTableControllerProtocol.html">SideMenuTableControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StatisticsControllerProtocol.html">StatisticsControllerProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TopMenuDelegate.html">TopMenuDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BFFormatter.html">BFFormatter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BFUnitConverter.html">BFUnitConverter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BFUserDefaults.html">BFUserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DashboardModel.html">DashboardModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HealthKitManager.html">HealthKitManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MapRunModel.html">MapRunModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MultipeerModel.html">MultipeerModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Path.html">Path</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RandomNameGenerator.html">RandomNameGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RunStatisticsModel.html">RunStatisticsModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SegueIdentifier.html">SegueIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SettingsModel.html">SettingsModel</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MultipeerManager</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC7BlocFit16MultipeerManager14sharedInstanceS0_"></a>
+                    <a name="//apple_ref/swift/Variable/sharedInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC7BlocFit16MultipeerManager14sharedInstanceS0_">sharedInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager28multipeerViewHandlerDelegateGSQPS_28MultipeerViewHandlerProtocol__"></a>
+                    <a name="//apple_ref/swift/Property/multipeerViewHandlerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager28multipeerViewHandlerDelegateGSQPS_28MultipeerViewHandlerProtocol__">multipeerViewHandlerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager14multipeerModelVS_14MultipeerModel"></a>
+                    <a name="//apple_ref/swift/Property/multipeerModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager14multipeerModelVS_14MultipeerModel">multipeerModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC7BlocFit16MultipeerManager11serviceTypeSS"></a>
+                    <a name="//apple_ref/swift/Variable/serviceType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC7BlocFit16MultipeerManager11serviceTypeSS">serviceType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager7contextCSo22NSManagedObjectContext"></a>
+                    <a name="//apple_ref/swift/Property/context" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager7contextCSo22NSManagedObjectContext">context</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager6peerIDCSo8MCPeerID"></a>
+                    <a name="//apple_ref/swift/Property/peerID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager6peerIDCSo8MCPeerID">peerID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager7sessionCSo9MCSession"></a>
+                    <a name="//apple_ref/swift/Property/session" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager7sessionCSo9MCSession">session</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager11mcAssistantGSqCSo21MCAdvertiserAssistant_"></a>
+                    <a name="//apple_ref/swift/Property/mcAssistant" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager11mcAssistantGSqCSo21MCAdvertiserAssistant_">mcAssistant</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager11mcBrowserVCGSqCSo23MCBrowserViewController_"></a>
+                    <a name="//apple_ref/swift/Property/mcBrowserVC" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager11mcBrowserVCGSqCSo23MCBrowserViewController_">mcBrowserVC</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager17serviceAdvertiserGSqCSo25MCNearbyServiceAdvertiser_"></a>
+                    <a name="//apple_ref/swift/Property/serviceAdvertiser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager17serviceAdvertiserGSqCSo25MCNearbyServiceAdvertiser_">serviceAdvertiser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7BlocFit16MultipeerManager14serviceBrowserGSqCSo22MCNearbyServiceBrowser_"></a>
+                    <a name="//apple_ref/swift/Property/serviceBrowser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7BlocFit16MultipeerManager14serviceBrowserGSqCSo22MCNearbyServiceBrowser_">serviceBrowser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagercFT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagercFT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF212refreshModelFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/refreshModel()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF212refreshModelFT_T_">refreshModel()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF211fbFirstNameFT_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/fbFirstName()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF211fbFirstNameFT_GSqSS_">fbFirstName()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager16prepareMCBrowserFT_CSo23MCBrowserViewController"></a>
+                    <a name="//apple_ref/swift/Method/prepareMCBrowser()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager16prepareMCBrowserFT_CSo23MCBrowserViewController">prepareMCBrowser()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF228disableAssistantAndBrowserVCFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/disableAssistantAndBrowserVC()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF228disableAssistantAndBrowserVCFT_T_">disableAssistantAndBrowserVC()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF238createAndStartMCAdvertiserAndMCBrowserFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/createAndStartMCAdvertiserAndMCBrowser()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF238createAndStartMCAdvertiserAndMCBrowserFT_T_">createAndStartMCAdvertiserAndMCBrowser()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF227disableAdvertiserAndBrowserFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/disableAdvertiserAndBrowser()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF227disableAdvertiserAndBrowserFT_T_">disableAdvertiserAndBrowser()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF228disableMultipeerConnectivityFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/disableMultipeerConnectivity()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManagerP33_D486EAAB833B23BCBF09D319948B0AF228disableMultipeerConnectivityFT_T_">disableMultipeerConnectivity()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager11sendMessageFT7messageSS7toPeersGSaCSo8MCPeerID__T_"></a>
+                    <a name="//apple_ref/swift/Method/sendMessage(message:toPeers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager11sendMessageFT7messageSS7toPeersGSaCSo8MCPeerID__T_">sendMessage(message:toPeers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager15sendJsonMessageFT7toPeersGSaCSo8MCPeerID__T_"></a>
+                    <a name="//apple_ref/swift/Method/sendJsonMessage(toPeers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager15sendJsonMessageFT7toPeersGSaCSo8MCPeerID__T_">sendJsonMessage(toPeers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager20handleBlocMemberDataFT8usernameSS10totalScoreVs5Int329firstnameGSqSS__T_"></a>
+                    <a name="//apple_ref/swift/Method/handleBlocMemberData(username:totalScore:firstname:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager20handleBlocMemberDataFT8usernameSS10totalScoreVs5Int329firstnameGSqSS__T_">handleBlocMemberData(username:totalScore:firstname:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager13shouldConnectFT12peerUsernameSS29shouldNotHaveAlreadyConnectedSb_Sb"></a>
+                    <a name="//apple_ref/swift/Method/shouldConnect(peerUsername:shouldNotHaveAlreadyConnected:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager13shouldConnectFT12peerUsernameSS29shouldNotHaveAlreadyConnectedSb_Sb">shouldConnect(peerUsername:shouldNotHaveAlreadyConnected:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager24restartBrowserAdvertiserFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/restartBrowserAdvertiser()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager24restartBrowserAdvertiserFT_T_">restartBrowserAdvertiser()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager30browserViewControllerDidFinishFCSo23MCBrowserViewControllerT_"></a>
+                    <a name="//apple_ref/swift/Method/browserViewControllerDidFinish(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager30browserViewControllerDidFinishFCSo23MCBrowserViewControllerT_">browserViewControllerDidFinish(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager33browserViewControllerWasCancelledFCSo23MCBrowserViewControllerT_"></a>
+                    <a name="//apple_ref/swift/Method/browserViewControllerWasCancelled(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager33browserViewControllerWasCancelledFCSo23MCBrowserViewControllerT_">browserViewControllerWasCancelled(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager21browserViewControllerFTCSo23MCBrowserViewController23shouldPresentNearbyPeerCSo8MCPeerID17withDiscoveryInfoGSqGVs10DictionarySSSS___Sb"></a>
+                    <a name="//apple_ref/swift/Method/browserViewController(_:shouldPresentNearbyPeer:withDiscoveryInfo:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager21browserViewControllerFTCSo23MCBrowserViewController23shouldPresentNearbyPeerCSo8MCPeerID17withDiscoveryInfoGSqGVs10DictionarySSSS___Sb">browserViewController(_:shouldPresentNearbyPeer:withDiscoveryInfo:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager10advertiserFTCSo25MCNearbyServiceAdvertiser26didNotStartAdvertisingPeerPs5Error__T_"></a>
+                    <a name="//apple_ref/swift/Method/advertiser(_:didNotStartAdvertisingPeer:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager10advertiserFTCSo25MCNearbyServiceAdvertiser26didNotStartAdvertisingPeerPs5Error__T_">advertiser(_:didNotStartAdvertisingPeer:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager10advertiserFTCSo25MCNearbyServiceAdvertiser28didReceiveInvitationFromPeerCSo8MCPeerID11withContextGSqV10Foundation4Data_17invitationHandlerFTSbGSqCSo9MCSession__T__T_"></a>
+                    <a name="//apple_ref/swift/Method/advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager10advertiserFTCSo25MCNearbyServiceAdvertiser28didReceiveInvitationFromPeerCSo8MCPeerID11withContextGSqV10Foundation4Data_17invitationHandlerFTSbGSqCSo9MCSession__T__T_">advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7browserFTCSo22MCNearbyServiceBrowser27didNotStartBrowsingForPeersPs5Error__T_"></a>
+                    <a name="//apple_ref/swift/Method/browser(_:didNotStartBrowsingForPeers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7browserFTCSo22MCNearbyServiceBrowser27didNotStartBrowsingForPeersPs5Error__T_">browser(_:didNotStartBrowsingForPeers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7browserFTCSo22MCNearbyServiceBrowser9foundPeerCSo8MCPeerID17withDiscoveryInfoGSqGVs10DictionarySSSS___T_"></a>
+                    <a name="//apple_ref/swift/Method/browser(_:foundPeer:withDiscoveryInfo:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7browserFTCSo22MCNearbyServiceBrowser9foundPeerCSo8MCPeerID17withDiscoveryInfoGSqGVs10DictionarySSSS___T_">browser(_:foundPeer:withDiscoveryInfo:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7browserFTCSo22MCNearbyServiceBrowser8lostPeerCSo8MCPeerID_T_"></a>
+                    <a name="//apple_ref/swift/Method/browser(_:lostPeer:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7browserFTCSo22MCNearbyServiceBrowser8lostPeerCSo8MCPeerID_T_">browser(_:lostPeer:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession4peerCSo8MCPeerID9didChangeOSC14MCSessionState_T_"></a>
+                    <a name="//apple_ref/swift/Method/session(_:peer:didChange:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession4peerCSo8MCPeerID9didChangeOSC14MCSessionState_T_">session(_:peer:didChange:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession10didReceiveV10Foundation4Data8fromPeerCSo8MCPeerID_T_"></a>
+                    <a name="//apple_ref/swift/Method/session(_:didReceive:fromPeer:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession10didReceiveV10Foundation4Data8fromPeerCSo8MCPeerID_T_">session(_:didReceive:fromPeer:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession10didReceiveCSo11InputStream8withNameSS8fromPeerCSo8MCPeerID_T_"></a>
+                    <a name="//apple_ref/swift/Method/session(_:didReceive:withName:fromPeer:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession10didReceiveCSo11InputStream8withNameSS8fromPeerCSo8MCPeerID_T_">session(_:didReceive:withName:fromPeer:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession34didFinishReceivingResourceWithNameSS8fromPeerCSo8MCPeerID2atV10Foundation3URL9withErrorGSqPs5Error___T_"></a>
+                    <a name="//apple_ref/swift/Method/session(_:didFinishReceivingResourceWithName:fromPeer:at:withError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession34didFinishReceivingResourceWithNameSS8fromPeerCSo8MCPeerID2atV10Foundation3URL9withErrorGSqPs5Error___T_">session(_:didFinishReceivingResourceWithName:fromPeer:at:withError:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession33didStartReceivingResourceWithNameSS8fromPeerCSo8MCPeerID4withCSo8Progress_T_"></a>
+                    <a name="//apple_ref/swift/Method/session(_:didStartReceivingResourceWithName:fromPeer:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7BlocFit16MultipeerManager7sessionFTCSo9MCSession33didStartReceivingResourceWithNameSS8fromPeerCSo8MCPeerID4withCSo8Progress_T_">session(_:didStartReceivingResourceWithName:fromPeer:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-01-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
