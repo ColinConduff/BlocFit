@@ -148,7 +148,7 @@
 		C3772CF31DA09531006622CC /* Run+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C3772CF41DA09531006622CC /* Run+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Run+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C38391A61DD51F8B00DDC5F8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		C3863D7B1DD52CFC004AE077 /* GameKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameKitManager.swift; path = ../GameKitManager.swift; sourceTree = "<group>"; };
+		C3863D7B1DD52CFC004AE077 /* GameKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameKitManager.swift; sourceTree = "<group>"; };
 		C38E09951DD3D5EA00D17569 /* BlocFit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlocFit.entitlements; sourceTree = "<group>"; };
 		C38E09961DD3D5EA00D17569 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C38E09981DD3D6E300D17569 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 				C36F380D1E22D7E600AA436F /* Path.swift */,
 				C36F380F1E22D86700AA436F /* MapRunModel.swift */,
 			);
-			name = Map;
+			path = Map;
 			sourceTree = "<group>";
 		};
 		C372FAF71DA6E9C600F9E428 /* Supporting Files */ = {
