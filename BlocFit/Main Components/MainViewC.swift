@@ -95,7 +95,6 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillTransition(to size: CGSize,
@@ -108,7 +107,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     
     // Side Menu Functions //
     
-    // should be moved to side menu displayer?
+    // should be moved to a separate controller?
     func hideSideMenu() {
         sideMenuContainerWidthConstraint.constant = 20
         sideMenuContainerView.isHidden = true
@@ -183,14 +182,14 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         }
     }
     
-    func prepareForDashboard(_ dashboardViewC: DashboardViewC) {
+    private func prepareForDashboard(_ dashboardViewC: DashboardViewC) {
         let dashboardController = DashboardController()
         dashboardViewC.controller = dashboardController
         dashboardUpdateDelegate = dashboardController
         mapViewC?.dashboardUpdateDelegate = dashboardUpdateDelegate
     }
     
-    func prepareForMap(_ mapViewC: MapViewC) {
+    private func prepareForMap(_ mapViewC: MapViewC) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         mapViewC.controller = MapController(requestMainDataDelegate: self, scoreReporterDelegate: GameKitManager.sharedInstance, context: context)
         mapNotificationDelegate = mapViewC.controller as! MapNotificationDelegate!
