@@ -10,12 +10,12 @@ import UIKit
 
 class DismissSideMenuView: UIView {
     
+    // Should not manipulate frames directly
     init(mainVC: MainViewC, sideMenuWidth: CGFloat) {
-        let frame = CGRect(
-            x: sideMenuWidth,
-            y: 0,
-            width: mainVC.view.bounds.width - sideMenuWidth,
-            height: mainVC.view.bounds.height)
+        let frame = CGRect(x: sideMenuWidth,
+                           y: 0,
+                           width: mainVC.view.bounds.width - sideMenuWidth,
+                           height: mainVC.view.bounds.height)
         super.init(frame: frame)
         mainVC.view.addSubview(self)
         
