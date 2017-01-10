@@ -9,15 +9,17 @@
 import Foundation
 
 struct BFFormatter {
+    
+    static let numberFormatter = NumberFormatter()
+    static let dateFormatter = DateFormatter()
+    static let dateIntervalFormatter = DateIntervalFormatter()
 
     static func stringFrom(number: Double, maxDigits: Int = 2) -> String {
-        let formatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = maxDigits
+        numberFormatter.roundingMode = .up
         
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = maxDigits
-        formatter.roundingMode = .up
-        
-        return formatter.string(from: (number as NSNumber))!
+        return numberFormatter.string(from: (number as NSNumber))!
     }
     
     static func stringFrom(totalSeconds: Double) -> String {

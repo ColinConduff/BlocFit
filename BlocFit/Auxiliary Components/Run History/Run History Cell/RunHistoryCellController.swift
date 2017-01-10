@@ -93,10 +93,9 @@ class RunHistoryCellController: RunHistoryCellControllerProtocol {
     */
     
     private func timeIntervalString(start: Date, end: Date) -> String? {
-        let formatter = DateIntervalFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .none
+        BFFormatter.dateIntervalFormatter.timeStyle = .short
+        BFFormatter.dateIntervalFormatter.dateStyle = .none
         
-        return formatter.string(from: start, to: end)
+        return BFFormatter.dateIntervalFormatter.string(from: start, to: end)
     }
 }

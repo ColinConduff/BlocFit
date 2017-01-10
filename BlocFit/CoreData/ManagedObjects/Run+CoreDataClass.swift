@@ -170,10 +170,9 @@ public class Run: NSManagedObject {
     
     var startDateShortFormat: String {
         get {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
-            return dateFormatter.string(from: startTime! as Date)
+            BFFormatter.dateFormatter.dateStyle = .long
+            BFFormatter.dateFormatter.timeStyle = .none
+            return BFFormatter.dateFormatter.string(from: startTime! as Date)
         }
     }
     
