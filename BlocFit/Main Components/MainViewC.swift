@@ -15,14 +15,14 @@ import GameKit
 /**
  Used by the sideMenu to notify the MainViewC that the user would like to segue to an auxiliary view.
  */
-protocol SegueCoordinationDelegate: class {
+internal protocol SegueCoordinationDelegate: class {
     func transition(withSegueIdentifier identifier: String)
 }
 
 /**
  Used by the topMenu to notify the MainViewC that the user would like to either open the sideMenu or segue to the current bloc table view or the multipeer browser view.
  */
-protocol TopMenuDelegate: class {
+internal protocol TopMenuDelegate: class {
     func toggleSideMenu()
     func segueToCurrentBlocTable()
     func presentMCBrowserAndStartMCAssistant()
@@ -31,7 +31,7 @@ protocol TopMenuDelegate: class {
 /**
  Used by the MultipeerManager to notify the MainViewC that the user has connected with a nearby peer.
  */
-protocol MultipeerViewHandlerProtocol: class {
+internal protocol MultipeerViewHandlerProtocol: class {
     func addToCurrentBloc(blocMember: BlocMember)
     func blocMembersContains(blocMember: BlocMember) -> Bool
 }
@@ -39,21 +39,21 @@ protocol MultipeerViewHandlerProtocol: class {
 /**
  Used by the Run History Table to notify the MainViewC that the user would like to display a past run path on the map and its values on the dashboard.
  */
-protocol LoadRunDelegate: class {
+internal protocol LoadRunDelegate: class {
     func tellMapToLoadRun(run: Run)
 }
 
 /**
  Used by the MapController to request the current bloc members from the MainViewC.
  */
-protocol RequestMainDataDelegate: class {
+internal protocol RequestMainDataDelegate: class {
     func getCurrentBlocMembers() -> [BlocMember]
 }
 
 /**
  Used by the GameKitManager to request that the MainViewC present GameKit-related view controller.
  */
-protocol GameViewPresenterDelegate: class {
+internal protocol GameViewPresenterDelegate: class {
     func presentGameVC(_ viewController: UIViewController)
 }
 
@@ -62,29 +62,29 @@ protocol GameViewPresenterDelegate: class {
  
  The MainViewC is responsible for controlling most of the communication and navigation between child view controllers.  It also controls the opening and closing of the side menu view.
  */
-class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
+final class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, SegueCoordinationDelegate, TopMenuDelegate, MultipeerViewHandlerProtocol, GameViewPresenterDelegate {
     
     // MARK: - Properties
     
-    weak var multipeerManagerDelegate: MultipeerManagerDelegate!
-    weak var dashboardUpdateDelegate: DashboardControllerProtocol!
-    weak var mapNotificationDelegate: MapNotificationDelegate!
-    weak var gameKitManagerDelegate: GameKitManagerDelegate!
+    private weak var multipeerManagerDelegate: MultipeerManagerDelegate!
+    private weak var dashboardUpdateDelegate: DashboardControllerProtocol!
+    private weak var mapNotificationDelegate: MapNotificationDelegate!
+    private weak var gameKitManagerDelegate: GameKitManagerDelegate!
     
     // used to set the dashboard's delegate in the prepare for segue method
     // need to find a way to do so without keeping this reference
-    weak var mapViewC: MapViewC?
+    private weak var mapViewC: MapViewC?
     
     @IBOutlet weak var sideMenuContainerView: UIView!
     @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
     
     // Created when the side menu is openned 
     // Destroyed when the side menu is closed
-    weak var dismissSideMenuView: DismissSideMenuView?
+    private weak var dismissSideMenuView: DismissSideMenuView?
     
     // Can be edited by CurrentBlocTableViewC
     // need a better way to synchronize blocMembers array across multiple classes
-    var blocMembers = [BlocMember]() {
+    private var blocMembers = [BlocMember]() {
         didSet {
             // Notify map and dashboard of change
             mapNotificationDelegate.blocMembersDidChange(blocMembers)
@@ -138,18 +138,19 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     // MARK: - Side Menu Methods
     
     // should be moved to a separate controller?
-    func hideSideMenu() {
+    private func hideSideMenu() {
         sideMenuContainerWidthConstraint.constant = 20
         sideMenuContainerView.isHidden = true
     }
     
-    func tapHideSideMenu() {
+    // Used by dismiss side menu view UITapGestureRecognizer
+    internal func tapHideSideMenu() {
         hideSideMenu()
         sideMenuAnimation()
         dismissSideMenuView?.removeFromSuperview()
     }
     
-    func showSideMenu() {
+    private func showSideMenu() {
         let newWidth = view.bounds.width * 2 / 3
         sideMenuContainerWidthConstraint.constant = newWidth
         sideMenuContainerView.isHidden = false
@@ -157,7 +158,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
         sideMenuAnimation()
     }
     
-    func sideMenuAnimation() {
+    private func sideMenuAnimation() {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
@@ -165,7 +166,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     
     // MARK: - Action Button IBAction Method
     
-    var actionButtonImageIsStartButton = true
+    private var actionButtonImageIsStartButton = true
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         let authorizedToProceed = mapNotificationDelegate.didPressActionButton()
         
@@ -181,6 +182,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     
     // MARK: - Navigation
     
+    // TODO: - Create a Navigator class for managing navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SegueIdentifier.dashboardEmbedSegue {
@@ -242,19 +244,19 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     
     // MARK: - LoadRunDelegate method
     
-    func tellMapToLoadRun(run: Run) {
+    internal func tellMapToLoadRun(run: Run) {
         mapNotificationDelegate.loadSavedRun(run: run)
     }
     
     // MARK: - RequestMainDataDelegate method 
     // used by the map to get current bloc members
     
-    func getCurrentBlocMembers() -> [BlocMember] { return blocMembers }
+    internal func getCurrentBlocMembers() -> [BlocMember] { return blocMembers }
     
     // MARK: - SegueCoordinationDelegate method 
     // (for the side menu)
     
-    func transition(withSegueIdentifier identifier: String) {
+    internal func transition(withSegueIdentifier identifier: String) {
         if identifier == SegueIdentifier.gameCenterSegue {
             gameKitManagerDelegate.showLeaderboard()
         } else {
@@ -264,29 +266,29 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     
     // MARK: - TopMenuProtocol methods
     
-    func segueToCurrentBlocTable() {
+    internal func segueToCurrentBlocTable() {
         performSegue(withIdentifier: SegueIdentifier.currentBlocTableSegue,
                      sender: self)
     }
     
-    func toggleSideMenu() {
+    internal func toggleSideMenu() {
         sideMenuContainerView.isHidden ? showSideMenu() : hideSideMenu()
     }
     
     // Called from TopMenuViewC when user clicks multipeer button
-    func presentMCBrowserAndStartMCAssistant() {
+    internal func presentMCBrowserAndStartMCAssistant() {
         let mcBrowserVC = multipeerManagerDelegate.prepareMCBrowser()
         self.present(mcBrowserVC, animated: true, completion: nil)
     }
     
     // MARK: - MultipeerViewHandlerDelegate methods
     
-    func blocMembersContains(blocMember: BlocMember) -> Bool {
+    internal func blocMembersContains(blocMember: BlocMember) -> Bool {
         // should be in view model not view
         return blocMembers.contains(blocMember)
     }
     
-    func addToCurrentBloc(blocMember: BlocMember) {
+    internal func addToCurrentBloc(blocMember: BlocMember) {
         // should not be handled by view
         DispatchQueue.main.sync {
             blocMembers.append(blocMember)
@@ -295,7 +297,7 @@ class MainViewC: UIViewController, LoadRunDelegate, RequestMainDataDelegate, Seg
     
     // MARK: - GameKitManagerDelegate methods
     
-    func presentGameVC(_ viewController: UIViewController) {
+    internal func presentGameVC(_ viewController: UIViewController) {
         present(viewController, animated: true, completion: nil)
     }
 }
