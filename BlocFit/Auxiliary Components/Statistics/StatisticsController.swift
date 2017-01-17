@@ -108,10 +108,11 @@ class StatisticsController: StatisticsControllerProtocol {
             do {
                 if let bestRun = try context.fetch(request).first {
                 
-                    self.bestRunModel = RunStatisticsModel(score: bestRun.score,
-                                                           seconds: bestRun.secondsElapsed,
-                                                           meters: bestRun.totalDistanceInMeters,
-                                                           rate: bestRun.secondsPerMeter)
+                    self.bestRunModel = RunStatisticsModel(
+                        score: bestRun.score,
+                        seconds: bestRun.secondsElapsed,
+                        meters: bestRun.totalDistanceInMeters,
+                        rate: bestRun.secondsPerMeter)
                 }
             } catch let error {
                 print(error)
