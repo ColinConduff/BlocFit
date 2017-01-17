@@ -1458,7 +1458,7 @@
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Auxiliary Components/Statistics/StatisticsController.swift",
-      "line": 122,
+      "line": 123,
       "symbol": "StatisticsController.getAverageRun(context:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1850,7 +1850,7 @@
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/CoreData/ManagedObjects/Run+CoreDataClass.swift",
-      "line": 180,
+      "line": 179,
       "symbol": "Run.sumScores(context:)",
       "symbol_kind": "source.lang.swift.decl.function.method.class",
       "warning": "undocumented"
@@ -2613,350 +2613,301 @@
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 15,
-      "symbol": "SegueCoordinationDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 16,
+      "line": 19,
       "symbol": "SegueCoordinationDelegate.transition(withSegueIdentifier:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 19,
-      "symbol": "TopMenuDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 20,
+      "line": 26,
       "symbol": "TopMenuDelegate.toggleSideMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 21,
+      "line": 27,
       "symbol": "TopMenuDelegate.segueToCurrentBlocTable()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 22,
+      "line": 28,
       "symbol": "TopMenuDelegate.presentMCBrowserAndStartMCAssistant()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 25,
-      "symbol": "MultipeerViewHandlerProtocol",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 26,
+      "line": 35,
       "symbol": "MultipeerViewHandlerProtocol.addToCurrentBloc(blocMember:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 27,
+      "line": 36,
       "symbol": "MultipeerViewHandlerProtocol.blocMembersContains(blocMember:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 30,
-      "symbol": "LoadRunDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 31,
+      "line": 43,
       "symbol": "LoadRunDelegate.tellMapToLoadRun(run:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 34,
-      "symbol": "RequestMainDataDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 35,
+      "line": 50,
       "symbol": "RequestMainDataDelegate.getCurrentBlocMembers()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 38,
-      "symbol": "GameViewPresenterDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 39,
+      "line": 57,
       "symbol": "GameViewPresenterDelegate.presentGameVC(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 42,
-      "symbol": "MainViewC",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 44,
+      "line": 69,
       "symbol": "MainViewC.multipeerManagerDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 45,
+      "line": 70,
       "symbol": "MainViewC.dashboardUpdateDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 46,
+      "line": 71,
       "symbol": "MainViewC.mapNotificationDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 47,
+      "line": 72,
       "symbol": "MainViewC.gameKitManagerDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 51,
+      "line": 76,
       "symbol": "MainViewC.mapViewC",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 53,
+      "line": 78,
       "symbol": "MainViewC.sideMenuContainerView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 54,
+      "line": 79,
       "symbol": "MainViewC.sideMenuContainerWidthConstraint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 58,
+      "line": 83,
       "symbol": "MainViewC.dismissSideMenuView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 62,
+      "line": 87,
       "symbol": "MainViewC.blocMembers",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 70,
+      "line": 97,
       "symbol": "MainViewC.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 75,
+      "line": 102,
       "symbol": "MainViewC.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 86,
+      "line": 113,
       "symbol": "MainViewC.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 91,
+      "line": 118,
       "symbol": "MainViewC.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 96,
+      "line": 123,
       "symbol": "MainViewC.didReceiveMemoryWarning()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 101,
+      "line": 129,
       "symbol": "MainViewC.viewWillTransition(to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 112,
+      "line": 141,
       "symbol": "MainViewC.hideSideMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 117,
+      "line": 147,
       "symbol": "MainViewC.tapHideSideMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 123,
+      "line": 153,
       "symbol": "MainViewC.showSideMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 131,
+      "line": 161,
       "symbol": "MainViewC.sideMenuAnimation()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 137,
+      "line": 169,
       "symbol": "MainViewC.actionButtonImageIsStartButton",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 138,
+      "line": 170,
       "symbol": "MainViewC.actionButtonPressed(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 152,
+      "line": 186,
       "symbol": "MainViewC.prepare(for:sender:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 186,
+      "line": 220,
       "symbol": "MainViewC.prepareForDashboard(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 193,
+      "line": 227,
       "symbol": "MainViewC.prepareForMap(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 200,
+      "line": 236,
       "symbol": "MainViewC.undwindToMainViewC(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 211,
+      "line": 247,
       "symbol": "MainViewC.tellMapToLoadRun(run:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 217,
+      "line": 254,
       "symbol": "MainViewC.getCurrentBlocMembers()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 221,
+      "line": 259,
       "symbol": "MainViewC.transition(withSegueIdentifier:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 231,
+      "line": 269,
       "symbol": "MainViewC.segueToCurrentBlocTable()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 236,
+      "line": 274,
       "symbol": "MainViewC.toggleSideMenu()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 241,
+      "line": 279,
       "symbol": "MainViewC.presentMCBrowserAndStartMCAssistant()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 248,
+      "line": 286,
       "symbol": "MainViewC.blocMembersContains(blocMember:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 253,
+      "line": 291,
       "symbol": "MainViewC.addToCurrentBloc(blocMember:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/MainViewC.swift",
-      "line": 262,
+      "line": 300,
       "symbol": "MainViewC.presentGameVC(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -3992,7 +3943,7 @@
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Main Components/Side Menu/DismissSideMenuView.swift",
-      "line": 13,
+      "line": 14,
       "symbol": "DismissSideMenuView.init(mainVC:sideMenuWidth:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -4686,13 +4637,34 @@
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Supporting Files/Supporting Models/BFFormatter.swift",
       "line": 13,
+      "symbol": "BFFormatter.numberFormatter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Supporting Files/Supporting Models/BFFormatter.swift",
+      "line": 14,
+      "symbol": "BFFormatter.dateFormatter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Supporting Files/Supporting Models/BFFormatter.swift",
+      "line": 15,
+      "symbol": "BFFormatter.dateIntervalFormatter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Supporting Files/Supporting Models/BFFormatter.swift",
+      "line": 17,
       "symbol": "BFFormatter.stringFrom(number:maxDigits:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colinconduff/Development/BlocFitOpenSource/BlocFit/BlocFit/Supporting Files/Supporting Models/BFFormatter.swift",
-      "line": 23,
+      "line": 25,
       "symbol": "BFFormatter.stringFrom(totalSeconds:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"

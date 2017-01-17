@@ -6,7 +6,11 @@ BlocFit is a social run-tracking fitness game.
 
 It includes integration with Facebook, Google Maps, GameKit, HealthKit, and the Multipeer Connectivity framework.  
 The Multipeer Connectivity framework is used to enable peer-to-peer communication between runners.  
-It also uses Core Data and Core Location.  
+It also uses Core Data and Core Location. 
+
+The application architecture is similar to MVVM.  In order to avoid the Massive UIViewController problem, ViewControllers have been split into ViewC and Controller classes.  
+
+Jazzy-generated docs are available under the `docs` directory.
 
 BlocFit is available for free on the [App Store](https://itunes.apple.com/ca/app/blocfit/id1175156670).
 
